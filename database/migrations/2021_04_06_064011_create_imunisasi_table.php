@@ -13,7 +13,7 @@ class CreateImunisasiTable extends Migration
      */
     public function up()
     {
-        Schema::create('imunisasi', function (Blueprint $table) {
+        Schema::create('imunisasis', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('nama');
             $table->timestamps();

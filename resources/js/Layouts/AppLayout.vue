@@ -2,7 +2,8 @@
     <div>
         <jet-banner />
 
-        <div class="min-h-screen bg-no-repeat bg-cover relative" style="background-image: url('../images/imun3.png')">
+            <div class="min-h-screen bg-no-repeat bg-cover relative" style="background-image: url('../images/imun3.png')"> 
+             <!-- <div class="min-h-screen bg-white"> -->
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

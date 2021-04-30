@@ -74,7 +74,7 @@
                             <div class="mt-2 text-sm text-gray-500">
                                 Imunisasi yang diberikan untuk mencegah penyakit pneumonia. 
                             </div>
-                            <inertia-link :href="route('imunisasi' ,{ data:'Imunisasi Pneumokokus 1 (PCV 1)' })" method="get">
+                            <inertia-link :href="route('imunisasi' ,{ data:'Imunisasi Pneumokokus (PCV) 1' })" method="get">
                                 <div class="mt-3 flex justify-center items-center text-sm font-semibold text-indigo-700">
                                     <div>Lihat Selengkapnya</div>
                                     <div class="ml-1 text-indigo-500">
@@ -169,7 +169,7 @@
                             <div class="mt-2 text-sm text-gray-500">
                                 Imunisasi untuk mencegah infeksi virus Japanese Encephalitis yang bisa menyebabkan penyakit radang otak.
                             </div>
-                            <inertia-link :href="route('imunisasi' ,{ data:'Imunisasi Japanese Ensephalitis' })" method="get">
+                            <inertia-link :href="route('imunisasi' ,{ data:'Imunisasi Japanese Ensephalitis 1' })" method="get">
                                 <div class="mt-3 flex justify-center items-center text-sm font-semibold text-indigo-700">
                                     <div>Lihat Selengkapnya</div>
                                     <div class="ml-1 text-indigo-500">
@@ -207,7 +207,7 @@
                             <div class="mt-2 text-sm text-gray-500">
                                 Imunisasi diberikan untuk mencegah infeksi dengue sehingga mampu mengurangi risiko seorang anak terkena infeksi dengue yang berat.
                             </div>
-                            <inertia-link :href="route('imunisasi' ,{ data:'Imunisasi Dengue 1' })" method="get">
+                            <inertia-link :href="route('imunisasi' ,{ data:'Imunisasi Demam Berdarah 1' })" method="get">
                                 <div class="mt-3 flex justify-center items-center text-sm font-semibold text-indigo-700">
                                     <div>Lihat Selengkapnya</div>
                                     <div class="ml-1 text-indigo-500">

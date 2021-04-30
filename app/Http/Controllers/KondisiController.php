@@ -73,19 +73,20 @@ class KondisiController extends Controller
         ])->validate();
         
         $kondisi = Kondisi::create($request->all());
-        $kondisi2 = clone $kondisi;
-        $kondisi3 = clone $kondisi;
-        $kondisi4 = clone $kondisi;
-        $kondisi5 = clone $kondisi;
+        //$kondisi2 = clone $kondisi;
+        //$kondisi3 = clone $kondisi;
+        //$kondisi4 = clone $kondisi;
+        //$kondisi5 = clone $kondisi;
 
         $now = Carbon::now();
         $im = Imunisasi::get();
         
-        $kondisi->user_id = auth()->id(); //user id
-        $kondisiku = json_decode($kondisi->kondisi); //ubah ke array lagi
-        $kondisi->usia = $now->diffInMonths($kondisi->tgl_lahir); //hitung usia
-
+        $kondisi['user_id'] = auth()->id(); //user id
+        $kondisiku = json_decode($kondisi['kondisi']); //ubah ke array lagi
+        $kondisi['usia'] = $now->diffInMonths($kondisi['tgl_lahir']); //hitung usia
+        
         //aturan
+        
         //meningitis
         if ($kondisi['travelling'] == "Ya" AND $kondisiku[0] == "Pergi ke daerah endemis meningitis"){
             $tglbrkt = Carbon::parse($kondisi['tgl_brkt']);
@@ -93,6 +94,7 @@ class KondisiController extends Controller
             $kondisi['imunisasi'] = $im[0]->id;
             $kondisi->save();
         }
+        
         //yellow fever
         if ($kondisi['usia'] >= 9 AND $kondisi['travelling'] == "Ya" AND ($kondisiku[0] == "Pergi ke daerah endemis yellow fever" OR ($kondisiku[0] == "hamil" AND $kondisiku[1] == "Pergi ke daerah endemis yellow fever"))) {
             $tglbrkt = Carbon::parse($kondisi['tgl_brkt']);
@@ -275,13 +277,13 @@ class KondisiController extends Controller
             if ($kondisi['imunisasisblm'] == "Hepatitis B 1") {
                 $tglimun = Carbon::parse($kondisi['tgl']);
                 $kondisi['tgl_rekom'] = $tglimun->addMonths(1);
-                $kondisi['imunisasi'] = $im[22]->id;
+                $kondisi['imunisasi'] = $im[23]->id;
                 $kondisi->save();
             } 
             if ($kondisi['imunisasisblm'] == "Hepatitis B 2") {
                 $tglimun = Carbon::parse($kondisi['tgl']);
                 $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
-                $kondisi['imunisasi'] = $im[23]->id;
+                $kondisi['imunisasi'] = $im[24]->id;
                 $kondisi->save();
             }    
         }
@@ -381,210 +383,9 @@ class KondisiController extends Controller
             'kondisi_id' => $kondisi->id,
         ]);
         
-            return redirect()->route('kondisi.show', $kondisi);
+        return redirect()->route('kondisi.show', $kondisi);
     }
     
-    public function aturan($id, $usia, $tgl_lahir, $gender, $travelling, $kondisi, $tgl_brkt, $imunisasisblm, $tgl, $imunisasi, $tgl_rekom)
-    {
-        $now = Carbon::now();
-        $im = Imunisasi::get();
-        //input
-        $kondisiku = json_decode($kondisi);
-        $usia = $now->diffInMonths($tgl_lahir);
-
-        //aturan
-        //yellow fever
-        if ($kondisi['usia'] >= 9 AND $kondisi['travelling'] == "Ya" AND ($kondisiku[0] == "Pergi ke daerah endemis yellow fever" OR ($kondisiku[0] == "hamil" AND $kondisiku[1] == "Pergi ke daerah endemis yellow fever"))) {
-            $tglbrkt = Carbon::parse($kondisi['tgl_brkt']);
-            $kondisi['tgl_rekom'] = $tglbrkt->subDays(10);
-            $kondisi['imunisasi'] = $im[1]->nama;
-            $kondisi->save();
-        }
-        //meningitis
-        /*if ($kondisi['travelling'] == "Ya" AND $kondisiku[0] == "Pergi ke daerah endemis meningitis"){
-            $tglbrkt = Carbon::parse($kondisi['tgl_brkt']);
-            $kondisi['tgl_rekom'] = $tglbrkt->subDays(15);
-            $kondisi['imunisasi'] = $im[0]->nama;
-        };
-        //yellow fever
-        if ($kondisi->usia >= 9 AND $kondisi->travelling == "Ya" AND $kondisi->imunisasisblm == NULL AND ($kondisiku[0] == "Pergi ke daerah endemis yellow fever" OR ($kondisiku[0] == "hamil" AND $kondisiku[1] == "Pergi ke daerah endemis yellow fever"))) {
-            $tglbrkt = Carbon::parse($kondisi->tgl_brkt);
-            $kondisi->tgl_rekom = $tglbrkt->subDays(10);
-            $kondisi->imunisasi = $im[1]->nama;
-        }
-        //rabies
-        if ($kondisiku[0] == "Memiliki hewan peliharaan (anjing, kucing, kera)") {
-            $kondisi['tgl_rekom']  = $now->addDays(7);
-            $kondisi['imunisasi'] = $im[2]->nama;
-        }
-        //PCV
-        if ($kondisiku[0] == "Tinggal di lingkungan rokok, padat, panti") {
-            //PCV 1 2 bulan, 7-5 tahun
-            if (($kondisi['usia'] == 2 OR ($kondisi['usia'] >= 7 AND $kondisi['usia'] <= 60)) AND $kondisi['imunisasisblm'] == NULL) {
-                $kondisi['tgl_rekom']  = $now->addDays(7);
-                $kondisi['imunisasi'] = $im[3]->nama;
-            }
-            //PCV 2 4 bulan, 12-23 bulan
-            if ($kondisi['usia'] == 4 OR ($kondisi['usia'] >= 12 AND $kondisi['usia'] <= 23) AND $kondisi['imunisasisblm'] == "Pneumokokus 1") {
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(2);
-                $kondisi['imunisasi'] = $im[4]->nama;
-            }
-        }*/
-        //HPV 1 9-14 tahun
-        if (($gender == "Perempuan" AND ($usia >= 108 AND $usia <= 179)) AND $imunisasisblm == NULL) {
-            $tgl_rekom  = $now->addDays(7);
-            $imunisasi = $im[12]->nama;
-            //$kondisi->save();
-        }
-        /*
-        //HPV 2 9-14 tahun
-        if (($kondisi['gender'] == "Perempuan" AND ($kondisi['usia'] >= 108 AND $kondisi['usia'] <= 179)) AND $kondisi['imunisasisblm'] == "HPV 1") {
-            $tglimun = Carbon::parse($kondisi['tgl']);
-            $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
-            //$max_imunisasi = $tglimun->addMonths(15);
-            $kondisi['imunisasi'] = $im[13]->nama;
-        }
-        //HPV 1 bivalen/quad
-        if (($kondisi['gender'] == "Perempuan" AND $kondisi['usia'] >= 180 AND $kondisi['imunisasisblm'] == NULL)) {
-            $kondisi['tgl_rekom']  = $now->addDays(7);
-            $kondisi['imunisasi'] = $im[14]->nama;
-        }
-        //HPV 2 bi
-        if (($kondisi['gender'] == "Perempuan" AND $kondisi['usia'] >= 180 AND $kondisi['imunisasisblm'] == "HPV 1 Bivalen")) {
-            $tglimun = Carbon::parse($kondisi['tgl']);
-            $kondisi['tgl_rekom'] = $tglimun->addMonths(1);
-            $kondisi['imunisasi'] = $im[15]->nama;
-        }
-        //HPV 3 bi
-        if (($kondisi['gender'] == "Perempuan" AND $kondisi['usia'] >= 180 AND $kondisi['imunisasisblm'] == "HPV 2 Bivalen")) {
-            $tglimun = Carbon::parse($kondisi['tgl']);
-            $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
-            $kondisi['imunisasi'] = $im[16]->nama;
-        }
-        //HPV 2 quad
-        if (($kondisi['gender'] == "Perempuan" AND $kondisi['usia'] >= 180 AND $kondisi['imunisasisblm'] == "HPV 1 Quadrivalen")) {
-            $tglimun = Carbon::parse($kondisi['tgl']);
-            $kondisi['tgl_rekom'] = $tglimun->addMonths(2);
-            $kondisi['imunisasi'] = $im[18]->nama;
-        }
-        //HPV 3 quad
-        if (($kondisi['gender'] == "Perempuan" AND $kondisi['usia'] >= 180 AND $kondisi['imunisasisblm'] == "HPV 2 Quadrivalen")) {
-            $tglimun = Carbon::parse($kondisi['tgl']);
-            $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
-            $kondisi['imunisasi'] = $im[19]->nama;
-        }
-        //varisela 1
-        if ($kondisi['usia'] >= 12 AND $kondisi['imunisasisblm'] == NULL) {
-            $kondisi['tgl_rekom']  = $now->addDays(7);
-            $kondisi['imunisasi'] = $im[6]->nama;
-        }
-        //varisela 2 1-12 tahun
-        if (($kondisi['usia'] >= 12 AND $kondisi['usia'] <= 155) AND $kondisi['imunisasisblm'] == "Varisela 1") {
-            $tglimun = Carbon::parse($kondisi['tgl']);
-            $kondisi['tgl_rekom'] = $tglimun->addMonths(2);
-            $kondisi['imunisasi'] = $im[7]->nama;
-        }
-        //varisela 2 >13 tahun
-        if ($kondisi['usia'] >= 156 AND $kondisi['imunisasisblm'] == "Varisela 1") {
-            $tglimun = Carbon::parse($kondisi['tgl']);
-            $kondisi['tgl_rekom'] = $tglimun->addMonths(2);
-            $kondisi['imunisasi'] = $im[7]->nama;
-        }
-        //tifoid
-        if (($kondisi['usia'] >= 24 AND $kondisi['usia'] <= 216) AND $kondisi['imunisasisblm'] == NULL) {
-            $kondisi['tgl_rekom']  = $now->addDays(7);
-            $kondisi['imunisasi'] = $im[8]->nama;
-        }
-        //tifoid lanjutan
-        if (($kondisi['usia'] >= 24 AND $kondisi['usia'] <= 216) AND $kondisi['imunisasisblm'] == "Tifoid Polisakarida") {
-            $tglimun = Carbon::parse($kondisi['tgl']);
-            $kondisi['tgl_rekom'] = $tglimun->addMonths(36);
-            $kondisi['imunisasi'] = $im[9]->nama;
-        }
-        //hepatitis A
-        if ($kondisi['travelling'] == "Ya" AND $kondisiku == "Pergi ke daerah endemis hepatitis A") {
-            //Hepa A 1 (tidak mengisi tgl keberangkatan)
-            if (($kondisi['usia'] >= 12 AND $kondisi['usia'] <= 156) AND $kondisi['imunisasisblm'] == NULL) {
-                $kondisi['tgl_rekom']  = $now->addDays(7);
-                $kondisi['imunisasi'] = $im[10]->nama;
-            }
-            if (($kondisi['usia'] >= 12 AND $kondisi['usia'] <= 156) AND $kondisi['imunisasisblm'] == "Hepatitis A 1") {
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(15);
-                $kondisi['imunisasi'] = $im[11]->nama;
-            }    
-        }
-        //JE
-        if ($kondisi['travelling'] == "Ya" AND $kondisi['usia'] >= 9 AND $kondisiku == "Pergi ke daerah endemis Japanesse Ensephalitis") {
-            if ($kondisi['imunisasisblm'] == NULL) {
-                $kondisi['tgl_rekom']  = $now->addDays(7);
-                $kondisi['imunisasi'] = $im[20]->nama;
-            }
-            if ($kondisi['imunisasisblm'] == "Japanese Ensephalitis 1") {
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(12);
-                $kondisi['imunisasi'] = $im[21]->nama;
-            }    
-        }
-        //hepatitis b
-        if ($kondisiku == "Petugas fasilitas kesehatan") {
-            if ($kondisi['imunisasisblm'] == NULL) {
-                $kondisi['tgl_rekom']  = $now->addDays(7);
-                $kondisi['imunisasi'] = $im[22]->nama;
-            }
-            if ($kondisi['imunisasisblm'] == "Hepatitis B 1") {
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(1);
-                $kondisi['imunisasi'] = $im[22]->nama;
-            } 
-            if ($kondisi['imunisasisblm'] == "Hepatitis B 2") {
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
-                $kondisi['imunisasi'] = $im[23]->nama;
-            }    
-        }
-        //dengue
-        if (($kondisi['usia'] >= 108 AND $kondisi['usia'] <= 192) AND $kondisiku == "Pernah terkena penyakit demam berdarah") {
-            if ($kondisi['imunisasisblm'] == NULL) {
-                $kondisi['tgl_rekom']  = $now->addDays(7);
-                $kondisi['imunisasi'] = $im[25]->nama;
-            }
-            if ($kondisi['imunisasisblm'] == "Dengue 1") {
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
-                $kondisi['imunisasi'] = $im[26]->nama;
-            } 
-            if ($kondisi['imunisasisblm'] == "Dengue 2") {
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
-                $kondisi['imunisasi'] = $im[27]->nama;
-            }    
-        }
-        //influenza
-        if ($kondisi['usia'] >= 6 AND $kondisi['usia'] <= 96) {
-            if ($kondisi['imunisasisblm'] == NULL) {
-                $kondisi['tgl_rekom']  = $now->addDays(7);
-                $kondisi['imunisasi'] = $im[28]->nama;
-            }
-            if ($kondisi['imunisasisblm'] == "Influenza 1") {
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(1);
-                $kondisi['imunisasi'] = $im[29]->nama;
-            }  
-        }
-        //rotavirus 1
-        if (($kondisi['usia'] >= 2 AND $kondisi['usia'] < 5) AND $kondisi['imunisasisblm'] == NULL) {
-            $kondisi['tgl_rekom']  = $now->addDays(7);
-            $kondisi['imunisasi'] = $im[30]->nama;
-        }
-        //rotavirus 2
-        if (($kondisi['usia'] >= 2 AND $kondisi['usia'] < 5) AND $kondisi['imunisasisblm'] == "rotavirus 1") {
-            $tglimun = Carbon::parse($kondisi['tgl']);
-            $kondisi['tgl_rekom'] = $tglimun->addMonths(1);
-            $kondisi['imunisasi'] = $im[31]->nama;
-        }*/
-    }
     /**
      * Show the form for creating a new resource.
      *

@@ -24,7 +24,7 @@ class CreateKondisiTable extends Migration
             $table->string('imunisasisblm')->nullable();
             $table->date('tgl')->nullable();
             $table->integer('usia')->nullable();
-            $table->string('imunisasi')->nullable();
+            //$table->string('imunisasi')->nullable();
             $table->date('tgl_rekom')->nullable();
             $table->timestamps();
         });
