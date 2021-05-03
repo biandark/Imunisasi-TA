@@ -13,7 +13,7 @@ class CreateJadwalTable extends Migration
      */
     public function up()
     {
-        Schema::create('jadwal', function (Blueprint $table) {
+        Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('kondisi_id')->constrained('kondisis');
             $table->string('status')->nullable();
