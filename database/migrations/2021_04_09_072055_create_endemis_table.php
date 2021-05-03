@@ -16,7 +16,7 @@ class CreateEndemisTable extends Migration
         Schema::create('endemis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('imunisasi_id')->constrained('imunisasis')->nullable;
-            $table->string('daerah')->nullable();
+            $table->string('daerah', 1000)->nullable();
             $table->timestamps();
         });
     }

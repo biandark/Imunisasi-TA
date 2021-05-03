@@ -16,7 +16,7 @@ class AddKontraOnImunisasiTable extends Migration
         //
         Schema::table('imunisasis', function (Blueprint $table) {
             //
-        $table->string('kontraindikasi')->nullable()->after('manfaat');
+        $table->string('kontraindikasi', 1000)->nullable()->after('manfaat');
         });
     }
 

@@ -16,7 +16,7 @@ class AddIndikasiOnImunisasiTable extends Migration
         //
         Schema::table('imunisasis', function (Blueprint $table) {
             //
-        $table->string('indikasi')->nullable()->after('manfaat');
+        $table->string('indikasi', 1000)->nullable()->after('manfaat');
         });
     }
 

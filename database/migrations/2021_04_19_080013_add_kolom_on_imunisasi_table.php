@@ -16,7 +16,7 @@ class AddKolomOnImunisasiTable extends Migration
         //
         Schema::table('imunisasis', function (Blueprint $table) {
             //
-        $table->string('manfaat')->nullable()->after('nama');
+        $table->string('manfaat', 1000)->nullable()->after('nama');
         });
     }
 

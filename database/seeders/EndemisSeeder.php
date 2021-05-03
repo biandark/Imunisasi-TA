@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Endemis;
 
-class DatabaseSeeder extends Seeder
+class EndemisSeeder extends Seeder
 {
     /**
      * Seed the application's database.
