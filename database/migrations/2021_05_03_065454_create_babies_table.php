@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateImunisasiTable extends Migration
+class CreateBabiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateImunisasiTable extends Migration
      */
     public function up()
     {
-        Schema::create('imunisasis', function (Blueprint $table) {
-            $table->id()->autoIncrement();
+        Schema::create('babies', function (Blueprint $table) {
+            $table->id();
             $table->string('nama');
+            $table->date('ttl');
+            $table->integer('bb');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ class CreateImunisasiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('imunisasis');
+        Schema::dropIfExists('babies');
     }
 }

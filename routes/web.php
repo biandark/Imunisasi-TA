@@ -7,6 +7,11 @@ use App\Http\Controllers\KondisiController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\OutputController;
 use App\Http\Controllers\EndemisController;
+use App\Http\Controllers\BabyController;
+use App\Http\Controllers\ImunisasiwajibController;
+use App\Http\Controllers\RiwayatController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +48,16 @@ Route::get('imunisasi/{data}')->name('imunisasi')->uses('App\Http\Controllers\Ja
 Route::resource('endemis', EndemisController::class);
 Route::get('/endemis', 'App\Http\Controllers\EndemisController@index')->name('endemis');
 Route::get('/daftarimunisasi', 'App\Http\Controllers\EndemisController@list')->name('daftarimunisasi');
+
+Route::get('/form', 'App\Http\Controllers\BabyController@create')->name('form');
+Route::post('/form', 'App\Http\Controllers\BabyController@store')->name('form.store');
+Route::get('/hasil', 'App\Http\Controllers\BabyController@show')->name('form.show');
+
+Route::get('/riwayatwajib', 'App\Http\Controllers\RiwayatController@index')->name('riwayatwajib');
+Route::put('/riwayatwajib','App\Http\Controllers\RiwayatController@update')->name('riwayatwajib.update');
+
+Route::get('/detail/{id}', 'App\Http\Controllers\ImunisasiwajibController@detail')->name('detail');
+Route::get('/info', 'App\Http\Controllers\ImunisasiwajibController@info')->name('info');
 
 //Route::post('/output', 'App\Http\Controllers\KondisiController@store');
 //Route::get('/kondisi/{id}', ['as' => 'output', 'uses' => 'App\Http\Controllers\KondisiController@show']);

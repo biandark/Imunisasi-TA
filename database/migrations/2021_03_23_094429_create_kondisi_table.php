@@ -39,6 +39,6 @@ class CreateKondisiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kondisi');
+        Schema::dropIfExists('kondisis');
     }
 }

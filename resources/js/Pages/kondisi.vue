@@ -2,7 +2,7 @@
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-center text-xl text-gray-800 leading-tight">
-                Tambah Jadwal Imunisasi Baru
+                Tambah Jadwal Imunisasi Pilihan Baru
             </h2>
         </template>
         <div class="py-4">
