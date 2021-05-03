@@ -15,7 +15,8 @@ class CreateKondisiTable extends Migration
     {
         Schema::create('kondisis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->date('tgl_lahir');
             $table->string('gender');
             $table->string('travelling');
@@ -26,7 +27,8 @@ class CreateKondisiTable extends Migration
             $table->integer('usia')->nullable();
             //$table->string('imunisasi')->nullable();
             $table->date('tgl_rekom')->nullable();
-            $table->timestamps();
+            $table->date('created_at');
+            $table->date('updated_at');
         });
     }
 
