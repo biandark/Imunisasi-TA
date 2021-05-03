@@ -10,6 +10,6 @@ class Imunisasi extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama',                                                                                 
+        'nama', 'manfaat', 'indikasi', 'kontraindikasi', 'dosis', 'harga'                                                                              
     ];
 }
