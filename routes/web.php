@@ -37,6 +37,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
+//imunisasi pilihan
 Route::resource('kondisi', KondisiController::class);
 Route::get('/kondisi', 'App\Http\Controllers\KondisiController@index')->name('kondisi');
 
@@ -49,6 +50,7 @@ Route::resource('endemis', EndemisController::class);
 Route::get('/endemis', 'App\Http\Controllers\EndemisController@index')->name('endemis');
 Route::get('/daftarimunisasi', 'App\Http\Controllers\EndemisController@list')->name('daftarimunisasi');
 
+//imunisasi wajib
 Route::get('/form', 'App\Http\Controllers\BabyController@create')->name('form');
 Route::post('/form', 'App\Http\Controllers\BabyController@store')->name('form.store');
 Route::get('/hasil', 'App\Http\Controllers\BabyController@show')->name('form.show');
@@ -59,10 +61,3 @@ Route::put('/riwayatwajib','App\Http\Controllers\RiwayatController@update')->nam
 Route::get('/detail/{id}', 'App\Http\Controllers\ImunisasiwajibController@detail')->name('detail');
 Route::get('/info', 'App\Http\Controllers\ImunisasiwajibController@info')->name('info');
 
-//Route::post('/output', 'App\Http\Controllers\KondisiController@store');
-//Route::get('/kondisi/{id}', ['as' => 'output', 'uses' => 'App\Http\Controllers\KondisiController@show']);
-
-//halaman output
-//Route::resource('output', OutputController::class);
-//Route::post('output', 'App\Http\Controllers\OutputController@index')->name('output');
-//Route::get('/output/{id}', ['as' => 'output', 'uses' => 'OutputController@index']);

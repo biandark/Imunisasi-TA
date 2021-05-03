@@ -44,10 +44,7 @@ class KondisiController extends Controller
     public function show($kondisi)
     {
         $now = Carbon::today();
-        /*$user = Kondisi::query()
-        ->where('user_id', auth()->id())
-        ->where('created_at', $now)
-        ->get();*/
+
         $user = DB::table('kondisis')
         ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
         ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
@@ -375,8 +372,11 @@ class KondisiController extends Controller
             $kondisi->save();
         }
 
-        //KondisiController::aturan($kondisi->id, $kondisi->usia, $kondisi->tgl_lahir, $kondisi->gender, $kondisi->travelling, $kondisi->kondisi, $kondisi->tgl_brkt, $kondisi->imunisasisblm, $kondisi->tgl, $kondisi->imunisasi, $kondisi->tgl_rekom);
         $kondisi->save();
+
+        if ($kondisi['imunisasi'] == NULL) {
+            return redirect()->back()->with('message','Tidak ada imunisasi khusus dan pilihan yang harus dijadwalkan.');
+        }
     
         //hubungkan ke tabel jadwal
         Jadwal::create([
@@ -393,16 +393,7 @@ class KondisiController extends Controller
      */
     public function update(Request $request)
     {
-        /*Validator::make($request->all(), [
-            'status' => ['required'],
-            'tgl_pelaksanaan' => ['required'],
-        ])->validate();
-  
-        if ($request->has('id')) {
-            Post::find($request->input('id'))->update($request->all());
-            return redirect()->back()
-                    ->with('message', 'Post Updated Successfully.');
-        }*/
+        
     }
   
     /**
@@ -412,9 +403,6 @@ class KondisiController extends Controller
      */
     public function destroy(Request $request)
     {
-        /*if ($request->has('id')) {
-            Kondisi::find($request->input('id'))->delete();
-            return redirect()->back();
-        }*/
+       
     }
 }

@@ -8,6 +8,9 @@
         <div class="py-4">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-8 py-4">
+                    <div v-if="$page.props.flash.message" class="text-center text-red-600">
+                        {{ $page.props.flash.message }}
+                    </div>
                 <form @submit.prevent="submit">
                 <div class="grid grid-cols-1 md:grid-cols-2">   
                     <div class="p-6 mt-4">

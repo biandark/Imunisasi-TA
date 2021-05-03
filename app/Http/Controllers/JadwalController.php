@@ -22,6 +22,12 @@ class JadwalController extends Controller
             ->where('user_id', auth()->id())
             ->get();
         
+        $kosong = empty($users->first());
+
+        if ($kosong) {
+            return redirect()->route('kondisi');
+        }
+
         return Inertia::render('riwayat', ['data'=>$users]);
     }
 
