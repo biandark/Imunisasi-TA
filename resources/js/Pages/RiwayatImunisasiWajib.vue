@@ -2,38 +2,51 @@
     <app-layout>
         <template #header>
             <h2 class="font-bold text-xl text-center text-gray-800 leading-tight">
-                Riwayat Imunisasi Dasar dan Lanjutan
+                Riwayat Imunisasi Wajib
             </h2>
         </template>
 
-        <div class="py-12">
+        <div class="py-4">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <div class="p-6 max-w-4xl mx-auto">
-                        <div class="flex flex-col sm:flex-row justify-between">
-                            <div class="my-1">
-                                <p class="text-xs font-semibold">Nama</p>
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-8 py-4">
+                    <div class="p-6 max-w-7xl mx-auto">
+                        <div class="grid text-center grid-flow-row grid-cols-1 md:grid-cols-3">
+                            <div>
+                                <div class="justify-center">
+                                    <i class="far fa-user"></i>
+                                </div>
+                                <h2 class="mt-2 font-semibold">Nama</h2>
                                 <p>{{ baby.nama }}</p>
                             </div>
-                            <div class="my-1">
-                                <p class="text-xs font-semibold">Tanggal Lahir</p>
+                            <div>
+                                <div class="justify-center">
+                                    <i class="far fa-calendar-alt"></i>
+                                </div>
+                                <h2 class="mt-2 font-semibold">Tanggal Lahir</h2>
                                 <p>{{ formatDate(baby.ttl) }}</p>
                             </div>
-                            <div class="my-1">
-                                <p class="text-xs font-semibold">Usia</p>
+                            <div>
+                                <div class="justify-center">
+                                    <i class="far fa-calendar-check"></i>
+                                </div>
+                                <h2 class="mt-2 font-semibold">Usia</h2>
                                 <p>{{ displayAge }}</p>
                             </div>
                         </div>
-                        <div class="max-w-4xl mx-auto">
-                            <table class="min-w-full leading-normal mt-10">
+                        <h3 class="font-semibold mt-10 text-xl text-indigo-500 leading-tight">
+                        Daftar Imunisasi
+                        </h3>
+                        <div class="mt-4 overflow-x-auto">
+                            <element class="prose">
+                            <table>
                                 <thead>
                                     <tr>
-                                        <th class="px-3 py-3">No</th>
-                                        <th class="px-2 py-3">Jenis Imunisasi</th>
-                                        <th class="px-2 py-3">Tanggal Penjadwalan</th>
-                                        <th class="px-2 py-3">Status</th>
-                                        <th class="px-2 py-3">Tanggal Pemberian</th>
-                                        <th class="px-2 py-3"></th>
+                                        <th class="text-center">No</th>
+                                        <th class="text-center">Jenis Imunisasi</th>
+                                        <th class="text-center">Tanggal Penjadwalan</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Tanggal Pemberian</th>
+                                        <th class="text-center"></th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y text-sm">
@@ -41,14 +54,17 @@
                                         <td class="px-2 py-1 text-center">{{ index+1 }}</td>
                                         <td class="px-2 py-1">{{ riwayat.imunisasiwajib.jenis }}</td>
                                         <td class="px-2 py-1 text-center">{{ formatDate(riwayat.tgl_penjadwalan) }}</td>
-                                        <td class="px-2 py-1 text-center">{{ riwayat.status || 'Belum' }}</td>
+                                        <td class="px-2 py-1 text-center">
+                                            <span v-if="riwayat.status == 'Sudah'" class="text-green-500 font-semibold">Sudah</span>
+                                            <span v-else class="text-red-500 font-semibold">{{ riwayat.status || 'Belum' }}</span>
+                                        </td>
                                         <td class="px-2 py-1 text-center">{{ formatDate(riwayat.tgl_diberikan) }}</td>
                                         <td class="px-2 py-1 text-center">
                                             <button v-if="riwayat.status != 'Sudah'" @click="edit(riwayat)" class="bg-indigo-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
                                                  Update
                                             </button>
                                         </td>
-                                        <td class="px-2 py-1 text-center"><inertia-link :href="route('detail', {id: riwayat.imunisasiwajib_id})" class="text-blue-800 underline">Lihat Lebih Lanjut</inertia-link></td>
+                                        <td class="px-2 py-1 text-center"><inertia-link :href="route('detail', {id: riwayat.imunisasiwajib_id})" class="text-sm text-indigo-500 underline">Lihat Selengkapnya</inertia-link></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -86,6 +102,7 @@
                                     </div>    
                                 </div>
                             </div>
+                            </element>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
     <app-layout>
         <template #header>
             <h2 class="font-bold text-xl text-center text-gray-800 leading-tight">
-                Jenis Imunisasi Dasar dan Pilihan
+                Jenis Imunisasi Dasar dan Lanjutan
             </h2>
         </template>
         <div class="py-4">
@@ -11,7 +11,7 @@
                     <div class="bg-white text-center overflow-hidden shadow-xl rounded-lg mx-8 mt-8 px-8 py-4">
                         <div class="font-semibold text-lg text-grey-500 leading-tight">
                             <div class="flex justify-center mb-3">
-                                    <img :src="vaksin" width="100" />
+                                <img :src="vaksin" width="100" />
                             </div>
                             <h1>HB0</h1>
                             <div class="mt-2 text-sm text-gray-500">Vaksin HB0 merupakan vaksin Hepatitis B yang diberikan pertama kali segera setelah lahir. Vaksin ini merupakan vaksin yang bertujuan untuk mencegah penularan peyakit infeksi atau kerusakan hati kronis yang disebabkan oleh virus Hepatitis B.</div>
@@ -105,6 +105,7 @@
     import AppLayout from '@/Layouts/AppLayout'
     import Welcome from '@/Jetstream/Welcome'
     import JetButton from '@/Jetstream/Button'
+    import vaksin from "./images/vaksin.jpg"
     import { format, differenceInMonths } from 'date-fns'
     import { id } from 'date-fns/locale'
 
@@ -123,5 +124,10 @@
                     })
             } 
         },
+        data:function(){
+            return {
+            vaksin: vaksin
+            }
+        }
     }
 </script>

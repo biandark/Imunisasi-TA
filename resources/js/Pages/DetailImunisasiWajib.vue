@@ -7,20 +7,35 @@
         </template>
 
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <div class="p-6 max-w-4xl mx-auto">
-                        <h1 class="text-3xl font-bold">{{ imunisasiwajib.jenis }}</h1>
-                        <p class="mt-3">{{ imunisasiwajib.deskripsi }}</p>
-                        <p class="text-lg text-indigo-500 mt-3 font-bold">Cara Pemberian Dosis</p>
+                    <div class="p-6 max-w-5xl mx-auto">
+                        <h3 class="font-semibold text-xl text-grey-500 leading-tight">Imunisasi {{ imunisasiwajib.jenis }}</h3>
+                        <p class="mt-4">{{ imunisasiwajib.deskripsi }}</p>
+                        <p class="mt-4 font-semibold text-lg text-indigo-500 leading-tight">
+                            <i class="fas fa-syringe"></i>
+                            Cara Pemberian Dosis
+                        </p>
                         <p>{{ imunisasiwajib.cara_pemberian_dosis }}</p>
-                        <p class="text-lg text-indigo-500 mt-3 font-bold">Indikasi</p>
+                        <p class="mt-4 font-semibold text-lg text-indigo-500 leading-tight">
+                            <i class="fas fa-stethoscope"></i>
+                            Indikasi
+                        </p>
                         <p>{{ imunisasiwajib.indikasi }}</p>
-                        <p class="text-lg text-indigo-500 mt-3 font-bold">Indikasi Kontra</p>
+                        <p class="mt-4 font-semibold text-lg text-indigo-500 leading-tight"> 
+                            <i class="fas fa-procedures"></i> 
+                            Indikasi Kontra
+                        </p>
                         <p>{{ imunisasiwajib.indikasi_kontra }}</p>
-                        <p class="text-lg text-indigo-500 mt-3 font-bold">Efek Samping</p>
+                        <p class="mt-4 font-semibold text-lg text-indigo-500 leading-tight">
+                            <i class="fas fa-diagnoses"></i> 
+                            Efek Samping
+                        </p>
                         <p>{{ imunisasiwajib.efek_samping }}</p>
-                        <p class="text-lg text-indigo-500 mt-3 font-bold">Penanganan Efek Samping</p>
+                        <p class="mt-4 font-semibold text-lg text-indigo-500 leading-tight">
+                            <i class="fas fa-medkit"></i> 
+                            Penanganan Efek Samping
+                        </p>
                         <p>{{ imunisasiwajib.penanganan_efek_samping }}</p>
 
                     </div>

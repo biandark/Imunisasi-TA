@@ -2,7 +2,7 @@
     <app-layout>
         <template #header>
             <h2 class="font-bold text-xl text-center text-gray-800 leading-tight">
-                Imunisasi Selanjutnya
+                Jadwal Imunisasi Selanjutnya
             </h2>
         </template>
 
@@ -39,10 +39,20 @@
                                         <td class="px-2 py-1 text-center">{{ index+1 }}</td>
                                         <td class="px-2 py-1">{{ riwayat.imunisasiwajib.jenis }}</td>
                                         <td class="px-2 py-1 text-center">{{ formatDate(riwayat.tgl_penjadwalan) }}</td>
-                                        <td class="px-2 py-1 text-center"><inertia-link :href="route('detail', {id: riwayat.imunisasiwajib_id})" class="text-blue-800 underline">Lihat Lebih Lanjut</inertia-link></td>
+                                        <td class="px-2 py-1 text-center"><inertia-link :href="route('detail', {id: riwayat.imunisasiwajib_id})" class="text-sm text-indigo-500 underline">Lihat Selengkapnya</inertia-link></td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <div class="flex m-4">
+                                <inertia-link class="text-green-500" :href="route('riwayatwajib')">
+                                    <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
+                                        <div>Lihat Riwayat Imunisasi Wajib</div>
+                                        <div class="ml-1 text-indigo-500">
+                                            <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                        </div>
+                                    </div>
+                                </inertia-link>
+                            </div>
                         </div>
                     </div>
                 </div>
