@@ -33,7 +33,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td >{{ data[0].tgl_lahir }}</td>
+                            <td >{{ formatDate(data[0].tgl_lahir) }}</td>
                             <td >{{ data[0].gender }}</td>
                             <td >{{ data[0].travelling }}</td>
                             <td >{{ data[0].kondisi.slice(2,-2) }}</td>
@@ -61,7 +61,7 @@
                         <tr v-for="(data, index) in data" :key="data.id">
                             <td>{{ index+1 }}</td>
                             <td>{{ data.nama }}</td>
-                            <td>{{ data.tgl_rekom }}</td>
+                            <td>{{ formatDate(data.tgl_rekom) }}</td>
                             <td>
                                 <inertia-link class="text-sm text-indigo-500 underline" :href="route('imunisasi' ,{ data:data.nama})" method="get">
                                 Lihat Selengkapnya
@@ -99,6 +99,8 @@
     import JetCheckbox from "@/Jetstream/Checkbox";
     import JetButton from '@/Jetstream/Button'
     import image from "./images/vacc.jpg"
+    import { format, differenceInYears, differenceInMonths } from 'date-fns'
+    import { id } from 'date-fns/locale'
 
 
     export default {
@@ -112,11 +114,34 @@
 
         },
         props: ['data'],
+        computed: {
+            displayAge() {
+                if (this.data[0].usia >= 12) {
+                    const age = differenceInYears(new Date(), new Date(this.data[0].tgl_lahir))
+                    return age + ' Tahun'
+                }
+                else {
+                    const agebulan = differenceInMonths(new Date(), new Date(this.data[0].tgl_lahir))
+                    return agebulan + ' Bulan'
+                }
+                
+            },
+        },
+        methods: {
+            formatDate(date) {
+                const tgl = new Date(date)
+                return format(tgl, "d MMMM yyyy", {
+                        locale: id
+                    })
+            }, 
+        },
+
         data: function () {
             return {
             image: image
             }
         }
+
       }
       
 </script>

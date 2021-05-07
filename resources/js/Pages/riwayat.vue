@@ -14,14 +14,14 @@
                                 <i class="far fa-calendar-alt"></i>
                             </div>
                             <h2 class="mt-2 font-semibold">Tanggal Lahir</h2>
-                            <p> {{ data[0].tgl_lahir }} </p>
+                            <p> {{ formatDate(data[0].tgl_lahir) }} </p>
                         </div>
                         <div>
                             <div class="justify-center">
                                 <i class="far fa-user"></i>
                             </div>
                             <h2 class="mt-2 font-semibold">Usia</h2>
-                            <p> {{ data[0].usia }} bulan</p>
+                            <p> {{ displayAge }}</p>
                         </div>
                         <div>
                             <div class="justify-center">
@@ -45,7 +45,7 @@
                             <th >Tanggal Rekomendasi</th>
                             <th >Status</th>
                             <th >Tanggal Pemberian Imunisasi</th>
-                            <th >Action</th>
+                            <th ></th>
                             <th ></th>
                         </tr>
                         </thead>
@@ -53,14 +53,21 @@
                         <tr v-for="(data, index) in data" :key="data.id">
                             <td >{{ index+1 }}</td>
                             <td >{{ data.nama }}</td>
-                            <td >{{ data.tgl_rekom }}</td>
+                            <td >{{ formatDate(data.tgl_rekom) }}</td>
                             <td >
                                 <span v-if="data.tgl_pelaksanaan != NULL" class="text-green-500 font-semibold">Sudah Dilakukan</span>
                                 <span v-else class="text-red-500 font-semibold">Belum Dilakukan</span>
                             </td>
-                            <td >{{ data.tgl_pelaksanaan }}</td>
                             <td>
-                                <button @click="edit(data)" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Update Status</button>
+                                <div v-if="data.tgl_pelaksanaan == NULL">
+                                    {{ data.tgl_pelaksanaan}}
+                                </div>
+                                <div v-else>
+                                    {{ formatDate(data.tgl_pelaksanaan) }}
+                                </div>
+                            </td>
+                            <td>
+                                <button v-if="data.status != 'Sudah Dilakukan'" @click="edit(data)" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Update</button>
                             </td>
                             <td>
                                 <inertia-link class="text-sm text-indigo-500 underline" :href="route('imunisasi' ,{ data:data.nama})" method="get">
@@ -128,6 +135,8 @@
     import JetLabel from '@/Jetstream/Label'
     import JetCheckbox from "@/Jetstream/Checkbox";
     import JetButton from '@/Jetstream/Button'
+    import { format, differenceInYears, differenceInMonths } from 'date-fns'
+    import { id } from 'date-fns/locale'
 
 
     export default {
@@ -141,6 +150,19 @@
 
         },
         props: ['data'],
+        computed: {
+            displayAge() {
+                if (this.data[0].usia >= 12) {
+                    const age = differenceInYears(new Date(), new Date(this.data[0].tgl_lahir))
+                    return age + ' Tahun'
+                }
+                else {
+                    const agebulan = differenceInMonths(new Date(), new Date(this.data[0].tgl_lahir))
+                    return agebulan + ' Bulan'
+                }
+                
+            },
+        },
         
         data() {
             return {
@@ -179,6 +201,12 @@
                 this.reset();
                 this.closeModal();
             },
+            formatDate(date) {
+                const tgl = new Date(date)
+                return format(tgl, "d MMMM yyyy", {
+                        locale: id
+                    })
+            }, 
         }
       }
       

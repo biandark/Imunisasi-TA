@@ -30,7 +30,7 @@
                     </div>
                     <div class="mt-4">
                         <jet-label for="gender" value="Jenis Kelamin*" />
-                        <select v-model="form.gender" placeholder="Jenis Kelamin" class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                        <select required v-model="form.gender" placeholder="Jenis Kelamin" class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                             <option disabled value="">Jenis Kelamin</option>
                             <option>Laki-Laki</option>
                             <option>Perempuan</option>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="mt-4">
                         <jet-label for="travelling" value="Ada Keperluan Travelling?*" />
-                        <select v-model="form.travelling" placeholder="Travel" class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                        <select required v-model="form.travelling" placeholder="Travel" class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                             <option disabled value="">Travelling</option>
                             <option>Ya</option>
                             <option>Tidak</option>
@@ -53,7 +53,7 @@
                         </h3>
                     </div>
                     <div class="mt-4">
-                        <jet-label for="kondisi" value="Kondisi*" />
+                        <jet-label for="kondisi" value="Kondisi" />
                         <div class="mt-2 flex">
 			                <input type="checkbox" id="hamil" v-model="form.kondisi" value="hamil"/>
 			                <jet-label class="pl-2" for="hamil">Hamil lebih dari 3 bulan</jet-label>
@@ -89,10 +89,6 @@
                         <div class="mt-2 flex">
                             <input type="checkbox"  id="dbd" class="mt-1" v-model="form.kondisi" value="Pernah terkena penyakit demam berdarah" /> 
                             <jet-label class="pl-2" for="dbd">Pernah terkena penyakit demam berdarah</jet-label>
-                        </div>
-                        <div class="mt-2 flex">
-                            <input type="checkbox"  id="no" class="mt-1" v-model="form.kondisi" value="Tidak ada" /> 
-                            <jet-label class="pl-2" for="no">Tidak ada</jet-label>
                         </div>
                         <div class="mt-2 flex">
                         <inertia-link class="text-green-500" :href="route('endemis')">
@@ -202,6 +198,14 @@
         },
         methods: {
             submit() {
+                if (this.form.kondisi.includes("Pergi ke daerah endemis meningitis") && this.form.tgl_brkt ==null) {
+                    alert("Isi tanggal keberangkatan ke daerah endemis meningitis")
+                    return
+                }
+                if (this.form.kondisi.includes("Pergi ke daerah endemis yellow fever") && this.form.tgl_brkt ==null) {
+                    alert("Isi tanggal keberangkatan ke daerah endemis yellow fever")
+                    return
+                }
                 const data = {...this.form}
                 data.kondisi = JSON.stringify(this.form.kondisi)
                 this.$inertia.post(this.route('kondisi.store'), data)
