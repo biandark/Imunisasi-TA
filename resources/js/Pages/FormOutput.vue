@@ -10,6 +10,9 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <div class="p-6 max-w-4xl mx-auto">
+                        <h3 class="font-semibold mt-6 text-xl text-indigo-500 leading-tight">
+                                Data Bayi
+                        </h3>
                         <div class="flex flex-col sm:flex-row justify-between">
                             <div class="my-1">
                                 <p class="text-xs font-semibold">Nama</p>
@@ -24,8 +27,11 @@
                                 <p>{{ displayAge }}</p>
                             </div>
                         </div>
-                        <div class="max-w-2xl mx-auto">
-                            <table class="min-w-full leading-normal mt-10">
+                        <h3 class="font-semibold mt-6 text-xl text-indigo-500 leading-tight">
+                                Rekomendasi Imunisasi
+                        </h3>
+                        <div class="max-w-4xl mx-auto">
+                            <table class="min-w-full leading-normal">
                                 <thead>
                                     <tr>
                                         <th class="px-3 py-3">No</th>

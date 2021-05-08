@@ -73,6 +73,7 @@ class BabyController extends Controller
         $im = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 
         //interval antar imunisasi
+        $days = new DateInterval('P1D');
         $interval = new DateInterval('P1M');
         $interval2 = new DateInterval('P2M');
         $interval3 = new DateInterval('P3M');
@@ -123,6 +124,7 @@ class BabyController extends Controller
             
             } elseif ($usia >= 1 && $usia <= 3 && !in_array($im[1], $done)) {
                 $tgl_imunisasi = clone $now;
+                $tgl_imunisasi->add($days);
                 $tgl_imunisasi = $tgl_imunisasi->format('Y-m-d');
                 // echo "Imunisasi $im[1] pada tanggal $tgl_imunisasi <br>";
                 $riwayat = Riwayat::where('baby_id', $baby_id)->where('imunisasiwajib_id', 2)->first();
@@ -139,7 +141,7 @@ class BabyController extends Controller
                 $riwayat->save();
             } elseif ($usia >= 1 && $usia <= 24 && !in_array($im[2], $done)) {
                 $tgl_imunisasi = clone $now;
-                $tgl_imunisasi = $tgl_imunisasi->format('Y-m-d');
+                $tgl_imunisasi = $tgl_imunisasi->add($days)->format('Y-m-d');
                 // echo "Imunisasi $im[2] pada tanggal $tgl_imunisasi <br>";
                 $riwayat = Riwayat::where('baby_id', $baby_id)->where('imunisasiwajib_id', 3)->first();
                 $riwayat->tgl_penjadwalan = $tgl_imunisasi;
@@ -169,6 +171,7 @@ class BabyController extends Controller
                 $tgl_imunisasi1 = clone $last_polio;
                 $tgl_imunisasi2 = clone $now;
                 $tgl_imunisasi1 = $tgl_imunisasi1->add($interval);
+                $tgl_imunisasi2 = $tgl_imunisasi2->add($days);
                 if ($tgl_imunisasi1 > $tgl_imunisasi2) {
                     $tgl_imunisasi1 = $tgl_imunisasi1->format('Y-m-d');
                     // echo "Imunisasi $im[4] pada tanggal $tgl_imunisasi1 <br>";
@@ -208,6 +211,7 @@ class BabyController extends Controller
                 $tgl_imunisasi1 = clone $last_polio;
                 $tgl_imunisasi2 = clone $now;
                 $tgl_imunisasi1 = $tgl_imunisasi1->add($interval);
+                $tgl_imunisasi2 = $tgl_imunisasi2->add($days);
                 if ($tgl_imunisasi1 > $tgl_imunisasi2) {
                     $tgl_imunisasi1 = $tgl_imunisasi1->format('Y-m-d');
                     // echo "Imunisasi $im[6] pada tanggal $tgl_imunisasi1 <br>";
@@ -247,6 +251,7 @@ class BabyController extends Controller
                 $tgl_imunisasi1 = clone $last_polio;
                 $tgl_imunisasi2 = clone $now;
                 $tgl_imunisasi1 = $tgl_imunisasi1->add($interval);
+                $tgl_imunisasi2 = $tgl_imunisasi2->add($days);
                 if ($tgl_imunisasi1 > $tgl_imunisasi2) {
                     $tgl_imunisasi1 = $tgl_imunisasi1->format('Y-m-d');
                     // echo "Imunisasi $im[8] pada tanggal $tgl_imunisasi1 <br>";
@@ -272,7 +277,7 @@ class BabyController extends Controller
                 $riwayat->save();
             } elseif ($usia >= 2 && $usia <= 24 && !in_array($im[3], $done)) {
                 $tgl_imunisasi = clone $now;
-                $tgl_imunisasi = $tgl_imunisasi->format('Y-m-d');
+                $tgl_imunisasi = $tgl_imunisasi->add($days)->format('Y-m-d');
                 // echo "Imunisasi $im[3] pada tanggal $tgl_imunisasi <br>";
                 $riwayat = Riwayat::where('baby_id', $baby_id)->where('imunisasiwajib_id', 4)->first();
                 $riwayat->tgl_penjadwalan = $tgl_imunisasi;
@@ -302,6 +307,7 @@ class BabyController extends Controller
                 $tgl_imunisasi1 = clone $last_dpt;
                 $tgl_imunisasi2 = clone $now;
                 $tgl_imunisasi1 = $tgl_imunisasi1->add($interval);
+                $tgl_imunisasi2 = $tgl_imunisasi2->add($days);
                 if ($tgl_imunisasi1 > $tgl_imunisasi2) {
                     $tgl_imunisasi1 = $tgl_imunisasi1->format('Y-m-d');
                     // echo "Imunisasi $im[5] pada tanggal $tgl_imunisasi1 <br>";
@@ -341,6 +347,7 @@ class BabyController extends Controller
                 $tgl_imunisasi1 = clone $last_dpt;
                 $tgl_imunisasi2 = clone $now;
                 $tgl_imunisasi1 = $tgl_imunisasi1->add($interval);
+                $tgl_imunisasi2 = $tgl_imunisasi2->add($days);
                 if ($tgl_imunisasi1 > $tgl_imunisasi2) {
                     $tgl_imunisasi1 = $tgl_imunisasi1->format('Y-m-d');
                     // echo "Imunisasi $im[7] pada tanggal $tgl_imunisasi1 <br>";
@@ -380,6 +387,7 @@ class BabyController extends Controller
                 $tgl_imunisasi1 = clone $last_dpt;
                 $tgl_imunisasi2 = clone $now;
                 $tgl_imunisasi1 = $tgl_imunisasi1->add($interval);
+                $tgl_imunisasi2 = $tgl_imunisasi2->add($days);
                 if ($tgl_imunisasi1 > $tgl_imunisasi2) {
                     $tgl_imunisasi1 = $tgl_imunisasi1->format('Y-m-d');
                     // echo "Imunisasi $im[10] pada tanggal $tgl_imunisasi1 <br>";
@@ -405,7 +413,7 @@ class BabyController extends Controller
                 $riwayat->save();
             } elseif ($usia >= 9 && $usia <= 24 && !in_array($im[9], $done)) {
                 $tgl_imunisasi = clone $now;
-                $tgl_imunisasi = $tgl_imunisasi->format('Y-m-d');
+                $tgl_imunisasi = $tgl_imunisasi->add($days)->format('Y-m-d');
                 // echo "Imunisasi $im[9] pada tanggal $tgl_imunisasi <br>";
                 $riwayat = Riwayat::where('baby_id', $baby_id)->where('imunisasiwajib_id', 10)->first();
                 $riwayat->tgl_penjadwalan = $tgl_imunisasi;
