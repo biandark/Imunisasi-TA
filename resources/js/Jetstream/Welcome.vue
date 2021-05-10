@@ -12,7 +12,8 @@
                 <jet-button class="ml-2" @click="gotoPilihan()">Atur Jadwal Imunisasi Pilihan</jet-button>  
             </div>
         </div>
-        <h1 class="mt-5 text-3xl text-center font-semibold text-grey-500">Tentang Imunisasi Wajib dan Pilihan</h1>
+        <!-- about -->
+        <h1 class="mt-16 text-3xl text-center font-semibold text-grey-500">Tentang Imunisasi Wajib dan Pilihan</h1>
         <div class="p-5 sm:px-20 grid grid-cols-1 md:grid-cols-2">
             <div>
                 <div class="bg-white text-center overflow-hidden shadow-xl rounded-lg ml-4 px-8 py-4">
@@ -40,7 +41,7 @@
                                 <img :src="vaksin" width="100" />
                             </div>
                             <h1>Imunisasi Pilihan</h1>
-                            <div class="mt-2 text-justify text-sm text-gray-500">Vaksin HB0 merupakan vaksin Hepatitis B yang diberikan pertama kali segera setelah lahir. Vaksin ini merupakan vaksin yang bertujuan untuk mencegah penularan peyakit infeksi atau kerusakan hati kronis yang disebabkan oleh virus Hepatitis B.</div>
+                            <div class="mt-2 text-justify text-sm text-gray-500">Imunisasi pilihan adalah imunisasi lain yang tidak termasuk dalam imunisasi yang diwajibkan oleh pemerintah, namun penting diberikan pada bayi, anak, dan dewasa di Indonesia mengingat beban penyakit dari masing-masing penyakit. Menurut Ikatan Dokter Anak Indonesia (IDAI), penamaan imunisasi wajib dan tidak dikarenakan pemerintah baru mampu menyediakan subsidi untuk sebagian vaksin-vaksin tersebut.</div>
                             <inertia-link :href="route('daftarimunisasi')" method="get">
                                     <div class="mt-3 flex justify-center items-center text-sm font-semibold text-indigo-700">
                                         <div>Lihat Jenis Imunisasi Pilihan</div>
@@ -53,6 +54,54 @@
                 </div>
             </div>
         </div>
+        <!-- step -->
+        <h1 class="mt-16 text-3xl text-center font-semibold text-grey-500">Bagaimana Saya Mendapat Pengingat Jadwal Imunisasi?</h1>
+        <div class="p-6 mt-4 mb-6 flex sm:px-20 grid grid-cols-1 md:grid-cols-4">
+            <div class="bg-white text-center overflow-hidden shadow-xl rounded-lg mx-4 px-2 py-4">
+                <div class="font-semibold text-lg text-grey-500 leading-tight">
+                    <div class="flex justify-center mb-3">
+                        <img :src="step1" width="100" />
+                    </div>
+                    <h1>1.<br />Login atau Registrasi Akun</h1>
+                    <div class="mt-4 text-sm text-gray-500">
+                        Pemilik akun merupakan wali dari anak (ibu, ayah, atau caregiver)
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white text-center overflow-hidden shadow-xl rounded-lg mx-4 px-2 py-4">
+                <div class="font-semibold text-lg text-grey-500 leading-tight">
+                    <div class="flex justify-center mb-3">
+                        <img :src="step2" width="100" />
+                    </div>
+                    <h1>2.<br />Buat Jadwal Imunisasi Baru</h1>
+                    <div class="mt-4 text-sm text-gray-500">
+                        Tersedia opsi untuk membuat jadwal imunisasi wajib atau pilihan
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white text-center overflow-hidden shadow-xl rounded-lg mx-4 px-2 py-4">
+                <div class="font-semibold text-lg text-grey-500 leading-tight">
+                    <div class="flex justify-center mb-3">
+                        <img :src="step3" width="100" />
+                    </div>
+                    <h1>3.<br />Pengingat Dikirimkan Melalui WhatsApp</h1>
+                    <div class="mt-4 text-sm text-gray-500">
+                        Sistem mengirim pengingat jadwal imunisasi menggunakan aplikasi WhatsApp
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white text-center overflow-hidden shadow-xl rounded-lg mx-4 px-2 py-4">
+                <div class="font-semibold text-lg text-grey-500 leading-tight">
+                    <div class="flex justify-center mb-3">
+                        <img :src="step4" width="100" />
+                    </div>
+                    <h1>4.<br />Lihat Riwayat Imunisasi yang Diberikan</h1>
+                    <div class="mt-4 text-sm text-gray-500">
+                        Lihat riwayat serta update data pemberian imunisasi
+                    </div>
+                </div>
+            </div>
+        </div>    
     </div>
 </template>
 
@@ -60,6 +109,10 @@
     import JetApplicationLogo from '@/Jetstream/ApplicationLogo'
     import landing from "/images/landing.jpg"
     import vaksin from "/images/vaksin.jpg"
+    import step1 from "/images/1.png"
+    import step2 from "/images/2.png"
+    import step3 from "/images/3.png"
+    import step4 from "/images/4.png"
     import JetButton from '@/Jetstream/Button'
 
     export default {
@@ -69,9 +122,6 @@
         },
 
         methods:{
-            gotoForm(){
-                this.$router.push('form'); 
-            },
             gotoDasar(){
                 this.$inertia.get(this.route('form'));
             },
@@ -82,7 +132,11 @@
         data: function () {
             return {
             landing: landing,
-            vaksin: vaksin
+            vaksin: vaksin,
+            step1: step1,
+            step2: step2,
+            step3: step3,
+            step4: step4
             }
         }
     }

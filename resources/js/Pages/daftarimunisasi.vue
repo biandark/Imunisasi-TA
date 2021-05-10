@@ -169,7 +169,7 @@
                             <div class="mt-2 text-sm text-gray-500">
                                 Imunisasi untuk mencegah infeksi virus Japanese Encephalitis yang bisa menyebabkan penyakit radang otak.
                             </div>
-                            <inertia-link :href="route('imunisasi' ,{ data:'Imunisasi Japanese Ensephalitis 1' })" method="get">
+                            <inertia-link :href="route('imunisasi' ,{ data:'Imunisasi Japanese Ensephalitis' })" method="get">
                                 <div class="mt-3 flex justify-center items-center text-sm font-semibold text-indigo-700">
                                     <div>Lihat Selengkapnya</div>
                                     <div class="ml-1 text-indigo-500">
