@@ -90,15 +90,14 @@
                                             </div>
                                         </div>
                                     </jet-label>
-                                    </div>
+                                </div>
+                                <div class="flex justify-right pt-3">
+                                    <jet-button class="bg-indigo-500">
+                                        Simpan
+                                    </jet-button>
+                                </div>
                         </div>
                     </div>
-                        
-                        <div class="flex justify-center p-6 pb-10">
-                            <jet-button class="bg-indigo-500">
-                                Simpan
-                            </jet-button>
-                        </div>
                     </form>
                 </div>
             </div>

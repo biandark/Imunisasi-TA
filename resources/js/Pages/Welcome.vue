@@ -27,10 +27,11 @@
                             </div>
                             <div class="items-center ml-4">
                                 <h1 class="text-5xl justify-left font-semibold text-grey-500">Pastikan <br />Jadwal Imunisasi Tidak Terlewat dengan <br /> I-Mun </h1>
-                                <p class="my-6 text-base text-gray-600">Imunisasi memberi perlindungan terhadap  serangan penyakit <br /> serius bagi anak maupun dewasa, serta dapat mencegah <br /> persebarannya. Berikan imunisasi tepat pada waktunya <br /> untuk perlindungan yang maksimal dari penyakit. <br /> Melalui web ini Anda dapat mengetahui jadwal yang tepat untuk <br /> imunisasi wajib serta pilihan anak Anda.</p>
-                                <jet-button @click="login()">Login</jet-button>    
-                                <inertia-link v-if="canRegister" :href="route('register')" class="ml-4 text-sm text-gray-700 underline">
-                                    Register
+                                <p class="mt-6 mb-3 text-base text-gray-600">Imunisasi memberi perlindungan terhadap  serangan penyakit <br /> serius bagi anak maupun dewasa, serta dapat mencegah <br /> persebarannya. Berikan imunisasi tepat pada waktunya <br /> untuk perlindungan yang maksimal dari penyakit. <br /> Melalui web ini Anda dapat mengetahui jadwal yang tepat untuk <br /> imunisasi wajib serta pilihan anak Anda.</p>
+                                <jet-button class="mb-2" @click="login()">Masuk</jet-button> <br />
+                                Belum punya akun?  
+                                <inertia-link v-if="canRegister" :href="route('register')" class="text-sm text-gray-700 underline">
+                                    Daftar
                                 </inertia-link>
                             </div>
                         </div>
