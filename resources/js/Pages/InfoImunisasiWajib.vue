@@ -105,7 +105,7 @@
     import AppLayout from '@/Layouts/AppLayout'
     import Welcome from '@/Jetstream/Welcome'
     import JetButton from '@/Jetstream/Button'
-    import vaksin from "./images/vaksin.jpg"
+    import vaksin from "/images/vaksin.jpg"
     import { format, differenceInMonths } from 'date-fns'
     import { id } from 'date-fns/locale'
 

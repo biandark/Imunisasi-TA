@@ -268,7 +268,7 @@
     import JetLabel from '@/Jetstream/Label'
     import JetCheckbox from "@/Jetstream/Checkbox";
     import JetButton from '@/Jetstream/Button'
-    import vaksin from "./images/vaksin.jpg"
+    import vaksin from "/images/vaksin.jpg"
 
 
     export default {

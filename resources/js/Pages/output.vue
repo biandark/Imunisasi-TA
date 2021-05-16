@@ -98,7 +98,7 @@
     import JetLabel from '@/Jetstream/Label'
     import JetCheckbox from "@/Jetstream/Checkbox";
     import JetButton from '@/Jetstream/Button'
-    import image from "./images/vacc.jpg"
+    import image from "/images/vacc.jpg"
     import { format, differenceInYears, differenceInMonths } from 'date-fns'
     import { id } from 'date-fns/locale'
 
