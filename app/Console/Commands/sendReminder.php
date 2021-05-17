@@ -5,6 +5,8 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\Reminder;
 use App\Models\Riwayat;
+use App\Models\Kondisi;
+use Illuminate\Support\Facades\DB;
 
 class sendReminder extends Command
 {
@@ -45,8 +47,16 @@ class sendReminder extends Command
 
         $riwayats = Riwayat::where('tgl_penjadwalan', $tomorrow)->with('imunisasiwajib')->get();
 
+        $riwayatpilihans = DB::table('kondisis')
+        ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+        ->where('tgl_rekom', $tomorrow)
+        ->get();
+
         foreach($riwayats as $riwayat) {
             $reminder->sendReminder($riwayat->imunisasiwajib->jenis);
+        }
+        foreach($riwayatpilihans as $riwayatpilihan) {
+            $reminder->sendReminder($riwayatpilihan->nama);
         }
 
         $this->info('Success');
