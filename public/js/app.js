@@ -16461,12 +16461,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _images_imunlogo2_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../images/imunlogo2.png */ "./public/images/imunlogo2.png");
+/* harmony import */ var _images_imunlogo4_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../images/imunlogo4.png */ "./public/images/imunlogo4.png");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      logo: _images_imunlogo2_png__WEBPACK_IMPORTED_MODULE_0__.default
+      logo: _images_imunlogo4_png__WEBPACK_IMPORTED_MODULE_0__.default
     };
   }
 });
@@ -16484,12 +16484,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _images_imunlogo_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../images/imunlogo.png */ "./public/images/imunlogo.png");
+/* harmony import */ var _images_imunlogo3_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../images/imunlogo3.png */ "./public/images/imunlogo3.png");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      logo: _images_imunlogo_png__WEBPACK_IMPORTED_MODULE_0__.default
+      logo: _images_imunlogo3_png__WEBPACK_IMPORTED_MODULE_0__.default
     };
   }
 });
@@ -19174,7 +19174,7 @@ var _hoisted_1 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
     src: _ctx.logo,
-    width: "48"
+    width: "60"
   }, null, 8
   /* PROPS */
   , ["src"])]);
@@ -19229,7 +19229,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
         src: _ctx.logo,
-        width: "90",
+        width: "130",
         "class": "mt-4"
       }, null, 8
       /* PROPS */
@@ -22795,17 +22795,19 @@ var _hoisted_12 = {
   "class": "ml-2"
 };
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" I agree to the ");
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Saya setuju dengan ");
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" and ");
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" dan ");
 
-var _hoisted_15 = {
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(", dan setuju mendapat notifikasi WhatsApp jadwal pengingat. Anda dapat memilih untuk tidak mengikuti dengan mengirim pesan \"STOP\". Tarif pesan dan data mungkin berlaku. ");
+
+var _hoisted_16 = {
   "class": "flex items-center justify-end mt-4"
 };
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Sudah punya akun? ");
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Sudah punya akun? ");
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Daftar ");
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Daftar ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_authentication_card_logo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-authentication-card-logo");
@@ -22938,25 +22940,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             target: "_blank",
             href: _ctx.route('terms.show'),
             "class": "underline text-sm text-gray-600 hover:text-gray-900"
-          }, "Terms of Service", 8
+          }, "Persyaratan Penggunaan", 8
           /* PROPS */
           , ["href"]), _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
             target: "_blank",
             href: _ctx.route('policy.show'),
             "class": "underline text-sm text-gray-600 hover:text-gray-900"
-          }, "Privacy Policy", 8
+          }, "Kebijakan Privasi", 8
           /* PROPS */
-          , ["href"])])])];
+          , ["href"]), _hoisted_15])])];
         }),
         _: 1
         /* STABLE */
 
-      })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+      })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         href: _ctx.route('login'),
         "class": "underline text-sm text-gray-600 hover:text-gray-900"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_16];
+          return [_hoisted_17];
         }),
         _: 1
         /* STABLE */
@@ -22970,7 +22972,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         disabled: $data.form.processing
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_17];
+          return [_hoisted_18];
         }),
         _: 1
         /* STABLE */
@@ -32239,24 +32241,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./public/images/imunlogo.png":
-/*!************************************!*\
-  !*** ./public/images/imunlogo.png ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/imunlogo.png?a9de9a3eabfbdccc1c6f4f8c3595e507");
-
-/***/ }),
-
-/***/ "./public/images/imunlogo2.png":
+/***/ "./public/images/imunlogo3.png":
 /*!*************************************!*\
-  !*** ./public/images/imunlogo2.png ***!
+  !*** ./public/images/imunlogo3.png ***!
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -32265,7 +32252,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/imunlogo2.png?12aa1816d4acb980cd1b442796e55856");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/imunlogo3.png?db8ef7c92771362c469810f3341fc2a1");
+
+/***/ }),
+
+/***/ "./public/images/imunlogo4.png":
+/*!*************************************!*\
+  !*** ./public/images/imunlogo4.png ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/imunlogo4.png?a62652f19a6876f6077ec4ab68cb1b4e");
 
 /***/ }),
 
