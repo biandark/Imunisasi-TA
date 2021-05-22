@@ -13,15 +13,14 @@ use Illuminate\Support\Arr;
 
 class RiwayatController extends Controller
 {
-    public function index() {
-        $id = Auth::user()->id;
-        $is_not_filled = empty(Baby::where('user_id', $id)->first());
+    public function index($baby_id) {
+        $is_not_filled = empty(Riwayat::where('baby_id', $baby_id)->first());
 
         if ($is_not_filled) {
-            return redirect()->route('form');
+            return redirect()->route('form', ['baby_id' => $baby_id]);
         }
 
-        $baby = Baby::where('user_id', $id)->first();
+        $baby = Baby::find($baby_id)->first();
         $riwayats = Riwayat::where('baby_id', $baby->id)->with('imunisasiwajib')->get();
 
         return Inertia::render('RiwayatImunisasiWajib', [
@@ -30,7 +29,7 @@ class RiwayatController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update($baby_id, Request $request)
     {
         Validator::make($request->all(), [
             'tgl_diberikan' => ['required'],
@@ -42,8 +41,7 @@ class RiwayatController extends Controller
             //update baby atribut done
         }
 
-        $id = Auth::user()->id;
-        $baby = Baby::where('user_id', $id)->first();
+        $baby = Baby::find($baby_id)->first();
 
         $done = Riwayat::where('baby_id', $baby->id)
             ->where('status', 'Sudah')
@@ -51,7 +49,7 @@ class RiwayatController extends Controller
         $done = Arr::flatten($done);
         $done = json_encode($done);
 
-        $last_polio = Riwayat::where('baby_id',$baby->id)
+        $last_polio = Riwayat::where('baby_id', $baby->id)
             ->whereIn('imunisasiwajib_id',[3,5,7,9])
             ->where('status','Sudah')
             ->orderBy('imunisasiwajib_id','DESC')->first();
@@ -59,7 +57,7 @@ class RiwayatController extends Controller
                 $last_polio = $last_polio->tgl_diberikan;
             }
 
-        $last_dpt = Riwayat::where('baby_id',$baby->id)
+        $last_dpt = Riwayat::where('baby_id', $baby->id)
             ->whereIn('imunisasiwajib_id',[4,6,8,11])
             ->where('status','Sudah')
             ->orderBy('imunisasiwajib_id','DESC')->first();
@@ -67,7 +65,7 @@ class RiwayatController extends Controller
                 $last_dpt = $last_dpt->tgl_diberikan;
             }
 
-        $last_mr = Riwayat::where('baby_id',$baby->id)
+        $last_mr = Riwayat::where('baby_id', $baby->id)
             ->whereIn('imunisasiwajib_id',[10,12])
             ->where('status','Sudah')
             ->orderBy('imunisasiwajib_id','DESC')->first();

@@ -18,6 +18,7 @@ class CreateBabiesTable extends Migration
             $table->string('nama');
             $table->date('ttl');
             $table->integer('bb');
+            $table->string('gender');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

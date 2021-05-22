@@ -15,6 +15,7 @@ class Baby extends Model
         'nama',
         'ttl',
         'bb',
+        'gender',
         'user_id',
     ];
 }

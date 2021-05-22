@@ -15,50 +15,64 @@ use DateInterval;
 
 class BabyController extends Controller
 {
-    public function create() {
+    public function index() {
         $id = Auth::user()->id;
-        $is_filled = !empty(Baby::where('user_id', $id)->first());
-        
-        if($is_filled){
-            return redirect()->route('riwayatwajib');
-        }
-        return Inertia::render('AturJadwalWajib');
+        $babies = Baby::where('user_id', $id)->get();
+    
+        return Inertia::render('DataBayi', [
+            'babies' => $babies,
+        ]);
     }
 
-    public function store(Request $request) {
+    public function createbaby() {
+        return Inertia::render('FormBayi');
+    }
+    
+    public function storebaby(Request $request){
         Validator::make($request->all(), [
             'nama' => ['required', 'max:50'],
             'ttl' => ['required', 'max:50'],
             'bb' => ['required', 'max:50'],
+            'gender' => ['required', 'max:50'],
         ])->validate();
 
-        $baby= Baby::create($request->only(['nama','ttl','bb','user_id'])); // ambil id baby
+        $baby= Baby::create($request->only(['nama','ttl','bb','gender','user_id']));
 
-        // menyimpan data riwayat (belum + sudah)   
+        return redirect()->route('databayi');
+    }
 
+    public function create($baby_id) {
+        $id = Auth::user()->id;
+        $is_filled = !empty(Riwayat::where('baby_id', $baby_id)->first());
+        $baby = Baby::find($baby_id)->first();
+        
+        if($is_filled){
+            return redirect()->route('riwayatwajib', ['baby_id' => $baby_id]);
+        }
+        return Inertia::render('AturJadwalWajib', [
+            'baby' => $baby,
+        ]);
+    }
+
+    public function store($baby_id, Request $request) {
         // ambil semua data tabel imunisasis
         $imunisasiwajibs = Imunisasiwajib::get();
         
         // iterasi data tabel imunisasis
         foreach ($imunisasiwajibs as $imunisasi) {
             Riwayat::create([
-                'baby_id' => $baby->id,
+                'baby_id' => $baby_id,
                 'imunisasiwajib_id' => $imunisasi->id,
             ]);
         }
 
-        BabyController::rules($baby->id, $baby->ttl, $baby->bb, $request->done, $request->last_polio, $request->last_dpt, $request->last_mr);
-
-        // update status riwayat
-
-        // simpan semua
+        BabyController::rules($baby_id, $request->ttl, $request->bb, $request->done, $request->last_polio, $request->last_dpt, $request->last_mr);
   
-        return redirect()->route('form.show');
+        return redirect()->route('form.show', ['baby_id' => $baby_id]);
     }
 
-    public function show() {
-        $id = Auth::user()->id;
-        $baby = Baby::where('user_id', $id)->first();
+    public function show($baby_id) {
+        $baby = Baby::find($baby_id)->first();
 
         $riwayats = Riwayat::where('baby_id', $baby->id)->with('imunisasiwajib')->get();
 
@@ -99,7 +113,7 @@ class BabyController extends Controller
 
         // update tanggal penjadwalan riwayat
         //berat badan tidak mencukupi
-        if ($bb < 2) {
+        if ($bb == 0) {
             echo "Tidak imunisasi karena berat badan tidak sampai 2 kg";
         }
         else {

@@ -125,7 +125,7 @@
 
         methods:{
             gotoDasar(){
-                this.$inertia.get(this.route('form'));
+                // this.$inertia.get(this.route('form'));
             },
             gotoPilihan(){
                 this.$inertia.get(this.route('kondisi'));

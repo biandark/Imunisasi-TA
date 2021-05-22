@@ -21,6 +21,9 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Beranda
                                 </jet-nav-link>
+                                <jet-nav-link :href="route('databayi')" :active="route().current('databayi')">
+                                    Data Anak
+                                </jet-nav-link>
                                 <!-- Jenis Dropdown -->
                                 <div class="mt-4 relative">
                                     <jet-dropdown width="48">
@@ -40,54 +43,6 @@
                                             </jet-dropdown-link>
                                             <jet-dropdown-link :href="route('info')" :active="route().current('info')">
                                                 Imunisasi Wajib
-                                            </jet-dropdown-link>
-                                            <div class="border-t border-gray-100"></div>
-                                        </template>
-                                    </jet-dropdown>
-                                </div>
-                                <!-- Atur Jadwal -->
-                                <div class="mt-4 relative">
-                                    <jet-dropdown width="48">
-                                        <template #trigger>
-                                            <span class="inline-flex rounded-md">
-                                                <button type="button" class="inline-flex px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                                    Atur Jadwal
-                                                    <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                    </svg>
-                                                </button>
-                                            </span>
-                                        </template>
-                                        <template #content>
-                                            <jet-dropdown-link :href="route('kondisi')" :active="route().current('kondisi')">
-                                                Atur Jadwal Imunisasi Pilihan
-                                            </jet-dropdown-link>
-                                            <jet-dropdown-link :href="route('form')" :active="route().current('form')">
-                                                Atur Jadwal Imunisasi Wajib
-                                            </jet-dropdown-link>
-                                            <div class="border-t border-gray-100"></div>
-                                        </template>
-                                    </jet-dropdown>
-                                </div>
-                                <!-- Riwayat Dropdown -->
-                                <div class="mt-4 relative">
-                                    <jet-dropdown width="48">
-                                        <template #trigger>
-                                            <span class="inline-flex rounded-md">
-                                                <button type="button" class="inline-flex px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                                    Riwayat Imunisasi
-                                                    <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                    </svg>
-                                                </button>
-                                            </span>
-                                        </template>
-                                        <template #content>
-                                            <jet-dropdown-link :href="route('riwayat')" :active="route().current('riwayat')">
-                                                Riwayat Imunisasi Pilihan
-                                            </jet-dropdown-link>
-                                            <jet-dropdown-link :href="route('riwayatwajib')" :active="route().current('riwayatwajib')">
-                                                Riwayat Imunisasi Wajib
                                             </jet-dropdown-link>
                                             <div class="border-t border-gray-100"></div>
                                         </template>
@@ -218,28 +173,10 @@
                             Beranda
                         </jet-responsive-nav-link>
                     </div>
-                    <div class="mt-4 relative">
-                        <jet-dropdown width="48">
-                            <template #trigger>
-                                <span class="inline-flex rounded-md">
-                                    <button type="button" class="inline-flex px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                        Atur Jadwal
-                                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                        </svg>
-                                    </button>
-                                </span>
-                            </template>
-                            <template #content>
-                                <jet-responsive-nav-link :href="route('kondisi')" :active="route().current('kondisi')">
-                                    Atur Jadwal Imunisasi Pilihan
-                                </jet-responsive-nav-link>
-                                <jet-responsive-nav-link :href="route('form')" :active="route().current('form')">
-                                    Atur Jadwal Imunisasi Wajib
-                                </jet-responsive-nav-link>
-                                <div class="border-t border-gray-100"></div>
-                            </template>
-                        </jet-dropdown>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <jet-responsive-nav-link :href="route('databayi')" :active="route().current('databayi')">
+                            Data Anak
+                        </jet-responsive-nav-link>
                     </div>
                     <!-- jenis dropdown -->
                     <div class="mt-4 relative">
@@ -277,15 +214,6 @@
                                                     </svg>
                                                 </button>
                                             </span>
-                                        </template>
-                                        <template #content>
-                                            <jet-responsive-nav-link :href="route('riwayat')" :active="route().current('riwayat')">
-                                                Riwayat Imunisasi Pilihan
-                                            </jet-responsive-nav-link>
-                                            <jet-responsive-nav-link :href="route('riwayatwajib')" :active="route().current('riwayatwajib')">
-                                                Riwayat Imunisasi Wajib
-                                            </jet-responsive-nav-link>
-                                            <div class="border-t border-gray-100"></div>
                                         </template>
                                     </jet-dropdown>
                                 </div>

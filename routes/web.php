@@ -51,13 +51,17 @@ Route::get('/endemis', 'App\Http\Controllers\EndemisController@index')->name('en
 Route::get('/daftarimunisasi', 'App\Http\Controllers\EndemisController@list')->name('daftarimunisasi');
 
 //imunisasi wajib
-Route::get('/form', 'App\Http\Controllers\BabyController@create')->name('form');
-Route::post('/form', 'App\Http\Controllers\BabyController@store')->name('form.store');
-Route::get('/hasil', 'App\Http\Controllers\BabyController@show')->name('form.show');
+Route::get('/{baby_id}/form', 'App\Http\Controllers\BabyController@create')->name('form');
+Route::post('/{baby_id}/form', 'App\Http\Controllers\BabyController@store')->name('form.store');
+Route::get('/{baby_id}/hasil', 'App\Http\Controllers\BabyController@show')->name('form.show');
 
-Route::get('/riwayatwajib', 'App\Http\Controllers\RiwayatController@index')->name('riwayatwajib');
-Route::put('/riwayatwajib','App\Http\Controllers\RiwayatController@update')->name('riwayatwajib.update');
+Route::get('/{baby_id}/riwayatwajib', 'App\Http\Controllers\RiwayatController@index')->name('riwayatwajib');
+Route::put('/{baby_id}/riwayatwajib','App\Http\Controllers\RiwayatController@update')->name('riwayatwajib.update');
 
 Route::get('/detail/{id}', 'App\Http\Controllers\ImunisasiwajibController@detail')->name('detail');
 Route::get('/info', 'App\Http\Controllers\ImunisasiwajibController@info')->name('info');
+
+Route::get('/databayi', 'App\Http\Controllers\BabyController@index')->name('databayi');
+Route::get('/databayi/create', 'App\Http\Controllers\BabyController@createbaby')->name('databayi.create');
+Route::post('/databayi/create', 'App\Http\Controllers\BabyController@storebaby')->name('databayi.store');
 

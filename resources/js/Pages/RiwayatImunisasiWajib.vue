@@ -180,7 +180,7 @@
             update: function(data) {
                 data.status = 'Sudah';
                 data._method = 'PUT';
-                this.$inertia.post(this.route('riwayatwajib.update'), data)
+                this.$inertia.post(this.route('riwayatwajib.update', {baby_id: this.baby.id}), data)
                 this.reset();
                 this.closeModal(); 
             }

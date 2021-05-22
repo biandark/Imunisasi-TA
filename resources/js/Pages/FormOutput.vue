@@ -50,7 +50,7 @@
                                 </tbody>
                             </table>
                             <div class="flex m-4">
-                                <inertia-link class="text-green-500" :href="route('riwayatwajib')">
+                                <inertia-link class="text-green-500" :href="route('riwayatwajib', {baby_id: baby.id})">
                                     <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
                                         <div>Lihat Riwayat Imunisasi Wajib</div>
                                         <div class="ml-1 text-indigo-500">

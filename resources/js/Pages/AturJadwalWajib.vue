@@ -20,19 +20,22 @@
                             </div>
                             <div class="mt-4">
                                 <jet-label for="nama" value="Nama Bayi*" />
-                                <jet-input id="nama" type="text" class="mt-1 block w-full" v-model="form.nama" required />
+                                <jet-input id="nama" type="text" class="mt-1 block w-full" v-model="form.nama" required disabled />
                             </div>
                             <div class="mt-4">
                                 <jet-label for="ttl" value="Tanggal Lahir Bayi*" />
-                                <jet-input id="ttl" type="date" class="mt-1 block w-full" v-model="form.ttl" required />
+                                <jet-input id="ttl" type="date" class="mt-1 block w-full" v-model="form.ttl" required disabled />
                             </div>
                             <div  class="mt-4">
                                 <jet-label for="usia" value="Usia Bayi*" />
                                 <div class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">{{ displayAge }}</div>
                             </div>
                             <div class="mt-4">
-                                <jet-label for="bb" value="Berat Badan Bayi (kg)*" />
-                                <jet-input id="bb" type="number" class="mt-1 block w-full" v-model="form.bb" required />
+                                <jet-label for="bb" value="Apakah berat badan bayi Anda lebih dari 2 kg?*" />
+                                <select required v-model="form.bb" placeholder="Ya/Tidak" class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" disabled>
+                                    <option value="1">Ya</option>
+                                    <option value="0">Tidak</option>
+                                </select>
                             </div>
                         </div>
                         <div class="p-6 mt-4">
@@ -81,16 +84,6 @@
                                     <jet-label for="last_mr" value="Tanggal Pemberian MR Terakhir" />
                                     <jet-input id="last_mr" type="date" class="mt-1 block w-full" v-model="form.last_mr" />
                                 </div>
-                                <div class="mt-4">
-                                    <jet-label for="send">
-                                        <div class="flex items-center">
-                                            <jet-checkbox name="send" id="send" v-model:checked="form.send" />
-                                            <div class="ml-2 text-sm">
-                                            Ingatkan saya terkait jadwal imunisasi selanjutnya melalui Whatsapp
-                                            </div>
-                                        </div>
-                                    </jet-label>
-                                </div>
                                 <div class="flex justify-right pt-3">
                                     <jet-button class="bg-indigo-500">
                                         Simpan
@@ -110,7 +103,7 @@
     import Welcome from '@/Jetstream/Welcome'
     import JetInput from '@/Jetstream/Input'
     import JetLabel from '@/Jetstream/Label'
-    import JetCheckbox from "@/Jetstream/Checkbox";
+    import JetCheckbox from "@/Jetstream/Checkbox"
     import JetButton from '@/Jetstream/Button'
     import { differenceInMonths } from 'date-fns'
 
@@ -123,12 +116,13 @@
             JetCheckbox,
             JetInput
         },
+        props: ['baby'],
         data() {
             return {
                 form: {
-                    nama: null,
-                    ttl: null,
-                    bb: null,
+                    nama: this.baby.nama,
+                    ttl: this.baby.ttl,
+                    bb: this.baby.bb,
                     done: [],
                     last_polio: null,
                     last_dpt: null,
@@ -139,13 +133,13 @@
         },
          methods: {
             submit() {
-                if (this.form.bb <= 2) {
+                if (this.form.bb == 0) {
                     alert("Bayi tidak dapat melaksanakan imunisasi karena berat badan bayi tidak lebih dari 2 kg. Mohon isi kembali ketika berat badan bayi sudah mencukupi.")
                     return
                 }
                 const data = {...this.form}
                 data.done = JSON.stringify(this.form.done)
-                this.$inertia.post(this.route('form.store'), data)
+                this.$inertia.post(this.route('form.store', {baby_id: this.baby.id}), data)
             }
         },
         computed: {

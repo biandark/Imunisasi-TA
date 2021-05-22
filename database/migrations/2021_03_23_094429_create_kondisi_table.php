@@ -17,8 +17,8 @@ class CreateKondisiTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->date('tgl_lahir');
-            $table->string('gender');
+            $table->unsignedBigInteger('baby_id');
+            $table->foreign('baby_id')->references('id')->on('babies');
             $table->string('travelling');
             $table->text('kondisi')->nullable();
             $table->date('tgl_brkt')->nullable();
