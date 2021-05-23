@@ -39,10 +39,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 //imunisasi pilihan
 Route::resource('kondisi', KondisiController::class);
-Route::get('/kondisi', 'App\Http\Controllers\KondisiController@index')->name('kondisi');
+Route::get('/{baby_id}/kondisi', 'App\Http\Controllers\KondisiController@index')->name('kondisi');
+Route::post('/{baby_id}/kondisi', 'App\Http\Controllers\KondisiController@store')->name('kondisi.store');
+Route::get('/{baby_id}/output', 'App\Http\Controllers\KondisiController@show')->name('kondisi.show');
 
-Route::resource('riwayat', JadwalController::class);
-Route::get('/riwayat', 'App\Http\Controllers\JadwalController@index')->name('riwayat');
+Route::get('/{baby_id}/riwayat', 'App\Http\Controllers\JadwalController@index')->name('riwayat');
+Route::put('/{baby_id}/riwayat', 'App\Http\Controllers\JadwalController@update')->name('riwayat.update');
 
 Route::get('imunisasi/{data}')->name('imunisasi')->uses('App\Http\Controllers\JadwalController@show');
 

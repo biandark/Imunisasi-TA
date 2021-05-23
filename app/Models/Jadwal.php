@@ -12,4 +12,5 @@ class Jadwal extends Model
     protected $fillable = [
         'kondisi_id','status', 'tgl_pelaksanaan'                                                                                
     ];
+
 }

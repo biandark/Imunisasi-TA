@@ -22,19 +22,15 @@
                     </div>
                     <div class="mt-4">
                         <jet-label for="namapasien" value="Nama Pasien*" />
-                        <jet-input id="namapasien" type="text" class="mt-1 block w-full" v-model="form.namapasien" required />
+                        <jet-input id="namapasien" type="text" class="mt-1 block w-full" v-model="form.nama" required disabled/>
                     </div>
                     <div class="mt-4">
                         <jet-label for="tgl_lahir" value="Tanggal Lahir*" />
-                        <jet-input id="tgl_lahir" type="date" class="mt-1 block w-full" v-model="form.tgl_lahir" required />
+                        <jet-input id="tgl_lahir" type="date" class="mt-1 block w-full" v-model="form.ttl" required disabled/>
                     </div>
                     <div class="mt-4">
                         <jet-label for="gender" value="Jenis Kelamin*" />
-                        <select required v-model="form.gender" placeholder="Jenis Kelamin" class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                            <option disabled value="">Jenis Kelamin</option>
-                            <option>Laki-Laki</option>
-                            <option>Perempuan</option>
-                        </select>
+                        <jet-input id="gender" type="text" class="mt-1 block w-full" v-model="form.gender" required disabled/>
                     </div>
                     <div class="mt-4">
                         <jet-label for="travelling" value="Ada Keperluan Travelling?*" />
@@ -145,10 +141,15 @@
                             </div>
                         </jet-label>
                     </div>
-                    <div class="flex mt-4">
+                    <div class="flex items-center mt-4">
                         <jet-button class="bg-indigo-500" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                             Simpan
                         </jet-button>
+                        <inertia-link class="text-indigo-500 ml-5" :href="route('riwayat', {baby_id:baby.id})">
+                            <div class="mt-3 underline text-sm font-semibold text-indigo-700">
+                                <div>Lihat Riwayat Imunisasi</div>
+                            </div>
+                        </inertia-link>
                     </div>
                     </div>
                 </div>
@@ -178,12 +179,13 @@
             JetButton,
 
         },
-        props: ['data', 'errors'],
+        props: ['baby'],
         data() {
             return {
                 form: {
-                    tgl_lahir: null,
-                    gender: "",
+                    nama: this.baby.nama,
+                    ttl: this.baby.ttl,
+                    gender: this.baby.gender,
                     travelling: "",
                     kondisi: [],
                     tgl_brkt: null,
@@ -191,7 +193,6 @@
                     tgl: null,
                     imunisasi:"",
                     tgl_rekom:"",
-                    usia: null,
                 },
             }
             
@@ -208,7 +209,7 @@
                 }
                 const data = {...this.form}
                 data.kondisi = JSON.stringify(this.form.kondisi)
-                this.$inertia.post(this.route('kondisi.store'), data)
+                this.$inertia.post(this.route('kondisi.store', {baby_id: this.baby.id}), data)
             }
         }
     }

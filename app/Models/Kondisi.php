@@ -13,8 +13,14 @@ class Kondisi extends Model
      *
      * @var array
      */
+
+    protected $table = 'kondisis';
     protected $fillable = [
-        'user_id', 'tgl_lahir', 'gender', 'travelling', 'kondisi', 'tgl_brkt', 'imunisasisblm', 'tgl', 
-        'usia', 'imunisasi', 'tgl_rekom'                                                                                   
+        'baby_id', 'travelling', 'kondisi', 'tgl_brkt', 'imunisasisblm', 'tgl', 'imunisasi', 'tgl_rekom'                                                                                   
     ];
+
+    public function imunisasi()
+    {
+        return $this->belongsTo(Imunisasi::class);
+    }
 }

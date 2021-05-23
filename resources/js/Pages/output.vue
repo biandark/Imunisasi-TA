@@ -25,6 +25,7 @@
                         <table>
                         <thead>
                         <tr>
+                            <th >Nama Pasien</th>
                             <th >Tanggal Lahir</th>
                             <th >Gender</th>
                             <th >Travelling</th>
@@ -33,10 +34,11 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td >{{ formatDate(data[0].tgl_lahir) }}</td>
-                            <td >{{ data[0].gender }}</td>
-                            <td >{{ data[0].travelling }}</td>
-                            <td >{{ data[0].kondisi.slice(2,-2) }}</td>
+                            <td >{{ baby.nama }}</td>
+                            <td >{{ formatDate(baby.ttl) }}</td>
+                            <td >{{ baby.gender }}</td>
+                            <td >{{ kondisis[0].travelling }}</td>
+                            <td >{{ kondisis[0].kondisi.slice(2,-2) }}</td>
                         </tr>
                         </tbody>
                         </table>
@@ -58,12 +60,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(data, index) in data" :key="data.id">
+                        <tr v-for="(kondisi, index) in scheduled" :key="kondisi.id">
                             <td>{{ index+1 }}</td>
-                            <td>{{ data.nama }}</td>
-                            <td>{{ formatDate(data.tgl_rekom) }}</td>
+                            <td>{{ kondisi.nama }}</td>
+                            <td>{{ formatDate(kondisi.tgl_rekom) }}</td>
                             <td>
-                                <inertia-link class="text-sm text-indigo-500 underline" :href="route('imunisasi' ,{ data:data.nama})" method="get">
+                                <inertia-link class="text-sm text-indigo-500 underline" :href="route('imunisasi' ,{ data:kondisi.nama})" method="get">
                                 Lihat Selengkapnya
                                 </inertia-link>
                             </td>
@@ -74,7 +76,7 @@
                     </div>
                     </div>
                     <div class="flex mt-4">
-                        <inertia-link class="text-green-500" :href="route('riwayat')">
+                        <inertia-link class="text-green-500" :href="route('riwayat', {baby_id: baby.id})">
                             <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
                                 <div>Lihat Riwayat Imunisasi</div>
                                 <div class="ml-1 text-indigo-500">
@@ -113,18 +115,28 @@
             JetButton,
 
         },
-        props: ['data'],
+        props: ['baby', 'kondisis'],
         computed: {
             displayAge() {
-                if (this.data[0].usia >= 12) {
-                    const age = differenceInYears(new Date(), new Date(this.data[0].tgl_lahir))
-                    return age + ' Tahun'
+                const ageInMonths = differenceInMonths(new Date(), new Date(this.baby.ttl))
+                const years = Math.floor(ageInMonths / 12);
+                const months = ageInMonths % 12;
+
+                if (ageInMonths < 0) {
+                   return 'Tanggal lahir bayi yang dimasukkan salah' 
                 }
-                else {
-                    const agebulan = differenceInMonths(new Date(), new Date(this.data[0].tgl_lahir))
-                    return agebulan + ' Bulan'
+
+                if (ageInMonths >= 12) {
+                   return `${years} Tahun ${months} Bulan`
                 }
+            
+                return `${months} Bulan`
                 
+            },
+            scheduled() {
+                return this.kondisis
+                    .filter(kondisi => !!kondisi.tgl_rekom)
+                    .sort((a, b) => new Date(a.tgl_rekom) - new Date(b.tgl_rekom))
             },
         },
         methods: {

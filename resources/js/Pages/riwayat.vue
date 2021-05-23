@@ -13,8 +13,8 @@
                             <div class="justify-center">
                                 <i class="far fa-calendar-alt"></i>
                             </div>
-                            <h2 class="mt-2 font-semibold">Tanggal Lahir</h2>
-                            <p> {{ formatDate(data[0].tgl_lahir) }} </p>
+                            <h2 class="mt-2 font-semibold">Nama Pasien</h2>
+                            <p> {{ baby.nama }} </p>
                         </div>
                         <div>
                             <div class="justify-center">
@@ -28,7 +28,7 @@
                                 <i class="fas fa-venus-mars"></i>
                             </div>
                             <h2 class="mt-2 font-semibold">Jenis Kelamin</h2>
-                            <p> {{ data[0].gender }} </p>
+                            <p> {{ baby.gender }} </p>
                         </div>
                         
                     </div>
@@ -50,27 +50,27 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(data, index) in data" :key="data.id">
+                        <tr v-for="(jadwal, index) in scheduled" :key="jadwal.id">
                             <td >{{ index+1 }}</td>
-                            <td >{{ data.nama }}</td>
-                            <td >{{ formatDate(data.tgl_rekom) }}</td>
+                            <td >{{ jadwal.nama }}</td>
+                            <td >{{ formatDate(jadwal.tgl_rekom) }}</td>
                             <td >
-                                <span v-if="data.tgl_pelaksanaan != NULL" class="text-green-500 font-semibold">Sudah Dilakukan</span>
+                                <span v-if="jadwal.tgl_pelaksanaan != NULL" class="text-green-500 font-semibold">Sudah Dilakukan</span>
                                 <span v-else class="text-red-500 font-semibold">Belum Dilakukan</span>
                             </td>
                             <td>
-                                <div v-if="data.tgl_pelaksanaan == NULL">
-                                    {{ data.tgl_pelaksanaan}}
+                                <div v-if="jadwal.tgl_pelaksanaan == NULL">
+                                    {{ jadwal.tgl_pelaksanaan}}
                                 </div>
                                 <div v-else>
-                                    {{ formatDate(data.tgl_pelaksanaan) }}
+                                    {{ formatDate(jadwal.tgl_pelaksanaan) }}
                                 </div>
                             </td>
                             <td>
-                                <button v-if="data.status != 'Sudah Dilakukan'" @click="edit(data)" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Update</button>
+                                <button v-if="jadwal.status != 'Sudah Dilakukan'" @click="edit(jadwal)" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Update</button>
                             </td>
                             <td>
-                                <inertia-link class="text-sm text-indigo-500 underline" :href="route('imunisasi' ,{ data:data.nama})" method="get">
+                                <inertia-link class="text-sm text-indigo-500 underline" :href="route('imunisasi' ,{ data:jadwal.nama})" method="get">
                                 Lihat Selengkapnya
                                 </inertia-link>
                             </td>
@@ -121,6 +121,13 @@
                       </div>
                     </div>
                     
+                    <div>
+                        <inertia-link class="text-indigo-500" :href="route('kondisi', {baby_id:baby.id})">
+                            <div class="mt-3 flex items-center underline text-sm font-semibold text-indigo-700">
+                                <div>Tambah jadwal imunisasi baru</div>
+                            </div>
+                        </inertia-link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -149,18 +156,28 @@
             JetButton,
 
         },
-        props: ['data'],
+        props: ['baby', 'jadwals'],
         computed: {
             displayAge() {
-                if (this.data[0].usia >= 12) {
-                    const age = differenceInYears(new Date(), new Date(this.data[0].tgl_lahir))
-                    return age + ' Tahun'
+                const ageInMonths = differenceInMonths(new Date(), new Date(this.baby.ttl))
+                const years = Math.floor(ageInMonths / 12);
+                const months = ageInMonths % 12;
+
+                if (ageInMonths < 0) {
+                   return 'Tanggal lahir bayi yang dimasukkan salah' 
                 }
-                else {
-                    const agebulan = differenceInMonths(new Date(), new Date(this.data[0].tgl_lahir))
-                    return agebulan + ' Bulan'
+
+                if (ageInMonths >= 12) {
+                   return `${years} Tahun ${months} Bulan`
                 }
+            
+                return `${months} Bulan`
                 
+            },
+            scheduled() {
+                return this.jadwals
+                    .filter(jadwal => !!jadwal.tgl_rekom)
+                    .sort((a, b) => new Date(a.tgl_rekom) - new Date(b.tgl_rekom))
             },
         },
         
@@ -197,7 +214,7 @@
             },
             update: function (data) {
                 data._method = 'PUT';
-                this.$inertia.post('/riwayat/'+ data.id, data)
+                this.$inertia.post(this.route('riwayat.update', {baby_id: this.baby.id}), data)
                 this.reset();
                 this.closeModal();
             },

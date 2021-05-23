@@ -36,7 +36,7 @@
                                                     Imunisasi Wajib
                                                 </button>
                                             </inertia-link>
-                                            <inertia-link :href="route('kondisi')">
+                                            <inertia-link :href="route('kondisi', {baby_id: baby.id})">
                                                 <button class="border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline">
                                                     Imunisasi Pilihan
                                                 </button>
