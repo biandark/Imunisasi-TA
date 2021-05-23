@@ -15,7 +15,7 @@ class CreateKondisiTable extends Migration
     {
         Schema::create('kondisis', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('baby_id');
+            $table->unsignedBigInteger('baby_id')->nullable();
             $table->foreign('baby_id')->references('id')->on('babies');
             $table->string('travelling');
             $table->text('kondisi')->nullable();
