@@ -130,17 +130,6 @@
                         <jet-input id="tgl" type="date" class="mt-1 block w-full" v-model="form.tgl" />
                         <p class="text-sm">*diisi jika sudah mendapat imunisasi sebelumnya</p>
                     </div>
-                    <div class="mt-4">
-                        <jet-label for="send">
-                            <div class="flex items-center">
-                                <jet-checkbox name="send" id="send" v-model:checked="form.send" />
-
-                                <div class="ml-2 text-sm">
-                                Ingatkan saya terkait jadwal imunisasi selanjutnya melalui Whatsapp
-                                </div>
-                            </div>
-                        </jet-label>
-                    </div>
                     <div class="flex items-center mt-4">
                         <jet-button class="bg-indigo-500" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                             Simpan
