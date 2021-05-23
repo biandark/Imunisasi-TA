@@ -113,6 +113,31 @@
             </div>
         </div>
     </div>
+    <!-- Page Footer -->
+            <header class="bg-white shadow text-sm text-gray-600">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    Aplikasi ini didanai oleh Tim Laboratorium Rekayasa Data dan Intelegensi Bisnis (RDIB) Departemen Sistem Informasi ITS<br />
+                    <br />
+                    <div class="grid grid-cols-1 md:grid-cols-3">
+                        <div>
+                            <p class="font-bold">Creator :</p>
+                            Bianda Reyhan Kesuma<br />
+                            Inas Azizah<br />
+                        </div>
+                        <div>
+                            <p class="font-bold">Supervisor :</p>
+                            Retno Aulia Vinarti, S.Kom., M.Kom., Ph.D.<br />
+                            Edwin Riksakomara, S.Kom., M.T.<br />
+                            Prof. Dr. Ir. Arif Djunaidy, M.Sc., Ph.D.<br />
+                        </div>
+                        <div>
+                            <p class="font-bold">Human Expert :</p>
+                            Dr. Reza Fahlevi, Sp.A <br /> 
+                            (RS MMC Jakarta dan RS Hermina Kemayoran Jakarta)
+                        </div>
+                    </div>
+                </div>
+            </header>
     
 </template>
 
