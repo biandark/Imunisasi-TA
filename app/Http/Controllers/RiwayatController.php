@@ -20,7 +20,7 @@ class RiwayatController extends Controller
             return redirect()->route('form', ['baby_id' => $baby_id]);
         }
 
-        $baby = Baby::find($baby_id)->first();
+        $baby = Baby::where('id', $baby_id)->first();
         $riwayats = Riwayat::where('baby_id', $baby->id)->with('imunisasiwajib')->get();
 
         return Inertia::render('RiwayatImunisasiWajib', [
@@ -41,7 +41,7 @@ class RiwayatController extends Controller
             //update baby atribut done
         }
 
-        $baby = Baby::find($baby_id)->first();
+        $baby = Baby::where('id', $baby_id)->first();
 
         $done = Riwayat::where('baby_id', $baby->id)
             ->where('status', 'Sudah')

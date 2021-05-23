@@ -44,7 +44,7 @@ class BabyController extends Controller
     public function create($baby_id) {
         $id = Auth::user()->id;
         $is_filled = !empty(Riwayat::where('baby_id', $baby_id)->first());
-        $baby = Baby::find($baby_id)->first();
+        $baby = Baby::where('id', $baby_id)->first();
         
         if($is_filled){
             return redirect()->route('riwayatwajib', ['baby_id' => $baby_id]);
@@ -72,7 +72,7 @@ class BabyController extends Controller
     }
 
     public function show($baby_id) {
-        $baby = Baby::find($baby_id)->first();
+        $baby = Baby::where('id', $baby_id)->first();
 
         $riwayats = Riwayat::where('baby_id', $baby->id)->with('imunisasiwajib')->get();
 
