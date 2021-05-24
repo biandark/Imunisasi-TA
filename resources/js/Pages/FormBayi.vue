@@ -89,7 +89,7 @@
          methods: {
             submit() {
                 if (this.form.bb == 0) {
-                    alert("Bayi tidak dapat melaksanakan imunisasi karena berat badan bayi tidak lebih dari 2 kg. Mohon isi kembali ketika berat badan bayi sudah mencukupi.")
+                    alert("Anak Anda tidak dapat melaksanakan imunisasi karena berat badan tidak lebih dari 2 kg. Mohon isi kembali ketika berat badan anak sudah mencukupi.")
                     return
                 }
                 const data = {...this.form}
@@ -99,7 +99,7 @@
         computed: {
             displayAge() {
                 if (!this.form.ttl) {
-                    return 'Masukkan tanggal lahir bayi terlebih dahulu'
+                    return 'Masukkan tanggal lahir terlebih dahulu'
                 }
 
                 const ageInMonths = differenceInMonths(new Date(), new Date(this.form.ttl))
@@ -107,7 +107,7 @@
                 const months = ageInMonths % 12;
 
                 if (ageInMonths < 0) {
-                   return 'Tanggal lahir bayi yang dimasukkan salah' 
+                   return 'Tanggal lahir yang dimasukkan salah' 
                 }
 
                 if (ageInMonths >= 12) {
