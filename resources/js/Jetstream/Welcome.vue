@@ -8,7 +8,7 @@
             <div class="items-center ml-4">
                 <h1 class="text-5xl justify-left font-semibold text-grey-500">Pastikan <br />Jadwal Imunisasi Tidak Terlewat dengan <br /> I-Mun </h1>
                 <p class="my-6 text-base text-gray-600">Imunisasi memberi perlindungan terhadap  serangan penyakit <br /> serius bagi anak maupun dewasa, serta dapat mencegah <br /> persebarannya. Berikan imunisasi tepat pada waktunya <br /> untuk perlindungan yang maksimal dari penyakit. <br /> Melalui web ini Anda dapat mengetahui jadwal yang tepat untuk <br /> imunisasi wajib serta pilihan anak Anda.</p>
-                 
+                <jet-button class="mt-2" @click="gotoAnak()">Tambah Data Anak</jet-button>
                 
             </div>
         </div>
@@ -30,8 +30,7 @@
                                         <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                     </div>
                                 </div>
-                        </inertia-link>
-                        <jet-button class="mt-2" @click="gotoDasar()">Atur Jadwal Imunisasi Wajib</jet-button>   
+                        </inertia-link>   
                     </div>
                 </div>
             </div>
@@ -50,8 +49,7 @@
                                             <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                         </div>
                                     </div>
-                            </inertia-link>
-                            <jet-button class="mt-2" @click="gotoPilihan()">Atur Jadwal Imunisasi Pilihan</jet-button>  
+                            </inertia-link>    
                         </div>
                 </div>
             </div>
@@ -124,12 +122,9 @@
         },
 
         methods:{
-            gotoDasar(){
-                // this.$inertia.get(this.route('form'));
+            gotoAnak(){
+                this.$inertia.get(this.route('databayi'));
             },
-            gotoPilihan(){
-                this.$inertia.get(this.route('kondisi'));
-            }
         },
         data: function () {
             return {
