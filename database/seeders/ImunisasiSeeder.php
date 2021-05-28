@@ -21,7 +21,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Kelompok usia 11–12 tahun yang diulang kembali dengan booster pada usia 16 tahun, pria atau wanita berusia 56 tahun atau lebih, orang-orang yang hendak bepergian ke wilayah endemis meningitis, orang dengan sistem kekebalan tubuh rendah, misalnya penderita HIV, petugas medis, khususnya yang sering berurusan dengan pasien meningitis.',
                 'kontraindikasi'=>'Orang-orang yang mengalami reaksi alergi parah dan mengacam keselamatan jiwa, khususnya setelah diberikan vaksin meningitis atau jenis vaksin lainnya, orang yang sedang sakit, orang-orang dengan sindrom Guillain-Barre.',
                 'dosis'=>'1 kali pemberian',
-                'harga'=>'erkisar di harga Rp800.000 untuk vaksin Meningitis Konjugat, Berkisar di harga Rp300.000 untuk vaksin Meningitis Polisakarida',
+                'harga'=>'Berkisar di harga Rp800.000 untuk vaksin Meningitis Konjugat, Berkisar di harga Rp300.000 untuk vaksin Meningitis Polisakarida',
             ],
             [
                 'nama'=>'Imunisasi Yellow Fever',
@@ -260,7 +260,7 @@ class ImunisasiSeeder extends Seeder
                 'manfaat'=>'Vaksin rotavirus dapat melindungi anak dari diare akibat infeksi rotavirus. Penyakit tersebut bisa berbahaya karena berisiko tinggi menyebabkan anak terkena dehidrasi. Infeksi rotavius banyak ditemukan pada anak berusia 3–5 tahun dan merupakan penyebab utama diare dengan dehidrasi berat pada anak balita. WHO memperkirakan kematian akibat gastroenteritis rotavirus sejumlah 453.000 dengan laju mortalitas 86 kematian per 100.000 populasi pada anak di bawah 5 tahun. Angka ini menyumbang 5% dari seluruh penyebab kematian pada anak. ',
                 'indikasi'=>'Semua bayi berusa 2-8 bulan yang belum diberikan imunisasi rotavirus.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi rotavirus.',
-                'dosis'=>'3 dosis untuk bati usia 2,4,6 bulan.',
+                'dosis'=>'3 dosis untuk bayi usia 2,4,6 bulan.',
                 'harga'=>'Berkisar di harga Rp500.000',
             ],
             [
@@ -268,7 +268,7 @@ class ImunisasiSeeder extends Seeder
                 'manfaat'=>'Vaksin rotavirus dapat melindungi anak dari diare akibat infeksi rotavirus. Penyakit tersebut bisa berbahaya karena berisiko tinggi menyebabkan anak terkena dehidrasi. Infeksi rotavius banyak ditemukan pada anak berusia 3–5 tahun dan merupakan penyebab utama diare dengan dehidrasi berat pada anak balita. WHO memperkirakan kematian akibat gastroenteritis rotavirus sejumlah 453.000 dengan laju mortalitas 86 kematian per 100.000 populasi pada anak di bawah 5 tahun. Angka ini menyumbang 5% dari seluruh penyebab kematian pada anak. ',
                 'indikasi'=>'Semua bayi berusa 2-8 bulan yang belum diberikan imunisasi rotavirus.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi rotavirus.',
-                'dosis'=>'3 dosis untuk bati usia 2,4,6 bulan.',
+                'dosis'=>'3 dosis untuk bayi usia 2,4,6 bulan.',
                 'harga'=>'Berkisar di harga Rp500.000',
             ],
         ];
