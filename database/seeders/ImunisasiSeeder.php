@@ -21,7 +21,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Kelompok usia 11–12 tahun yang diulang kembali dengan booster pada usia 16 tahun, pria atau wanita berusia 56 tahun atau lebih, orang-orang yang hendak bepergian ke wilayah endemis meningitis, orang dengan sistem kekebalan tubuh rendah, misalnya penderita HIV, petugas medis, khususnya yang sering berurusan dengan pasien meningitis.',
                 'kontraindikasi'=>'Orang-orang yang mengalami reaksi alergi parah dan mengacam keselamatan jiwa, khususnya setelah diberikan vaksin meningitis atau jenis vaksin lainnya, orang yang sedang sakit, orang-orang dengan sindrom Guillain-Barre.',
                 'dosis'=>'1 kali pemberian',
-                'harga'=>'Rp295.000 - Rp360.000',
+                'harga'=>'erkisar di harga Rp800.000 untuk vaksin Meningitis Konjugat, Berkisar di harga Rp300.000 untuk vaksin Meningitis Polisakarida',
             ],
             [
                 'nama'=>'Imunisasi Yellow Fever',
@@ -45,7 +45,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Kelompok berisiko yaitu bayi yang tidak mendapat ASI, tinggal bersama perokok aktif, memiliki saudara yang dititipkan di TPA, memiliki gangguan imunitas (HIV, defisiensi immunoglobulin, keganasan), menderita penyakit jantung dan paru kronik, gagal ginjal kronik, gangguan hati, dan pasien transplantasi organ.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi PCV sebelumnya.',
                 'dosis'=>'2 dosis untuk usia 2 bulan & > 1 tahun, 3 dosis untuk usia 7-11 bulan',
-                'harga'=>'Rp300.000 - Rp800.000',
+                'harga'=>'Rp800.000 - Rp900.000',
             ],
             [
                 'nama'=>'Imunisasi Pneumokokus (PCV) 2',
@@ -53,7 +53,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Kelompok berisiko yaitu bayi yang tidak mendapat ASI, tinggal bersama perokok aktif, memiliki saudara yang dititipkan di TPA, memiliki gangguan imunitas (HIV, defisiensi immunoglobulin, keganasan), menderita penyakit jantung dan paru kronik, gagal ginjal kronik, gangguan hati, dan pasien transplantasi organ.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi PCV sebelumnya.',
                 'dosis'=>'2 dosis untuk usia 2 bulan & > 1 tahun, 3 dosis untuk usia 7-11 bulan',
-                'harga'=>'Rp300.000 - Rp800.000',
+                'harga'=>'Rp800.000 - Rp900.000',
             ],
             [
                 'nama'=>'Imunisasi Pneumokokus (PCV) 3',
@@ -61,7 +61,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Kelompok berisiko yaitu bayi yang tidak mendapat ASI, tinggal bersama perokok aktif, memiliki saudara yang dititipkan di TPA, memiliki gangguan imunitas (HIV, defisiensi immunoglobulin, keganasan), menderita penyakit jantung dan paru kronik, gagal ginjal kronik, gangguan hati, dan pasien transplantasi organ.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi PCV sebelumnya.',
                 'dosis'=>'2 dosis untuk usia 2 bulan & > 1 tahun, 3 dosis untuk usia 7-11 bulan',
-                'harga'=>'Rp300.000 - Rp800.000',
+                'harga'=>'Rp800.000 - Rp900.000',
             ],
             [
                 'nama'=>'Imunisasi Varisela 1',
@@ -69,7 +69,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum mendapat imunisasi varisela dengan usia minimal 6 bulan, terpapar dengan penderita cacar dalam 72 jam dan belum pernah mendapat imunisasi cacar, penderita keganasan/kanker.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi varisela, demam tinggi, sedang sakit berat, kondisi dengan gangguan imunitas (HIV, imunodefisiensi, pengguna obat steroid jangka panjang/imunosupresif, mendapatkan kemoterapi atau radiasi), alergi terhadap obat neomisin atau obat yang mengandung gelatin.',
                 'dosis'=>'2 dosis, interval minimal 1 bulan.',
-                'harga'=>'Rp480.000 - Rp520.000',
+                'harga'=>'Rp600.000 - Rp700.000',
             ],
             [
                 'nama'=>'Imunisasi Varisela 2',
@@ -77,7 +77,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum mendapat imunisasi varisela dengan usia minimal 6 bulan, terpapar dengan penderita cacar dalam 72 jam dan belum pernah mendapat imunisasi cacar, penderita keganasan/kanker.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi varisela, demam tinggi, sedang sakit berat, kondisi dengan gangguan imunitas (HIV, imunodefisiensi, pengguna obat steroid jangka panjang/imunosupresif, mendapatkan kemoterapi atau radiasi), alergi terhadap obat neomisin atau obat yang mengandung gelatin.',
                 'dosis'=>'2 dosis, interval minimal 1 bulan.',
-                'harga'=>'Rp480.000 - Rp520.000',
+                'harga'=>'Rp600.000 - Rp700.000',
             ],
             [
                 'nama'=>'Imunisasi Tifoid Polisakarida',
@@ -85,7 +85,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum mendapat imunisasi tifoid dengan usia minimal 24 bulan.',
                 'kontraindikasi'=>'Demam, penyakit akut dan kronik progresif, riwayat alergi pada pemberian imunisasi tifoid sebelumnya.',
                 'dosis'=>'2 dosis',
-                'harga'=>'Berkisar di Rp330.000',
+                'harga'=>'Rp300.000 - Rp900.000',
             ],
             [
                 'nama'=>'Imunisasi Tifoid Lanjutan',
@@ -93,7 +93,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum mendapat imunisasi tifoid dengan usia minimal 24 bulan.',
                 'kontraindikasi'=>'Demam, penyakit akut dan kronik progresif, riwayat alergi pada pemberian imunisasi tifoid sebelumnya.',
                 'dosis'=>'2 dosis',
-                'harga'=>'Berkisar di Rp330.000',
+                'harga'=>'Rp300.000 - Rp900.000',
             ],
             [
                 'nama'=>'Imunisasi Hepatitis A 1',
@@ -101,7 +101,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum mendapat imunisasi hepatitis A atau yang tinggal di daerah endemis dengan usia minimal 2 tahun, penderita penyakit hati kronis, pasca paparan dengan penderita hepatitis A.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi hepatitis A, alergi terhadap neomisin atau obat yang mengandung gelatin (Avaxim).',
                 'dosis'=>'2 dosis',
-                'harga'=>'Rp450.000 - Rp520.000',
+                'harga'=>'Rp500.000 - Rp600.000',
             ],
             [
                 'nama'=>'Imunisasi Hepatitis A 2',
@@ -109,7 +109,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum mendapat imunisasi hepatitis A atau yang tinggal di daerah endemis dengan usia minimal 2 tahun, penderita penyakit hati kronis, pasca paparan dengan penderita hepatitis A.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi hepatitis A, alergi terhadap neomisin atau obat yang mengandung gelatin (Avaxim).',
                 'dosis'=>'2 dosis',
-                'harga'=>'Rp450.000 - Rp520.000',
+                'harga'=>'Rp500.000 - Rp600.000',
             ],
             [
                 'nama'=>'Imunisasi HPV 1',
@@ -117,7 +117,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum mendapat imunisasi HPV mulai usia 9 tahun dan belum/tidak terinfeksi HPV.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi HPV, ibu hamil (perhatian khusus).',
                 'dosis'=>'2 dosis untuk anak usia 9-14 tahun, 3 dosis untuk anak usia > 15 tahun',
-                'harga'=>'Rp820.000 - Rp950.000',
+                'harga'=>'Rp900.000 - Rp1.200.000',
             ],
             [
                 'nama'=>'Imunisasi HPV 2',
@@ -125,7 +125,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum mendapat imunisasi HPV mulai usia 9 tahun dan belum/tidak terinfeksi HPV.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi HPV, ibu hamil (perhatian khusus).',
                 'dosis'=>'2 dosis untuk anak usia 9-14 tahun, 3 dosis untuk anak usia > 15 tahun',
-                'harga'=>'Rp820.000 - Rp950.000',
+                'harga'=>'Rp900.000 - Rp1.200.000',
             ],
             [
                 'nama'=>'Imunisasi HPV 1 Bivalen',
@@ -133,7 +133,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum mendapat imunisasi HPV mulai usia 9 tahun dan belum/tidak terinfeksi HPV.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi HPV, ibu hamil (perhatian khusus).',
                 'dosis'=>'2 dosis untuk anak usia 9-14 tahun, 3 dosis untuk anak usia > 15 tahun',
-                'harga'=>'Rp820.000 - Rp950.000',
+                'harga'=>'Rp900.000 - Rp1.200.000',
             ],
             [
                 'nama'=>'Imunisasi HPV 2 Bivalen',
@@ -141,7 +141,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum mendapat imunisasi HPV mulai usia 9 tahun dan belum/tidak terinfeksi HPV.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi HPV, ibu hamil (perhatian khusus).',
                 'dosis'=>'2 dosis untuk anak usia 9-14 tahun, 3 dosis untuk anak usia > 15 tahun',
-                'harga'=>'Rp820.000 - Rp950.000',
+                'harga'=>'Rp900.000 - Rp1.200.000',
             ],
             [
                 'nama'=>'Imunisasi HPV 3 Bivalen',
@@ -149,7 +149,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum mendapat imunisasi HPV mulai usia 9 tahun dan belum/tidak terinfeksi HPV.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi HPV, ibu hamil (perhatian khusus).',
                 'dosis'=>'2 dosis untuk anak usia 9-14 tahun, 3 dosis untuk anak usia > 15 tahun',
-                'harga'=>'Rp820.000 - Rp950.000',
+                'harga'=>'Rp900.000 - Rp1.200.000',
             ],
             [
                 'nama'=>'Imunisasi HPV 1 Quadrivalen',
@@ -157,7 +157,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum mendapat imunisasi HPV mulai usia 9 tahun dan belum/tidak terinfeksi HPV.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi HPV, ibu hamil (perhatian khusus).',
                 'dosis'=>'2 dosis untuk anak usia 9-14 tahun, 3 dosis untuk anak usia > 15 tahun',
-                'harga'=>'Rp820.000 - Rp950.000',
+                'harga'=>'Rp900.000 - Rp1.200.000',
             ],
             [
                 'nama'=>'Imunisasi HPV 2 Quadrivalen',
@@ -165,7 +165,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum mendapat imunisasi HPV mulai usia 9 tahun dan belum/tidak terinfeksi HPV.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi HPV, ibu hamil (perhatian khusus).',
                 'dosis'=>'2 dosis untuk anak usia 9-14 tahun, 3 dosis untuk anak usia > 15 tahun',
-                'harga'=>'Rp820.000 - Rp950.000',
+                'harga'=>'Rp900.000 - Rp1.200.000',
             ],
             [
                 'nama'=>'Imunisasi HPV 3 Quadrivalen',
@@ -173,7 +173,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum mendapat imunisasi HPV mulai usia 9 tahun dan belum/tidak terinfeksi HPV.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi HPV, ibu hamil (perhatian khusus).',
                 'dosis'=>'2 dosis untuk anak usia 9-14 tahun, 3 dosis untuk anak usia > 15 tahun',
-                'harga'=>'Rp820.000 - Rp950.000',
+                'harga'=>'Rp900.000 - Rp1.200.000',
             ],
             [
                 'nama'=>'Imunisasi Japanese Ensephalitis',
@@ -181,7 +181,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum mendapatkan imunisasi JE dengan usia minimal 12 bulan yang tinggal atau bepergian ke daerah endemis > 1 bulan.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi JE sebelumnya, sedang sakit berat, kondisi dengan gangguan imunitas (HIV, imunodefisiensi, pengguna obat steroid jangka panjang/imunosupresif, mendapatkan kemoterapi atau radiasi).',
                 'dosis'=>'2 dosis',
-                'harga'=>'Berkisar di Rp450.000',
+                'harga'=>'Berkisar di harga Rp600.000',
             ],
             [
                 'nama'=>'Imunisasi Japanese Ensephalitis 2',
@@ -189,7 +189,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum mendapatkan imunisasi JE dengan usia minimal 12 bulan yang tinggal atau bepergian ke daerah endemis > 1 bulan.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi JE sebelumnya, sedang sakit berat, kondisi dengan gangguan imunitas (HIV, imunodefisiensi, pengguna obat steroid jangka panjang/imunosupresif, mendapatkan kemoterapi atau radiasi).',
                 'dosis'=>'2 dosis',
-                'harga'=>'Berkisar di Rp450.000',
+                'harga'=>'Berkisar di harga Rp600.000',
             ],
             [
                 'nama'=>'Imunisasi Hepatitis B 1',
@@ -197,7 +197,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Diberikan pada kelompok yang memiliki risiko tinggi seperti tenaga kesehatan, individu yang rutin menerima produk darah, individu yang memiliki perilaku seksual tidak aman, pengguna narkotika jarum suntik, individu yang akan berpergian ke daerah endemis hepatitis B, maupun kontak erat dengan pasien Hepatitis B.',
                 'kontraindikasi'=>'Tidak diberikan pada pasien yang memiliki reaksi alergi berat, seperti anafilaksis, terhadap dosis sebelumnya, atau terhadap komponen vaksin. Karena vaksin hepatitis B rekombinan mengandung sel ragi, alergi terhadap ragi juga menjadi kontraindikasi.',
                 'dosis'=>'3 dosis, bulan ke 0, 1, dan 6.',
-                'harga'=>'Berkisar di Rp500.000',
+                'harga'=>'Rp300.000 - Rp400.000',
             ],
             [
                 'nama'=>'Imunisasi Hepatitis B 2',
@@ -205,7 +205,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Diberikan pada kelompok yang memiliki risiko tinggi seperti tenaga kesehatan, individu yang rutin menerima produk darah, individu yang memiliki perilaku seksual tidak aman, pengguna narkotika jarum suntik, individu yang akan berpergian ke daerah endemis hepatitis B, maupun kontak erat dengan pasien Hepatitis B.',
                 'kontraindikasi'=>'Tidak diberikan pada pasien yang memiliki reaksi alergi berat, seperti anafilaksis, terhadap dosis sebelumnya, atau terhadap komponen vaksin. Karena vaksin hepatitis B rekombinan mengandung sel ragi, alergi terhadap ragi juga menjadi kontraindikasi.',
                 'dosis'=>'3 dosis, bulan ke 0, 1, dan 6.',
-                'harga'=>'Berkisar di Rp500.000',
+                'harga'=>'Rp300.000 - Rp400.000',
             ],
             [
                 'nama'=>'Imunisasi Hepatitis B 3',
@@ -213,7 +213,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Diberikan pada kelompok yang memiliki risiko tinggi seperti tenaga kesehatan, individu yang rutin menerima produk darah, individu yang memiliki perilaku seksual tidak aman, pengguna narkotika jarum suntik, individu yang akan berpergian ke daerah endemis hepatitis B, maupun kontak erat dengan pasien Hepatitis B.',
                 'kontraindikasi'=>'Tidak diberikan pada pasien yang memiliki reaksi alergi berat, seperti anafilaksis, terhadap dosis sebelumnya, atau terhadap komponen vaksin. Karena vaksin hepatitis B rekombinan mengandung sel ragi, alergi terhadap ragi juga menjadi kontraindikasi.',
                 'dosis'=>'3 dosis, bulan ke 0, 1, dan 6.',
-                'harga'=>'Berkisar di Rp500.000',
+                'harga'=>'Rp300.000 - Rp400.000',
             ],
             [
                 'nama'=>'Imunisasi Demam Berdarah 1',
@@ -245,7 +245,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum diberikan imunisasi influenza usia > 6 bulan, anak dengan penyakit jantung kronik, saluran napas kronis seperti asma, diabetes, penyakit ginjal kronis, gangguan imunitas (HIV atau pengguna obat imunisupresif jangka panjang), anak yang tinggal di asrama.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi influenza sebelumnya, berhati-hati pada individu yang alergi terhadap telur, riwayat sakit lumpuh layu (penderita Guillain Barre Syndrome), demam akut yang berat.',
                 'dosis'=>'2 dosis untuk anak usia 6 bulan-8 tahun, 1 dosis untuk anak usia >=9 tahun. Diulang setiap tahun.',
-                'harga'=>'Rp210.000 - Rp350.000',
+                'harga'=>'Rp300.000 - Rp450.000',
             ],
             [
                 'nama'=>'Imunisasi Influenza 2',
@@ -253,7 +253,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua anak yang belum diberikan imunisasi influenza usia > 6 bulan, anak dengan penyakit jantung kronik, saluran napas kronis seperti asma, diabetes, penyakit ginjal kronis, gangguan imunitas (HIV atau pengguna obat imunisupresif jangka panjang), anak yang tinggal di asrama.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi influenza sebelumnya, berhati-hati pada individu yang alergi terhadap telur, riwayat sakit lumpuh layu (penderita Guillain Barre Syndrome), demam akut yang berat.',
                 'dosis'=>'2 dosis untuk anak usia 6 bulan-8 tahun, 1 dosis untuk anak usia >=9 tahun. Diulang setiap tahun.',
-                'harga'=>'Rp210.000 - Rp350.000',
+                'harga'=>'Rp300.000 - Rp450.000',
             ],
             [
                 'nama'=>'Imunisasi Rotavirus 1',
@@ -261,7 +261,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua bayi berusa 2-8 bulan yang belum diberikan imunisasi rotavirus.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi rotavirus.',
                 'dosis'=>'3 dosis untuk bati usia 2,4,6 bulan.',
-                'harga'=>'Berkisar di Rp350.000',
+                'harga'=>'Berkisar di harga Rp500.000',
             ],
             [
                 'nama'=>'Imunisasi Rotavirus 2',
@@ -269,7 +269,7 @@ class ImunisasiSeeder extends Seeder
                 'indikasi'=>'Semua bayi berusa 2-8 bulan yang belum diberikan imunisasi rotavirus.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi rotavirus.',
                 'dosis'=>'3 dosis untuk bati usia 2,4,6 bulan.',
-                'harga'=>'Berkisar di Rp350.000',
+                'harga'=>'Berkisar di harga Rp500.000',
             ],
         ];
 
