@@ -32,7 +32,8 @@
                         </div>
                         
                     </div>
-                    <h3 class="font-semibold mt-6 text-xl text-indigo-500 leading-tight">
+                    
+                    <h3 class="mt-6 font-semibold text-xl text-indigo-500 leading-tight">
                         Daftar Imunisasi
                     </h3>
                     <div class="mt-4 overflow-x-auto">
@@ -58,16 +59,9 @@
                                 <span v-if="jadwal.tgl_pelaksanaan != NULL" class="text-green-500 font-semibold">Sudah Dilakukan</span>
                                 <span v-else class="text-red-500 font-semibold">Belum Dilakukan</span>
                             </td>
+                            <td>{{ formatDate(jadwal.tgl_pelaksanaan) }}</td>
                             <td>
-                                <div v-if="jadwal.tgl_pelaksanaan == NULL">
-                                    {{ jadwal.tgl_pelaksanaan}}
-                                </div>
-                                <div v-else>
-                                    {{ formatDate(jadwal.tgl_pelaksanaan) }}
-                                </div>
-                            </td>
-                            <td>
-                                <button v-if="jadwal.status != 'Sudah Dilakukan'" @click="edit(jadwal)" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Update</button>
+                                <button @click="edit(jadwal)" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Update</button>
                             </td>
                             <td>
                                 <inertia-link class="text-sm text-indigo-500 underline" :href="route('imunisasi' ,{ data:jadwal.nama})" method="get">
@@ -120,7 +114,9 @@
                         </div>
                       </div>
                     </div>
-                    
+                    <div>
+                        <p class="mt-6 font-semibold italic text-center text-sm">Pastikan anak Anda dalam kondisi fit (tidak sedang demam, batuk, pilek) saat akan mendapatkan imunisasi. Disarankan untuk melakukan konsultasi dengan dokter anak terlebih dahulu. </p>
+                    </div>
                     <div>
                         <inertia-link class="text-indigo-500" :href="route('kondisi', {baby_id:baby.id})">
                             <div class="mt-3 flex items-center underline text-sm font-semibold text-indigo-700">
@@ -186,7 +182,7 @@
                 editMode: false,
                 isOpen: false,
                 form: {
-                    Status: "Belum Dilakukan",
+                    status: null,
                     tgl_pelaksanaan: null,
                 },
             }
@@ -219,6 +215,9 @@
                 this.closeModal();
             },
             formatDate(date) {
+                if (!date) {
+                    return '-'
+                }
                 const tgl = new Date(date)
                 return format(tgl, "d MMMM yyyy", {
                         locale: id

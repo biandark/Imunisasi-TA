@@ -19,6 +19,10 @@ class BabyController extends Controller
         $id = Auth::user()->id;
         $babies = Baby::where('user_id', $id)->get();
     
+        if (empty($babies->first())) {
+            return redirect()->route('databayi.create');
+        }
+
         return Inertia::render('DataBayi', [
             'babies' => $babies,
         ]);
@@ -37,7 +41,6 @@ class BabyController extends Controller
         ])->validate();
 
         $baby= Baby::create($request->only(['nama','ttl','bb','gender','user_id']));
-
         return redirect()->route('databayi');
     }
 

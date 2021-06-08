@@ -13,7 +13,7 @@
                         <h3 class="font-semibold mt-6 text-xl text-indigo-500 leading-tight">
                                 Daftar Anak
                         </h3>
-                        <div class="max-w-4xl mx-auto">
+                        <div class="mt-4 overflow-x-auto">
                             <table class="min-w-full leading-normal">
                                 <thead>
                                     <tr>
@@ -21,7 +21,8 @@
                                         <th class="px-2 py-3">Nama</th>
                                         <th class="px-2 py-3">Tanggal Lahir</th>
                                         <th class="px-2 py-3">Jenis Kelamin</th>
-                                        <th class="px-2 py-3"></th>
+                                        <th ></th>
+                                        <th ></th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y text-sm">
@@ -30,7 +31,7 @@
                                         <td class="px-2 py-1">{{ baby.nama }}</td>
                                         <td class="px-2 py-1 text-center">{{ formatDate(baby.ttl) }}</td>
                                         <td class="px-2 py-1 text-center">{{ baby.gender }}</td>
-                                        <td class="px-2 py-1 text-right">
+                                        <td class="text-right">
                                             <inertia-link v-if="checkAge(baby.ttl)" :href="route('form', {baby_id: baby.id})">
                                                 <button class="border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline">
                                                     Imunisasi Wajib
@@ -40,6 +41,13 @@
                                                 <button class="border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline">
                                                     Imunisasi Pilihan
                                                 </button>
+                                            </inertia-link>
+                                        </td>
+                                        <td>
+                                            <inertia-link class="text-indigo-500" :href="route('riwayat', {baby_id:baby.id})">
+                                                <div class="items-center text-sm font-semibold text-indigo-700">
+                                                    <div>Riwayat Imunisasi Pilihan</div>
+                                                </div>
                                             </inertia-link>
                                         </td>
                                     </tr>

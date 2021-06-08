@@ -42,7 +42,7 @@ class ImunisasiSeeder extends Seeder
             [
                 'nama'=>'Imunisasi Pneumokokus (PCV) 1',
                 'manfaat'=>'Imunisasi yang diberikan untuk mencegah penyakit meningitis, pneumonia, dan infeksi darah atau sepsis. Berdasarkan UNICEF, pada 2015 terdapat kurang lebih 14 persen dari 147.000 anak di bawah usia 5 tahun di Indonesia meninggal karena pneumonia. Dari statistik tersebut, dapat diartikan sebanyak 2-3 anak di bawah usia 5 tahun meninggal karena pneumonia setiap jamnya. Hal tersebut menempatkan pneumonia sebagai penyebab kematian utama bagi anak di bawah usia 5 tahun di Indonesia.',
-                'indikasi'=>'Kelompok berisiko yaitu bayi yang tidak mendapat ASI, tinggal bersama perokok aktif, memiliki saudara yang dititipkan di TPA, memiliki gangguan imunitas (HIV, defisiensi immunoglobulin, keganasan), menderita penyakit jantung dan paru kronik, gagal ginjal kronik, gangguan hati, dan pasien transplantasi organ.',
+                'indikasi'=>'Kelompok berisiko yaitu bayi yang tidak mendapat ASI, tinggal bersama perokok aktif, memiliki saudara yang dititipkan di TPA, memiliki gangguan imunitas (HIV, defisiensi immunoglobulin, keganasan), menderita penyakit jantung dan paru kronik, gagal ginjal kronik, gangguan hati, dan pasien transplantasi organ. Direkomendasikan untuk diberikan pada anak dan dewasa saat pandemi Covid-19.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi PCV sebelumnya.',
                 'dosis'=>'2 dosis untuk usia 2 bulan & > 1 tahun, 3 dosis untuk usia 7-11 bulan',
                 'harga'=>'Rp800.000 - Rp900.000',
@@ -50,7 +50,7 @@ class ImunisasiSeeder extends Seeder
             [
                 'nama'=>'Imunisasi Pneumokokus (PCV) 2',
                 'manfaat'=>'Imunisasi yang diberikan untuk mencegah penyakit meningitis, pneumonia, dan infeksi darah atau sepsis. Berdasarkan UNICEF, pada 2015 terdapat kurang lebih 14 persen dari 147.000 anak di bawah usia 5 tahun di Indonesia meninggal karena pneumonia. Dari statistik tersebut, dapat diartikan sebanyak 2-3 anak di bawah usia 5 tahun meninggal karena pneumonia setiap jamnya. Hal tersebut menempatkan pneumonia sebagai penyebab kematian utama bagi anak di bawah usia 5 tahun di Indonesia.',
-                'indikasi'=>'Kelompok berisiko yaitu bayi yang tidak mendapat ASI, tinggal bersama perokok aktif, memiliki saudara yang dititipkan di TPA, memiliki gangguan imunitas (HIV, defisiensi immunoglobulin, keganasan), menderita penyakit jantung dan paru kronik, gagal ginjal kronik, gangguan hati, dan pasien transplantasi organ.',
+                'indikasi'=>'Kelompok berisiko yaitu bayi yang tidak mendapat ASI, tinggal bersama perokok aktif, memiliki saudara yang dititipkan di TPA, memiliki gangguan imunitas (HIV, defisiensi immunoglobulin, keganasan), menderita penyakit jantung dan paru kronik, gagal ginjal kronik, gangguan hati, dan pasien transplantasi organ. Direkomendasikan untuk diberikan pada anak dan dewasa saat pandemi Covid-19.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi PCV sebelumnya.',
                 'dosis'=>'2 dosis untuk usia 2 bulan & > 1 tahun, 3 dosis untuk usia 7-11 bulan',
                 'harga'=>'Rp800.000 - Rp900.000',
@@ -58,7 +58,7 @@ class ImunisasiSeeder extends Seeder
             [
                 'nama'=>'Imunisasi Pneumokokus (PCV) 3',
                 'manfaat'=>'Imunisasi yang diberikan untuk mencegah penyakit meningitis, pneumonia, dan infeksi darah atau sepsis. Berdasarkan UNICEF, pada 2015 terdapat kurang lebih 14 persen dari 147.000 anak di bawah usia 5 tahun di Indonesia meninggal karena pneumonia. Dari statistik tersebut, dapat diartikan sebanyak 2-3 anak di bawah usia 5 tahun meninggal karena pneumonia setiap jamnya. Hal tersebut menempatkan pneumonia sebagai penyebab kematian utama bagi anak di bawah usia 5 tahun di Indonesia.',
-                'indikasi'=>'Kelompok berisiko yaitu bayi yang tidak mendapat ASI, tinggal bersama perokok aktif, memiliki saudara yang dititipkan di TPA, memiliki gangguan imunitas (HIV, defisiensi immunoglobulin, keganasan), menderita penyakit jantung dan paru kronik, gagal ginjal kronik, gangguan hati, dan pasien transplantasi organ.',
+                'indikasi'=>'Kelompok berisiko yaitu bayi yang tidak mendapat ASI, tinggal bersama perokok aktif, memiliki saudara yang dititipkan di TPA, memiliki gangguan imunitas (HIV, defisiensi immunoglobulin, keganasan), menderita penyakit jantung dan paru kronik, gagal ginjal kronik, gangguan hati, dan pasien transplantasi organ. Direkomendasikan untuk diberikan pada anak dan dewasa saat pandemi Covid-19.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi PCV sebelumnya.',
                 'dosis'=>'2 dosis untuk usia 2 bulan & > 1 tahun, 3 dosis untuk usia 7-11 bulan',
                 'harga'=>'Rp800.000 - Rp900.000',
@@ -218,7 +218,7 @@ class ImunisasiSeeder extends Seeder
             [
                 'nama'=>'Imunisasi Demam Berdarah 1',
                 'manfaat'=>'Imunisasi diberikan untuk mencegah infeksi dengue sehingga mampu mengurangi risiko seorang anak terkena infeksi dengue yang berat. Demam berdarah kerap kali melanda daerah beriklim tropis, seperti Indonesia. Tingginya kasus demam berdarah membuat banyak peneliti berusaha mengembangkan vaksin yang paling efektif untuk mencegah penyakit ini. Organisasi Kesehatan Dunia (WHO) melaporkan bahwa sekitar 20.000 orang meninggal setiap tahunnya karena demam berdarah.',
-                'indikasi'=>'Semua anak yang belum mendapat imunisasi dengue yang tinggal di daerah rawan demam berdarah.',
+                'indikasi'=>'Semua anak usia 9-16 tahun yang belum mendapat imunisasi dengue yang tinggal di daerah rawan demam berdarah.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi dengue sebelumnya, kondisi dengan gangguan imunitas (HIV, imunodefisiensi, pengguna obat steroid jangka panjang/imunosupresif, mendapatkan kemoterapi atau radiasi), ibu hamil (perhatian khusus).',
                 'dosis'=>'3 dosis, jarak masing-masing 6 bulan.',
                 'harga'=>'Berkisar di Rp1.500.000',
@@ -226,7 +226,7 @@ class ImunisasiSeeder extends Seeder
             [
                 'nama'=>'Imunisasi Demam Berdarah 2',
                 'manfaat'=>'Imunisasi diberikan untuk mencegah infeksi dengue sehingga mampu mengurangi risiko seorang anak terkena infeksi dengue yang berat. Demam berdarah kerap kali melanda daerah beriklim tropis, seperti Indonesia. Tingginya kasus demam berdarah membuat banyak peneliti berusaha mengembangkan vaksin yang paling efektif untuk mencegah penyakit ini. Organisasi Kesehatan Dunia (WHO) melaporkan bahwa sekitar 20.000 orang meninggal setiap tahunnya karena demam berdarah.',
-                'indikasi'=>'Semua anak yang belum mendapat imunisasi dengue yang tinggal di daerah rawan demam berdarah.',
+                'indikasi'=>'Semua anak  usia 9-16 tahun yang belum mendapat imunisasi dengue yang tinggal di daerah rawan demam berdarah.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi dengue sebelumnya, kondisi dengan gangguan imunitas (HIV, imunodefisiensi, pengguna obat steroid jangka panjang/imunosupresif, mendapatkan kemoterapi atau radiasi), ibu hamil (perhatian khusus).',
                 'dosis'=>'3 dosis, jarak masing-masing 6 bulan.',
                 'harga'=>'Berkisar di Rp1.500.000',
@@ -234,7 +234,7 @@ class ImunisasiSeeder extends Seeder
             [
                 'nama'=>'Imunisasi Demam Berdarah 3',
                 'manfaat'=>'Imunisasi diberikan untuk mencegah infeksi dengue sehingga mampu mengurangi risiko seorang anak terkena infeksi dengue yang berat. Demam berdarah kerap kali melanda daerah beriklim tropis, seperti Indonesia. Tingginya kasus demam berdarah membuat banyak peneliti berusaha mengembangkan vaksin yang paling efektif untuk mencegah penyakit ini. Organisasi Kesehatan Dunia (WHO) melaporkan bahwa sekitar 20.000 orang meninggal setiap tahunnya karena demam berdarah.',
-                'indikasi'=>'Semua anak yang belum mendapat imunisasi dengue yang tinggal di daerah rawan demam berdarah.',
+                'indikasi'=>'Semua anak  usia 9-16 tahun yang belum mendapat imunisasi dengue yang tinggal di daerah rawan demam berdarah.',
                 'kontraindikasi'=>'Riwayat alergi berat pada pemberian imunisasi dengue sebelumnya, kondisi dengan gangguan imunitas (HIV, imunodefisiensi, pengguna obat steroid jangka panjang/imunosupresif, mendapatkan kemoterapi atau radiasi), ibu hamil (perhatian khusus).',
                 'dosis'=>'3 dosis, jarak masing-masing 6 bulan.',
                 'harga'=>'Berkisar di Rp1.500.000',
