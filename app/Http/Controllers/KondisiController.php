@@ -119,6 +119,7 @@ class KondisiController extends Controller
         }
         //rabies
         if (in_array("Memiliki hewan peliharaan (anjing, kucing, kera)", $kondisiku)) {
+            
             $ada = DB::table('kondisis')
                 ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
                 ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
@@ -130,6 +131,7 @@ class KondisiController extends Controller
                 $kondisi['imunisasi'] = $im[2]->id;
                 $kondisi->save();
             }
+            
         }
         //PCV
         if (in_array("Tinggal di lingkungan rokok, padat, panti", $kondisiku)) {
@@ -993,53 +995,55 @@ class KondisiController extends Controller
         }
         //HPV 1 9-14 th
         if ($baby->gender == "Perempuan" AND $usia <= 179) {
-            $ada = DB::table('kondisis')
-                ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-                ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-                ->where('baby_id', $baby_id)
-                ->where('imunisasis.id', 13)
-                ->get();
-            if ($usia >= 108) {
-                if ($kondisi['tgl_rekom']!= NULL) {
+            if ($kondisi['imunisasisblm'] == NULL) {
+                $ada = DB::table('kondisis')
+                    ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+                    ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+                    ->where('baby_id', $baby_id)
+                    ->where('imunisasis.id', 13)
+                    ->get();
+                if ($usia >= 108) {
+                    if ($kondisi['tgl_rekom']!= NULL) {
+                        if (empty($ada->first())) {
+                            $kondisi6 = Kondisi::create($request->all());
+                            $kondisi6->baby_id = $baby_id; //baby id
+                            $kondisiku6 = json_decode($kondisi6->kondisi); //ubah ke array lagi
+
+                            $rekom = Carbon::parse($kondisi['tgl_rekom']);
+                            $kondisi6['tgl_rekom']  = $rekom->addMonths(1);
+                            $kondisi6['imunisasi'] = $im[12]->id;
+                            $kondisi6->save();
+                            Jadwal::create([
+                                'kondisi_id' => $kondisi6->id,
+                            ]);
+                        }
+                    }
+                    else {
+                        if (empty($ada->first())) {
+                            $sekarang = Carbon::now();
+                            $kondisi['tgl_rekom']  = $sekarang->addDays(7);
+                            $kondisi['imunisasi'] = $im[12]->id;
+                            $kondisi->save(); 
+                        }
+                    }
+                    
+                }
+                if ($usia < 108) {
                     if (empty($ada->first())) {
                         $kondisi6 = Kondisi::create($request->all());
                         $kondisi6->baby_id = $baby_id; //baby id
-                        $kondisiku6 = json_decode($kondisi6->kondisi); //ubah ke array lagi
-
-                        $rekom = Carbon::parse($kondisi['tgl_rekom']);
-                        $kondisi6['tgl_rekom']  = $rekom->addMonths(1);
+                        $kondisiku6 = json_decode($kondisi6->kondisi); //ubah ke array lagi    
+                        $jadwalhpv = (108 - $usia)+1;
+                        $saatini = Carbon::now();
+                        $kondisi6['tgl_rekom']  = $saatini->addMonths($jadwalhpv);
                         $kondisi6['imunisasi'] = $im[12]->id;
                         $kondisi6->save();
                         Jadwal::create([
                             'kondisi_id' => $kondisi6->id,
                         ]);
                     }
-                }
-                else {
-                    if (empty($ada->first())) {
-                        $sekarang = Carbon::now();
-                        $kondisi['tgl_rekom']  = $sekarang->addDays(7);
-                        $kondisi['imunisasi'] = $im[12]->id;
-                        $kondisi->save(); 
-                    }
-                }
-                
-            }
-            if ($usia < 108) {
-                if (empty($ada->first())) {
-                    $kondisi6 = Kondisi::create($request->all());
-                    $kondisi6->baby_id = $baby_id; //baby id
-                    $kondisiku6 = json_decode($kondisi6->kondisi); //ubah ke array lagi    
-                    $jadwalhpv = (108 - $usia)+1;
-                    $saatini = Carbon::now();
-                    $kondisi6['tgl_rekom']  = $saatini->addMonths($jadwalhpv);
-                    $kondisi6['imunisasi'] = $im[12]->id;
-                    $kondisi6->save();
-                    Jadwal::create([
-                        'kondisi_id' => $kondisi6->id,
-                    ]);
-                }
-            }              
+                }   
+            }           
         }
         //HPV 2 9-14 tahun
         if (($baby->gender == "Perempuan" AND ($usia >= 108 AND $usia <= 179)) AND $kondisi['imunisasisblm'] == "HPV 1") {
@@ -1080,35 +1084,37 @@ class KondisiController extends Controller
         }
         //HPV 1 bivalen/quad
         if ($baby->gender == "Perempuan" AND $usia >= 180) {
-            $ada = DB::table('kondisis')
-                ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-                ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-                ->where('baby_id', $baby_id)
-                ->where('imunisasis.id', 15)
-                ->get();
-                if ($kondisi['tgl_rekom']!= NULL) {
-                    if (empty($ada->first())) {
-                        $kondisi6 = Kondisi::create($request->all());
-                        $kondisi6->baby_id = $baby_id; //baby id
-                        $kondisiku6 = json_decode($kondisi6->kondisi); //ubah ke array lagi
-                        //$kondisi6->usia = $now->diffInMonths($kondisi6->tgl_lahir); //hitung usia
+            if ($kondisi['imunisasisblm'] == NULL) {
+                $ada = DB::table('kondisis')
+                    ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+                    ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+                    ->where('baby_id', $baby_id)
+                    ->where('imunisasis.id', 15)
+                    ->get();
+                    if ($kondisi['tgl_rekom']!= NULL) {
+                        if (empty($ada->first())) {
+                            $kondisi6 = Kondisi::create($request->all());
+                            $kondisi6->baby_id = $baby_id; //baby id
+                            $kondisiku6 = json_decode($kondisi6->kondisi); //ubah ke array lagi
+                            //$kondisi6->usia = $now->diffInMonths($kondisi6->tgl_lahir); //hitung usia
 
-                        $rekom = Carbon::parse($kondisi['tgl_rekom']);
-                        $kondisi6['tgl_rekom']  = $rekom->addMonths(1);
-                        $kondisi6['imunisasi'] = $im[14]->id;
-                        $kondisi6->save();
-                        Jadwal::create([
-                            'kondisi_id' => $kondisi6->id,
-                        ]);
-                    }  
-                }
-                else {
-                    if (empty($ada->first())) {
-                        $kondisi['tgl_rekom']  = $now->addDays(7);
-                        $kondisi['imunisasi'] = $im[14]->id;
-                        $kondisi->save(); 
+                            $rekom = Carbon::parse($kondisi['tgl_rekom']);
+                            $kondisi6['tgl_rekom']  = $rekom->addMonths(1);
+                            $kondisi6['imunisasi'] = $im[14]->id;
+                            $kondisi6->save();
+                            Jadwal::create([
+                                'kondisi_id' => $kondisi6->id,
+                            ]);
+                        }  
                     }
-                }
+                    else {
+                        if (empty($ada->first())) {
+                            $kondisi['tgl_rekom']  = $now->addDays(7);
+                            $kondisi['imunisasi'] = $im[14]->id;
+                            $kondisi->save(); 
+                        }
+                    }
+            }
         }
         //HPV 2 bi
         if (($baby->gender == "Perempuan" AND $usia >= 180 AND $kondisi['imunisasisblm'] == "HPV 1 Bivalen")) {
@@ -1390,34 +1396,36 @@ class KondisiController extends Controller
         }
         //varisela 1
         if ($usia >= 12) {
-            $ada = DB::table('kondisis')
-                ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-                ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-                ->where('baby_id', $baby_id)
-                ->where('imunisasis.id', 7)
-                ->get();
-            if ($kondisi['tgl_rekom']!= NULL){
-                if (empty($ada->first())) {
-                    $kondisi2 = Kondisi::create($request->all());
-                    $kondisi2->baby_id = $baby_id; //baby id
-                    $kondisiku2 = json_decode($kondisi2->kondisi); //ubah ke array lagi
-                    //$kondisi2->usia = $now->diffInMonths($kondisi2->tgl_lahir); //hitung usia
-                    $sekarang = Carbon::now();
-                    //$rekom = Carbon::parse($kondisi['tgl_rekom']);
-                    $kondisi2['tgl_rekom']  = $sekarang->addMonths(2);
-                    $kondisi2['imunisasi'] = $im[6]->id;
-                    $kondisi2->save();
-                    Jadwal::create([
-                        'kondisi_id' => $kondisi2->id,
-                    ]);
+            if ($kondisi['imunisasisblm'] == NULL) {
+                $ada = DB::table('kondisis')
+                    ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+                    ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+                    ->where('baby_id', $baby_id)
+                    ->where('imunisasis.id', 7)
+                    ->get();
+                if ($kondisi['tgl_rekom']!= NULL){
+                    if (empty($ada->first())) {
+                        $kondisi2 = Kondisi::create($request->all());
+                        $kondisi2->baby_id = $baby_id; //baby id
+                        $kondisiku2 = json_decode($kondisi2->kondisi); //ubah ke array lagi
+                        //$kondisi2->usia = $now->diffInMonths($kondisi2->tgl_lahir); //hitung usia
+                        $sekarang = Carbon::now();
+                        //$rekom = Carbon::parse($kondisi['tgl_rekom']);
+                        $kondisi2['tgl_rekom']  = $sekarang->addMonths(2);
+                        $kondisi2['imunisasi'] = $im[6]->id;
+                        $kondisi2->save();
+                        Jadwal::create([
+                            'kondisi_id' => $kondisi2->id,
+                        ]);
+                    }
                 }
-            }
-            else {
-                if (empty($ada->first())) {
-                    $sekarang = Carbon::now();
-                    $kondisi['tgl_rekom']  = $sekarang->addDays(7);
-                    $kondisi['imunisasi'] = $im[6]->id;
-                    $kondisi->save();
+                else {
+                    if (empty($ada->first())) {
+                        $sekarang = Carbon::now();
+                        $kondisi['tgl_rekom']  = $sekarang->addDays(7);
+                        $kondisi['imunisasi'] = $im[6]->id;
+                        $kondisi->save();
+                    }
                 }
             }
         }
@@ -1535,37 +1543,38 @@ class KondisiController extends Controller
         }
         //tifoid
         if ($usia >= 24) {
-            $ada = DB::table('kondisis')
-                ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-                ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-                ->where('baby_id', $baby_id)
-                ->where('imunisasis.id', 9)
-                ->get();
-            if ($kondisi['tgl_rekom']!= NULL){
-                if (empty($ada->first())) { //jika belum pernah direkomendasikan
-                    $kondisi3 = Kondisi::create($request->all());
-                    $kondisi3->baby_id = $baby_id; //baby id
-                    $kondisiku3 = json_decode($kondisi3->kondisi); //ubah ke array lagi
-                    //$kondisi3->usia = $now->diffInMonths($kondisi3->tgl_lahir); //hitung usia
-                    $sekarang = Carbon::now();
-                    //$rekom = Carbon::parse($kondisi['tgl_rekom']);
-                    $kondisi3['tgl_rekom']  = $sekarang->addMonths(3); //was: addDays(67)
-                    $kondisi3['imunisasi'] = $im[8]->id;
-                    $kondisi3->save();
-                    Jadwal::create([
-                        'kondisi_id' => $kondisi3->id,
-                    ]);
+            if ($kondisi['imunisasisblm'] == NULL) {
+                $ada = DB::table('kondisis')
+                    ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+                    ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+                    ->where('baby_id', $baby_id)
+                    ->where('imunisasis.id', 9)
+                    ->get();
+                if ($kondisi['tgl_rekom']!= NULL){
+                    if (empty($ada->first())) { //jika belum pernah direkomendasikan
+                        $kondisi3 = Kondisi::create($request->all());
+                        $kondisi3->baby_id = $baby_id; //baby id
+                        $kondisiku3 = json_decode($kondisi3->kondisi); //ubah ke array lagi
+                        //$kondisi3->usia = $now->diffInMonths($kondisi3->tgl_lahir); //hitung usia
+                        $sekarang = Carbon::now();
+                        //$rekom = Carbon::parse($kondisi['tgl_rekom']);
+                        $kondisi3['tgl_rekom']  = $sekarang->addMonths(3); //was: addDays(67)
+                        $kondisi3['imunisasi'] = $im[8]->id;
+                        $kondisi3->save();
+                        Jadwal::create([
+                            'kondisi_id' => $kondisi3->id,
+                        ]);
+                    }
+                }
+                else {
+                    if (empty($ada->first())) {
+                        $sekarang = Carbon::now();
+                        $kondisi['tgl_rekom']  = $now->addDays(7);
+                        $kondisi['imunisasi'] = $im[8]->id;
+                        $kondisi->save();
+                    }
                 }
             }
-            else {
-                if (empty($ada->first())) {
-                    $sekarang = Carbon::now();
-                    $kondisi['tgl_rekom']  = $now->addDays(7);
-                    $kondisi['imunisasi'] = $im[8]->id;
-                    $kondisi->save();
-                }
-            }
-            
         }
         //tifoid lanjutan
         if (($usia >= 24) AND $kondisi['imunisasisblm'] == "Tifoid Polisakarida") {
@@ -1644,6 +1653,7 @@ class KondisiController extends Controller
         }
         //influenza 6 bulan-8 th
         if ($usia >= 6 AND $usia <= 96) {
+            if ($kondisi['imunisasisblm'] == NULL) {
             $ada = DB::table('kondisis')
                 ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
                 ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
@@ -1672,10 +1682,11 @@ class KondisiController extends Controller
                         $kondisi['imunisasi'] = $im[28]->id;
                         $kondisi->save();
                     }
-                }  
+                }
+            }  
         }
         //Influenza 2 < 9 th
-        if ($kondisi['imunisasisblm'] == "Influenza 1") {
+        if ($usia < 108 AND $kondisi['imunisasisblm'] == "Influenza 1") {
             $ada = DB::table('kondisis')
             ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
             ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
@@ -1713,38 +1724,40 @@ class KondisiController extends Controller
         }
         //influenza > 9 th
         if ($usia >= 108) {
-            $ada = DB::table('kondisis')
-                ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-                ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-                ->where('baby_id', $baby_id)
-                ->where('imunisasis.id', 29)
-                ->get();
-            if ($kondisi['tgl_rekom']!= NULL){
-                if (empty($ada->first())) {
-                    $kondisi4 = Kondisi::create($request->all());
-                    $kondisi4->baby_id = $baby_id; //baby id
-                    $kondisiku4 = json_decode($kondisi4->kondisi); //ubah ke array lagi
-                    //$kondisi4->usia = $now->diffInMonths($kondisi4->tgl_lahir); //hitung usia
-                    $sekarang = Carbon::now();
-                    //$rekom = Carbon::parse($kondisi['tgl_rekom']);
-                    $kondisi4['tgl_rekom']  = $sekarang->addMonth(4); //was: addDays(97)
-                    $kondisi4['imunisasi'] = $im[28]->id;
-                    $kondisi4->save();
-                    Jadwal::create([
-                        'kondisi_id' => $kondisi4->id,
-                    ]);
+            if ($kondisi['imunisasisblm'] == NULL) {
+                $ada = DB::table('kondisis')
+                    ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+                    ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+                    ->where('baby_id', $baby_id)
+                    ->where('imunisasis.id', 29)
+                    ->get();
+                if ($kondisi['tgl_rekom']!= NULL){
+                    if (empty($ada->first())) {
+                        $kondisi4 = Kondisi::create($request->all());
+                        $kondisi4->baby_id = $baby_id; //baby id
+                        $kondisiku4 = json_decode($kondisi4->kondisi); //ubah ke array lagi
+                        //$kondisi4->usia = $now->diffInMonths($kondisi4->tgl_lahir); //hitung usia
+                        $sekarang = Carbon::now();
+                        //$rekom = Carbon::parse($kondisi['tgl_rekom']);
+                        $kondisi4['tgl_rekom']  = $sekarang->addMonth(4); //was: addDays(97)
+                        $kondisi4['imunisasi'] = $im[28]->id;
+                        $kondisi4->save();
+                        Jadwal::create([
+                            'kondisi_id' => $kondisi4->id,
+                        ]);
+                    }
                 }
+                else {
+                    if (empty($ada->first())) {
+                        $kondisi['tgl_rekom']  = $now->addDays(7);
+                        $kondisi['imunisasi'] = $im[28]->id;
+                        $kondisi->save();
+                    }
+                } 
             }
-            else {
-                if (empty($ada->first())) {
-                    $kondisi['tgl_rekom']  = $now->addDays(7);
-                    $kondisi['imunisasi'] = $im[28]->id;
-                    $kondisi->save();
-                }
-            } 
         }
-        //Influenza 2
-        if ($kondisi['imunisasisblm'] == "Influenza 1") {
+        //Influenza 2 > 9 th
+        if ($usia >= 108 AND $kondisi['imunisasisblm'] == "Influenza 1") {
             $ada = DB::table('kondisis')
             ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
             ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
