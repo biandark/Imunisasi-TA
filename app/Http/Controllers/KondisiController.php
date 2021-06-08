@@ -376,7 +376,7 @@ class KondisiController extends Controller
                 ]);
             }
 
-            return redirect()->route('kondisi.show', $baby_id);
+            return redirect()->back()->with('message', 'Imunisasi PCV anak sudah lengkap. Silahkan submit form kembali jika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
         }
         //PCV complete 7-23 bulan
         if ($usia >= 7 AND $kondisi['imunisasisblm'] == "Pneumokokus 2") {
@@ -415,7 +415,7 @@ class KondisiController extends Controller
                 ]);
             }
 
-            return redirect()->route('kondisi.show', $baby_id);
+            return redirect()->back()->with('message', 'Imunisasi PCV anak sudah lengkap. Silahkan submit form kembali jika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
         }
         //pcv complete 24 bulan - 5 tahun
         if ($usia >= 24 AND $kondisi['imunisasisblm'] == "Pneumokokus 1") {
@@ -436,7 +436,7 @@ class KondisiController extends Controller
                 ]);
             }
 
-            return redirect()->route('kondisi.show', $baby_id);
+            return redirect()->back()->with('message', 'Imunisasi PCV anak sudah lengkap. Silahkan submit form kembali jika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
         }
         //hepatitis A 
         if ($kondisi['travelling'] == "Ya" AND in_array("Pergi ke daerah endemis hepatitis A", $kondisiku)) {
@@ -535,7 +535,7 @@ class KondisiController extends Controller
                     'tgl_pelaksanaan' => $kondisi->tgl,
                 ]);
             }
-            return redirect()->route('kondisi.show', $baby_id);
+            return redirect()->back()->with('message', 'Imunisasi Hepatitis A sudah lengkap. Silahkan submit form kembali jika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
         }
         //JE
         if ($kondisi['travelling'] == "Ya" AND $usia >= 9 AND in_array("Pergi atau tinggal di daerah endemis Japanesse Ensephalitis", $kondisiku)) {
@@ -637,7 +637,7 @@ class KondisiController extends Controller
                     'tgl_pelaksanaan' => $kondisi->tgl,
                 ]);
             }
-            return redirect()->route('kondisi.show', $baby_id);
+            return redirect()->back()->with('message', 'Imunisasi Japanese Ensephalitis anak sudah lengkap. Silahkan submit form kembali jika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
         }
         //hepatitis b
         if (in_array("Petugas fasilitas kesehatan", $kondisiku)) {
@@ -799,7 +799,7 @@ class KondisiController extends Controller
                     'tgl_pelaksanaan' => $kondisi->tgl,
                 ]);
             }
-            return redirect()->route('kondisi.show', $baby_id);
+            return redirect()->back()->with('message', 'Imunisasi Hepatitis B sudah lengkap. Silahkan submit form kembali jika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
         }
         //dengue 1
         if ($usia <= 192 AND in_array("Pernah terkena penyakit demam berdarah", $kondisiku)) {
@@ -991,7 +991,7 @@ class KondisiController extends Controller
                     'tgl_pelaksanaan' => $kondisi->tgl,
                 ]);
             }
-            return redirect()->route('kondisi.show', $baby_id);
+            return redirect()->back()->with('message', 'Imunisasi demam berdarah anak sudah lengkap. Silahkan submit form kembali jika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
         }
         //HPV 1 9-14 th
         if ($baby->gender == "Perempuan" AND $usia <= 179) {
@@ -1336,7 +1336,7 @@ class KondisiController extends Controller
                     'tgl_pelaksanaan' => $kondisi->tgl,
                 ]);
             }
-            return redirect()->route('kondisi.show', $baby_id);
+            return redirect()->back()->with('message', 'Imunisasi HPV sudah lengkap. Silahkan submit form kembali jika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
         }
         //HPV > 15 tahun complete
         if ($usia >= 180 AND ($kondisi['imunisasisblm'] == "HPV 3 Bivalen" OR $kondisi['imunisasisblm'] == "HPV 3 Quadrivalen")) {
@@ -1392,7 +1392,7 @@ class KondisiController extends Controller
                     'tgl_pelaksanaan' => $kondisi->tgl,
                 ]);
             }
-            return redirect()->route('kondisi.show', $baby_id);
+            return redirect()->back()->with('message', 'Imunisasi HPV sudah lengkap. Silahkan submit form kembali ika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
         }
         //varisela 1
         if ($usia >= 12) {
@@ -1539,7 +1539,7 @@ class KondisiController extends Controller
                     'tgl_pelaksanaan' => $kondisi->tgl,
                 ]);
             }
-            return redirect()->route('kondisi.show', $baby_id);
+            return redirect()->back()->with('message', 'Imunisasi Varisela anak sudah lengkap. Silahkan submit form kembali jika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
         }
         //tifoid
         if ($usia >= 24) {
@@ -1649,7 +1649,7 @@ class KondisiController extends Controller
                     'tgl_pelaksanaan' => $kondisi->tgl,
                 ]);
             }
-            return redirect()->route('kondisi.show', $baby_id);
+            return redirect()->back()->with('message', 'Imunisasi Tifoid anak sudah lengkap. Silahkan submit form kembali jika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
         }
         //influenza 6 bulan-8 th
         if ($usia >= 6 AND $usia <= 96) {
@@ -1901,7 +1901,7 @@ class KondisiController extends Controller
                     'tgl_pelaksanaan' => $kondisi->tgl,
                 ]);
             }
-            return redirect()->route('kondisi.show', $baby_id);
+            return redirect()->back()->with('message', 'Imunisasi Rotavirus anak sudah lengkap. Silahkan submit form kembali jika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
         }
         //influenza, varisela, tifoid jika belum cukup umur
         if ($usia < 24) {
