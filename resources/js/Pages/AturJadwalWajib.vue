@@ -129,7 +129,7 @@
                                 <input v-model="form.done" type='checkbox' id='done12' value='12'>
                                 <label class="ml-3" for="done12">DPT-HB-Hib Lanjutan</label><br>
                                 <div v-if="form.done.includes('12')" class="ml-4 mb-4 mt-2">
-                                    <jet-label for="tgl_dpt4" value="Tanggal Pemberian DPT-HB-Hib 4" />
+                                    <jet-label for="tgl_dpt4" value="Tanggal Pemberian DPT-HB-Hib Lanjutan" />
                                     <jet-input id="tgl_dpt4" type="date" class="mt-1 block w-full" v-model="form.tgl_diberikan[12]" />
                                 </div>
 
