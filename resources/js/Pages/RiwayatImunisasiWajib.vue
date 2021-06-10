@@ -32,8 +32,12 @@
                                 <h2 class="mt-2 font-semibold">Usia</h2>
                                 <p>{{ displayAge }}</p>
                             </div>
+                            
                         </div>
-                        <h3 class="font-semibold mt-10 text-xl text-indigo-500 leading-tight">
+                        <div>
+                            <p class="mt-6 font-semibold italic text-center text-sm">Pastikan anak Anda dalam kondisi fit (tidak sedang demam, batuk, pilek) saat akan mendapatkan imunisasi. </p>
+                        </div>
+                        <h3 class="font-semibold mt-2 text-xl text-indigo-500 leading-tight">
                         Daftar Imunisasi
                         </h3>
                         <div class="mt-4 overflow-x-auto">
