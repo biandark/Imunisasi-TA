@@ -50,7 +50,7 @@ class RiwayatController extends Controller
         $done = json_encode($done);
 
         $last_polio = Riwayat::where('baby_id', $baby->id)
-            ->whereIn('imunisasiwajib_id',[3,5,7,9])
+            ->whereIn('imunisasiwajib_id',[2,4,6,8,10])
             ->where('status','Sudah')
             ->orderBy('imunisasiwajib_id','DESC')->first();
             if (!empty($last_polio)) {
@@ -58,7 +58,7 @@ class RiwayatController extends Controller
             }
 
         $last_dpt = Riwayat::where('baby_id', $baby->id)
-            ->whereIn('imunisasiwajib_id',[4,6,8,11])
+            ->whereIn('imunisasiwajib_id',[5,7,9,12])
             ->where('status','Sudah')
             ->orderBy('imunisasiwajib_id','DESC')->first();
             if (!empty($last_dpt)) {
@@ -66,7 +66,7 @@ class RiwayatController extends Controller
             }
 
         $last_mr = Riwayat::where('baby_id', $baby->id)
-            ->whereIn('imunisasiwajib_id',[10,12])
+            ->whereIn('imunisasiwajib_id',[11,13])
             ->where('status','Sudah')
             ->orderBy('imunisasiwajib_id','DESC')->first();
                 if (!empty($last_mr)) {

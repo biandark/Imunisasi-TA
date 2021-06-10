@@ -30,6 +30,21 @@ class ImunisasiwajibSeeder extends Seeder
                                             paracetamol, bayi boleh mandi atau cukup diseka dengan air hangat',
             ],
             [
+                'jenis'=>'Polio 0',
+                'deskripsi'=>'Vaksin Polio 0 merupakan vaksin polio yang diberikan saat bayi lahir. Vaksin ini merupakan vaksin yang dapat mencegah penyakit polio yang dapat menyebabkan lumpuh layu pada tungkai
+                            dan atau lengan',
+                'cara_pemberian_dosis'=>'Dapat diberikan secara oral (OPV) dan suntikan (IPV), dari sebanyak 5 kali (dosis) dengan interval
+                                        tiap dosis minimal 4 minggu',
+                'indikasi'=>'Anak yang belum pernah mendapatkan imunisasi polio',
+                'indikasi_kontra'=>'Kondisi dengan gangguan imunitas, sedang menderita demam, penyakit akut atau penyakit kronis progresif,
+                                    Hipersensitif pada saat pemberian vaksin ini sebelumnya, penyakit demam akibat infeksi akut: tunggu sampai sembuh,
+                                    alergi terhadap Streptomycin',
+                'efek_samping'=>'Nyeri, kemerahan, indurasi, dan bengkak bisa terjadi dalam waktu 48 jam setelah penyuntikan dan bisa bertahan selama satu atau dua hari',
+                'penanganan_efek_samping'=>'Orang tua dianjurkan untuk memberikan lebih banyak ASI, jika demam kenakan pakaian yang tipis 
+                                            dan berikan paracetamol, bekas suntikan yang nyeri dapat dikompres air dingin, jika demam berikan 
+                                            paracetamol, bayi boleh mandi atau cukup diseka dengan air hangat',
+            ],
+            [
                 'jenis'=>'BCG',
                 'deskripsi'=>'Vaksin ini merupakan vaksin yang dapat mencegah penularan penyakit TBC atau Tuberkulosis yang berat. Vaksin BCG dibuat dari bakteri Mycobacterium bovis yang sudah dilemahkan.',
                 'cara_pemberian_dosis'=>'Diberikan sebanyak 1 kali dengan disuntikkan di daerah lengan atas antara 0-2 bulan, paling optimal saat usia 2 bulan',
@@ -44,9 +59,9 @@ class ImunisasiwajibSeeder extends Seeder
             ],
             [
                 'jenis'=>'Polio 1',
-                'deskripsi'=>'Vaksin Polio 1 merupakan vaksin polio yang diberikan pertama kali (dosis pertama). Vaksin ini merupakan vaksin yang dapat mencegah penyakit polio yang dapat menyebabkan lumpuh layu pada tungkai
+                'deskripsi'=>'Vaksin Polio 1 merupakan vaksin polio yang dapat mencegah penyakit polio yang dapat menyebabkan lumpuh layu pada tungkai
                             dan atau lengan',
-                'cara_pemberian_dosis'=>'Dapat diberikan secara oral (OPV) dan suntikan (IPV), dari sebanyak 4 kali (dosis) dengan interval
+                'cara_pemberian_dosis'=>'Dapat diberikan secara oral (OPV) dan suntikan (IPV), dari sebanyak 5 kali (dosis) dengan interval
                                         tiap dosis minimal 4 minggu',
                 'indikasi'=>'Anak yang belum pernah mendapatkan imunisasi polio',
                 'indikasi_kontra'=>'Kondisi dengan gangguan imunitas, sedang menderita demam, penyakit akut atau penyakit kronis progresif,
@@ -72,9 +87,9 @@ class ImunisasiwajibSeeder extends Seeder
             ],
             [
                 'jenis'=>'Polio 2',
-                'deskripsi'=>'Vaksin Polio 2 merupakan vaksin polio yang diberikan kedua kali setelah vaksin Polio 1. Vaksin ini merupakan vaksin yang dapat mencegah penyakit polio yang dapat menyebabkan lumpuh layu pada tungkai
-                            dan atau lengan',
-                'cara_pemberian_dosis'=>'Dapat diberikan secara oral (OPV) dan suntikan (IPV), dari sebanyak 4 kali (dosis) dengan interval tiap dosis minimal 4 minggu',
+                'deskripsi'=>'Vaksin Polio 2 merupakan vaksin polio yang dapat mencegah penyakit polio yang dapat menyebabkan lumpuh layu pada tungkai
+                                dan atau lengan',
+                'cara_pemberian_dosis'=>'Dapat diberikan secara oral (OPV) dan suntikan (IPV), dari sebanyak 5 kali (dosis) dengan interval tiap dosis minimal 4 minggu',
                 'indikasi'=>'Anak yang belum pernah mendapatkan imunisasi polio',
                 'indikasi_kontra'=>'Kondisi dengan gangguan imunitas, sedang menderita demam, penyakit akut atau penyakit kronis progresif,
                                     Hipersensitif pada saat pemberian vaksin ini sebelumnya, penyakit demam akibat infeksi akut: tunggu sampai sembuh,
@@ -99,9 +114,9 @@ class ImunisasiwajibSeeder extends Seeder
             ],
             [
                 'jenis'=>'Polio 3',
-                'deskripsi'=>'Vaksin Polio 3 merupakan vaksin polio yang diberikan ketiga kali setelah vaksin Polio 1 dan 2. Vaksin ini merupakan vaksin yang dapat mencegah penyakit polio yang dapat menyebabkan lumpuh layu pada tungkai
-                            dan atau lengan',
-                'cara_pemberian_dosis'=>'Dapat diberikan secara oral (OPV) dan suntikan (IPV), dari sebanyak 4 kali (dosis) dengan interval tiap dosis minimal 4 minggu',
+                'deskripsi'=>'Vaksin Polio 3 merupakan vaksin polio yang dapat mencegah penyakit polio yang dapat menyebabkan lumpuh layu pada tungkai
+                dan atau lengan',
+                'cara_pemberian_dosis'=>'Dapat diberikan secara oral (OPV) dan suntikan (IPV), dari sebanyak 5 kali (dosis) dengan interval tiap dosis minimal 4 minggu',
                 'indikasi'=>'Anak yang belum pernah mendapatkan imunisasi polio',
                 'indikasi_kontra'=>'Kondisi dengan gangguan imunitas, sedang menderita demam, penyakit akut atau penyakit kronis progresif,
                                     Hipersensitif pada saat pemberian vaksin ini sebelumnya, penyakit demam akibat infeksi akut: tunggu sampai sembuh,
@@ -126,9 +141,9 @@ class ImunisasiwajibSeeder extends Seeder
             ],
             [
                 'jenis'=>'Polio 4',
-                'deskripsi'=>'Vaksin Polio 4 merupakan vaksin polio yang diberikan keempat kali setelah vaksin Polio 1, 2, dan 3. Vaksin ini merupakan vaksin yang dapat mencegah penyakit polio yang dapat menyebabkan lumpuh layu pada tungkai
-                            dan atau lengan',
-                'cara_pemberian_dosis'=>'Dapat diberikan secara oral (OPV) dan suntikan (IPV), dari sebanyak 4 kali (dosis) dengan interval tiap dosis minimal 4 minggu',
+                'deskripsi'=>'Vaksin Polio 4 merupakan vaksin polio yang dapat mencegah penyakit polio yang dapat menyebabkan lumpuh layu pada tungkai
+                dan atau lengan',
+                'cara_pemberian_dosis'=>'Dapat diberikan secara oral (OPV) dan suntikan (IPV), dari sebanyak 5 kali (dosis) dengan interval tiap dosis minimal 4 minggu',
                 'indikasi'=>'Anak yang belum pernah mendapatkan imunisasi polio',
                 'indikasi_kontra'=>'Kondisi dengan gangguan imunitas, sedang menderita demam, penyakit akut atau penyakit kronis progresif,
                                     Hipersensitif pada saat pemberian vaksin ini sebelumnya, penyakit demam akibat infeksi akut: tunggu sampai sembuh,

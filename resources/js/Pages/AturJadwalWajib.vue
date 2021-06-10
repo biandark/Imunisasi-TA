@@ -19,19 +19,19 @@
                                 </h3>
                             </div>
                             <div class="mt-4">
-                                <jet-label for="nama" value="Nama Bayi*" />
+                                <jet-label for="nama" value="Nama Bayi" />
                                 <jet-input id="nama" type="text" class="mt-1 block w-full" v-model="form.nama" required disabled />
                             </div>
                             <div class="mt-4">
-                                <jet-label for="ttl" value="Tanggal Lahir Bayi*" />
+                                <jet-label for="ttl" value="Tanggal Lahir Bayi" />
                                 <jet-input id="ttl" type="date" class="mt-1 block w-full" v-model="form.ttl" required disabled />
                             </div>
                             <div  class="mt-4">
-                                <jet-label for="usia" value="Usia Bayi*" />
+                                <jet-label for="usia" value="Usia Bayi" />
                                 <div class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">{{ displayAge }}</div>
                             </div>
                             <div class="mt-4">
-                                <jet-label for="bb" value="Apakah berat badan bayi Anda lebih dari 2 kg?*" />
+                                <jet-label for="bb" value="Apakah berat badan bayi Anda lebih dari 2 kg?" />
                                 <select required v-model="form.bb" placeholder="Ya/Tidak" class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" disabled>
                                     <option value="1">Ya</option>
                                     <option value="0">Tidak</option>
@@ -47,50 +47,109 @@
                             </div>
                             <div class="mt-4">
                                 <jet-label for="riwayat" value="Imunisasi yang Telah Diberikan*" />
+                                <jet-label for="riwayat" value="(centang dan isi tanggal pemberian jika imunisasi sudah dilaksanakan)" />
+                                
                                 <input v-model="form.done" type='checkbox' id='done1' value='1'>
                                 <label class="ml-3" for="done1">HB0</label><br>
+                                <div v-if="form.done.includes('1')" class="ml-4 mb-4 mt-2">
+                                    <jet-label for="tgl_hb" value="Tanggal Pemberian HB0" />
+                                    <jet-input id="tgl_hb" type="date" class="mt-1 block w-full" v-model="form.tgl_diberikan[1]" />
+                                </div>
+
                                 <input v-model="form.done" type='checkbox' id='done2' value='2'>
-                                <label class="ml-3" for="done2">BCG</label><br>
+                                <label class="ml-3" for="done2">Polio 0</label><br>
+                                <div v-if="form.done.includes('2')" class="ml-4 mb-4 mt-2">
+                                    <jet-label for="tgl_polio0" value="Tanggal Pemberian Polio 0" />
+                                    <jet-input id="tgl_polio0" type="date" class="mt-1 block w-full" v-model="form.tgl_diberikan[2]" />
+                                </div>
+
                                 <input v-model="form.done" type='checkbox' id='done3' value='3'>
-                                <label class="ml-3" for="done3">Polio 1</label><br>
+                                <label class="ml-3" for="done3">BCG</label><br>
+                                <div v-if="form.done.includes('3')" class="ml-4 mb-4 mt-2">
+                                    <jet-label for="tgl_bcg" value="Tanggal Pemberian BCG" />
+                                    <jet-input id="tgl_bcg" type="date" class="mt-1 block w-full" v-model="form.tgl_diberikan[3]" />
+                                </div>
+
                                 <input v-model="form.done" type='checkbox' id='done4' value='4'>
-                                <label class="ml-3" for="done4">DPT-HB-Hib 1</label><br>
+                                <label class="ml-3" for="done4">Polio 1</label><br>
+                                <div v-if="form.done.includes('4')" class="ml-4 mb-4 mt-2">
+                                    <jet-label for="tgl_polio1" value="Tanggal Pemberian Polio 1" />
+                                    <jet-input id="tgl_polio1" type="date" class="mt-1 block w-full" v-model="form.tgl_diberikan[4]" />
+                                </div>
+
                                 <input v-model="form.done" type='checkbox' id='done5' value='5'>
-                                <label class="ml-3" for="done5">Polio 2</label><br>
+                                <label class="ml-3" for="done5">DPT-HB-Hib 1</label><br>
+                                <div v-if="form.done.includes('5')" class="ml-4 mb-4 mt-2">
+                                    <jet-label for="tgl_dpt1" value="Tanggal Pemberian DPT-HB-Hib 1" />
+                                    <jet-input id="tgl_dpt1" type="date" class="mt-1 block w-full" v-model="form.tgl_diberikan[5]" />
+                                </div>
+
                                 <input v-model="form.done" type='checkbox' id='done6' value='6'>
-                                <label class="ml-3" for="done6">DPT-HB-Hib 2</label><br>
+                                <label class="ml-3" for="done6">Polio 2</label><br>
+                                <div v-if="form.done.includes('6')" class="ml-4 mb-4 mt-2">
+                                    <jet-label for="tgl_polio2" value="Tanggal Pemberian Polio 2" />
+                                    <jet-input id="tgl_polio2" type="date" class="mt-1 block w-full" v-model="form.tgl_diberikan[6]" />
+                                </div>
+
                                 <input v-model="form.done" type='checkbox' id='done7' value='7'>
-                                <label class="ml-3" for="done7">Polio 3</label><br>
+                                <label class="ml-3" for="done7">DPT-HB-Hib 2</label><br>
+                                <div v-if="form.done.includes('7')" class="ml-4 mb-4 mt-2">
+                                    <jet-label for="tgl_dpt2" value="Tanggal Pemberian DPT-HB-Hib 2" />
+                                    <jet-input id="tgl_dpt2" type="date" class="mt-1 block w-full" v-model="form.tgl_diberikan[7]" />
+                                </div>
+
                                 <input v-model="form.done" type='checkbox' id='done8' value='8'>
-                                <label class="ml-3" for="done8">DPT-HB-Hib 3</label><br>
+                                <label class="ml-3" for="done8">Polio 3</label><br>
+                                <div v-if="form.done.includes('8')" class="ml-4 mb-4 mt-2">
+                                    <jet-label for="tgl_polio3" value="Tanggal Pemberian Polio 3" />
+                                    <jet-input id="tgl_polio3" type="date" class="mt-1 block w-full" v-model="form.tgl_diberikan[8]" />
+                                </div>
+
                                 <input v-model="form.done" type='checkbox' id='done9' value='9'>
-                                <label class="ml-3" for="done9">Polio 4</label><br>
+                                <label class="ml-3" for="done9">DPT-HB-Hib 3</label><br>
+                                <div v-if="form.done.includes('9')" class="ml-4 mb-4 mt-2">
+                                    <jet-label for="tgl_dpt3" value="Tanggal Pemberian DPT-HB-Hib 3" />
+                                    <jet-input id="tgl_dpt3" type="date" class="mt-1 block w-full" v-model="form.tgl_diberikan[9]" />
+                                </div>
+
                                 <input v-model="form.done" type='checkbox' id='done10' value='10'>
-                                <label class="ml-3" for="done10">MR</label><br>
+                                <label class="ml-3" for="done10">Polio 4</label><br>
+                                <div v-if="form.done.includes('10')" class="ml-4 mb-4 mt-2">
+                                    <jet-label for="tgl_polio4" value="Tanggal Pemberian Polio 4" />
+                                    <jet-input id="tgl_polio4" type="date" class="mt-1 block w-full" v-model="form.tgl_diberikan[10]" />
+                                </div>
+
                                 <input v-model="form.done" type='checkbox' id='done11' value='11'>
-                                <label class="ml-3" for="done11">DPT-HB-Hib Lanjutan</label><br>
-                                <input v-model="form.done" type='checkbox' id='done11' value='12'>
-                                <label class="ml-3" for="done11">MR Lanjutan</label><br>
+                                <label class="ml-3" for="done11">MR</label><br>
+                                <div v-if="form.done.includes('11')" class="ml-4 mb-4 mt-2">
+                                    <jet-label for="tgl_mr1" value="Tanggal Pemberian MR" />
+                                    <jet-input id="tgl_mr1" type="date" class="mt-1 block w-full" v-model="form.tgl_diberikan[11]" />
+                                </div>
+
+                                <input v-model="form.done" type='checkbox' id='done12' value='12'>
+                                <label class="ml-3" for="done12">DPT-HB-Hib Lanjutan</label><br>
+                                <div v-if="form.done.includes('12')" class="ml-4 mb-4 mt-2">
+                                    <jet-label for="tgl_dpt4" value="Tanggal Pemberian DPT-HB-Hib 4" />
+                                    <jet-input id="tgl_dpt4" type="date" class="mt-1 block w-full" v-model="form.tgl_diberikan[12]" />
+                                </div>
+
+                                <input v-model="form.done" type='checkbox' id='done13' value='13'>
+                                <label class="ml-3" for="done13">MR Lanjutan</label><br>
+                                <div v-if="form.done.includes('13')" class="ml-4 mb-4 mt-2">
+                                    <jet-label for="tgl_mr2" value="Tanggal Pemberian MR Lanjutan" />
+                                    <jet-input id="tgl_mr2" type="date" class="mt-1 block w-full" v-model="form.tgl_diberikan[13]" />
+                                </div>
+                                
                             </div>
-                                <div class="mt-4">
-                                    <jet-label for="last_polio" value="Tanggal Pemberian Polio Terakhir" />
-                                    <jet-input id="last_polio" type="date" class="mt-1 block w-full" v-model="form.last_polio" />
-                                </div>
-                                <div class="mt-4">
-                                    <jet-label for="last_dpt" value="Tanggal Pemberian DPT-HB-Hib Terakhir" />
-                                    <jet-input id="last_dpt" type="date" class="mt-1 block w-full" v-model="form.last_dpt" />
-                                </div>
-                                <div class="mt-4">
-                                    <jet-label for="last_mr" value="Tanggal Pemberian MR Terakhir" />
-                                    <jet-input id="last_mr" type="date" class="mt-1 block w-full" v-model="form.last_mr" />
-                                </div>
-                                <div class="flex justify-right pt-3">
-                                    <jet-button class="bg-indigo-500">
-                                        Simpan
-                                    </jet-button>
-                                </div>
+                            <div class="flex justify-right pt-3">
+                                <jet-button class="bg-indigo-500">
+                                    Simpan
+                                </jet-button>
+                            </div>
                         </div>
+                        
                     </div>
+                    
                     </form>
                 </div>
             </div>
@@ -124,9 +183,7 @@
                     ttl: this.baby.ttl,
                     bb: this.baby.bb,
                     done: [],
-                    last_polio: null,
-                    last_dpt: null,
-                    last_mr: null,
+                    tgl_diberikan: [],
                     user_id: this.$page.props.user.id
                 }
             }

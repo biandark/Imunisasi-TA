@@ -32,7 +32,7 @@
                             </div>
                             <h1>BCG</h1>
                             <div class="mt-2 text-sm text-gray-500">Vaksin ini merupakan vaksin yang dapat mencegah penularan penyakit TBC atau Tuberkulosis yang berat. Vaksin BCG dibuat dari bakteri Mycobacterium bovis yang sudah dilemahkan.</div>
-                            <inertia-link :href="route('detail', {id: 2})" method="get">
+                            <inertia-link :href="route('detail', {id: 3})" method="get">
                                     <div class="mt-3 flex justify-center items-center text-sm font-semibold text-indigo-700">
                                         <div>Lihat Selengkapnya</div>
                                         <div class="ml-1 text-indigo-500">
@@ -50,7 +50,7 @@
                             <h1>Polio</h1>
                             <div class="mt-2 text-sm text-gray-500">Vaksin polio merupakan vaksin yang dapat mencegah penyakit polio yang dapat menyebabkan lumpuh layu pada tungkai
                             dan atau lengan</div>
-                            <inertia-link :href="route('detail', {id: 3})" method="get">
+                            <inertia-link :href="route('detail', {id: 4})" method="get">
                                     <div class="mt-3 flex justify-center items-center text-sm font-semibold text-indigo-700">
                                         <div>Lihat Selengkapnya</div>
                                         <div class="ml-1 text-indigo-500">
@@ -67,7 +67,7 @@
                             </div>
                             <h1>DPT-HB-Hib</h1>
                             <div class="mt-2 text-sm text-gray-500">Vaksin ini merupakan vaksin yang dapat mencegah terhadap penyakit difteri, tetanus, pertusis (batuk rejan), hepatitis B, dan infeksi Haemophilus influenzae tipe b secara simultan</div>
-                            <inertia-link :href="route('detail', {id: 4})" method="get">
+                            <inertia-link :href="route('detail', {id: 5})" method="get">
                                     <div class="mt-3 flex justify-center items-center text-sm font-semibold text-indigo-700">
                                         <div>Lihat Selengkapnya</div>
                                         <div class="ml-1 text-indigo-500">
@@ -85,7 +85,7 @@
                             <h1>MR</h1>
                             <div class="mt-2 text-sm text-gray-500">Vaksin ini merupakan vaksin yang diberikan untuk mencegah terjadinya penyakit yang disebabkan oleh virus campak
                             dan rubela</div>
-                            <inertia-link :href="route('detail', {id: 10})" method="get">
+                            <inertia-link :href="route('detail', {id: 11})" method="get">
                                     <div class="mt-3 flex justify-center items-center text-sm font-semibold text-indigo-700">
                                         <div>Lihat Selengkapnya</div>
                                         <div class="ml-1 text-indigo-500">

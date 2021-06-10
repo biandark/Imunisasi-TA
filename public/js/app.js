@@ -12704,9 +12704,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "withKeys": () => (/* binding */ withKeys),
 /* harmony export */   "withModifiers": () => (/* binding */ withModifiers)
 /* harmony export */ });
+<<<<<<< Updated upstream
 /* harmony import */ var _vue_shared__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vue/shared */ "./node_modules/@vue/shared/dist/shared.esm-bundler.js");
 /* harmony import */ var _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/runtime-core */ "./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js");
 /* harmony import */ var _vue_runtime_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @vue/runtime-core */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
+=======
+/* harmony import */ var _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/runtime-core */ "./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js");
+/* harmony import */ var _vue_shared__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vue/shared */ "./node_modules/@vue/shared/dist/shared.esm-bundler.js");
+>>>>>>> Stashed changes
 
 
 
@@ -12849,7 +12854,11 @@ function autoPrefix(style, rawName) {
     if (cached) {
         return cached;
     }
+<<<<<<< Updated upstream
     let name = (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.camelize)(rawName);
+=======
+    let name = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.camelize)(rawName);
+>>>>>>> Stashed changes
     if (name !== 'filter' && name in style) {
         return (prefixCache[rawName] = name);
     }
@@ -13482,7 +13491,11 @@ const TransitionGroupImpl = {
             });
         });
         return () => {
+<<<<<<< Updated upstream
             const rawProps = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_2__.toRaw)(props);
+=======
+            const rawProps = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.toRaw)(props);
+>>>>>>> Stashed changes
             const cssTransitionProps = resolveTransitionProps(rawProps);
             const tag = rawProps.tag || _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.Fragment;
             prevChildren = children;
@@ -17409,9 +17422,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         ttl: this.baby.ttl,
         bb: this.baby.bb,
         done: [],
+<<<<<<< Updated upstream
         last_polio: null,
         last_dpt: null,
         last_mr: null,
+=======
+        tgl_diberikan: [],
+>>>>>>> Stashed changes
         user_id: this.$page.props.user.id
       }
     };
@@ -19152,7 +19169,11 @@ __webpack_require__.r(__webpack_exports__);
       editMode: false,
       isOpen: false,
       form: {
+<<<<<<< Updated upstream
         status: null,
+=======
+        Status: "Belum Dilakukan",
+>>>>>>> Stashed changes
         tgl_pelaksanaan: null
       }
     };
@@ -19186,10 +19207,13 @@ __webpack_require__.r(__webpack_exports__);
       this.closeModal();
     },
     formatDate: function formatDate(date) {
+<<<<<<< Updated upstream
       if (!date) {
         return '-';
       }
 
+=======
+>>>>>>> Stashed changes
       var tgl = new Date(date);
       return (0,date_fns__WEBPACK_IMPORTED_MODULE_7__.default)(tgl, "d MMMM yyyy", {
         locale: date_fns_locale__WEBPACK_IMPORTED_MODULE_8__.default
@@ -21920,6 +21944,7 @@ var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
+<<<<<<< Updated upstream
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "ml-3",
   "for": "done2"
@@ -22022,10 +22047,181 @@ var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "ml-3",
   "for": "done11"
+=======
+var _hoisted_20 = {
+  key: 0,
+  "class": "ml-4 mb-4 mt-2"
+};
+
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "ml-3",
+  "for": "done2"
+}, "Polio 0", -1
+/* HOISTED */
+);
+
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_23 = {
+  key: 1,
+  "class": "ml-4 mb-4 mt-2"
+};
+
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "ml-3",
+  "for": "done3"
+}, "BCG", -1
+/* HOISTED */
+);
+
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_26 = {
+  key: 2,
+  "class": "ml-4 mb-4 mt-2"
+};
+
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "ml-3",
+  "for": "done4"
+}, "Polio 1", -1
+/* HOISTED */
+);
+
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_29 = {
+  key: 3,
+  "class": "ml-4 mb-4 mt-2"
+};
+
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "ml-3",
+  "for": "done5"
+}, "DPT-HB-Hib 1", -1
+/* HOISTED */
+);
+
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_32 = {
+  key: 4,
+  "class": "ml-4 mb-4 mt-2"
+};
+
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "ml-3",
+  "for": "done6"
+}, "Polio 2", -1
+/* HOISTED */
+);
+
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_35 = {
+  key: 5,
+  "class": "ml-4 mb-4 mt-2"
+};
+
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "ml-3",
+  "for": "done7"
+}, "DPT-HB-Hib 2", -1
+/* HOISTED */
+);
+
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_38 = {
+  key: 6,
+  "class": "ml-4 mb-4 mt-2"
+};
+
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "ml-3",
+  "for": "done8"
+}, "Polio 3", -1
+/* HOISTED */
+);
+
+var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_41 = {
+  key: 7,
+  "class": "ml-4 mb-4 mt-2"
+};
+
+var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "ml-3",
+  "for": "done9"
+}, "DPT-HB-Hib 3", -1
+/* HOISTED */
+);
+
+var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_44 = {
+  key: 8,
+  "class": "ml-4 mb-4 mt-2"
+};
+
+var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "ml-3",
+  "for": "done10"
+}, "Polio 4", -1
+/* HOISTED */
+);
+
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_47 = {
+  key: 9,
+  "class": "ml-4 mb-4 mt-2"
+};
+
+var _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "ml-3",
+  "for": "done11"
+}, "MR", -1
+/* HOISTED */
+);
+
+var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_50 = {
+  key: 10,
+  "class": "ml-4 mb-4 mt-2"
+};
+
+var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "ml-3",
+  "for": "done12"
+>>>>>>> Stashed changes
 }, "DPT-HB-Hib Lanjutan", -1
 /* HOISTED */
 );
 
+<<<<<<< Updated upstream
 var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
 /* HOISTED */
 );
@@ -22033,10 +22229,25 @@ var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "ml-3",
   "for": "done11"
+=======
+var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_53 = {
+  key: 11,
+  "class": "ml-4 mb-4 mt-2"
+};
+
+var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "ml-3",
+  "for": "done13"
+>>>>>>> Stashed changes
 }, "MR Lanjutan", -1
 /* HOISTED */
 );
 
+<<<<<<< Updated upstream
 var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
 /* HOISTED */
 );
@@ -22055,6 +22266,21 @@ var _hoisted_45 = {
 };
 
 var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Simpan ");
+=======
+var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_56 = {
+  key: 12,
+  "class": "ml-4 mb-4 mt-2"
+};
+var _hoisted_57 = {
+  "class": "flex justify-right pt-3"
+};
+
+var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Simpan ");
+>>>>>>> Stashed changes
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_label = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-label");
@@ -22071,12 +22297,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
+<<<<<<< Updated upstream
         onSubmit: _cache[19] || (_cache[19] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+=======
+        onSubmit: _cache[30] || (_cache[30] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+>>>>>>> Stashed changes
           return $options.submit && $options.submit.apply($options, arguments);
         }, ["prevent"]))
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "nama",
+<<<<<<< Updated upstream
         value: "Nama Bayi*"
+=======
+        value: "Nama Bayi"
+>>>>>>> Stashed changes
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "nama",
         type: "text",
@@ -22091,7 +22325,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "ttl",
+<<<<<<< Updated upstream
         value: "Tanggal Lahir Bayi*"
+=======
+        value: "Tanggal Lahir Bayi"
+>>>>>>> Stashed changes
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "ttl",
         type: "date",
@@ -22106,12 +22344,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "usia",
+<<<<<<< Updated upstream
         value: "Usia Bayi*"
+=======
+        value: "Usia Bayi"
+>>>>>>> Stashed changes
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.displayAge), 1
       /* TEXT */
       )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "bb",
+<<<<<<< Updated upstream
         value: "Apakah berat badan bayi Anda lebih dari 2 kg?*"
+=======
+        value: "Apakah berat badan bayi Anda lebih dari 2 kg?"
+>>>>>>> Stashed changes
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
         required: "",
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
@@ -22125,6 +22371,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.bb]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "riwayat",
         value: "Imunisasi yang Telah Diberikan*"
+<<<<<<< Updated upstream
+=======
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "riwayat",
+        value: "(centang dan isi tanggal pemberian jika imunisasi sudah dilaksanakan)"
+>>>>>>> Stashed changes
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
           return $data.form.done = $event;
@@ -22134,8 +22386,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "1"
       }, null, 512
       /* NEED_PATCH */
+<<<<<<< Updated upstream
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_18, _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+=======
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_18, _hoisted_19, $data.form.done.includes('1') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "tgl_hb",
+        value: "Tanggal Pemberian HB0"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "tgl_hb",
+        type: "date",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.tgl_diberikan[1],
+        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+          return $data.form.tgl_diberikan[1] = $event;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+>>>>>>> Stashed changes
           return $data.form.done = $event;
         }),
         type: "checkbox",
@@ -22143,8 +22413,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "2"
       }, null, 512
       /* NEED_PATCH */
+<<<<<<< Updated upstream
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_20, _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+=======
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_21, _hoisted_22, $data.form.done.includes('2') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "tgl_polio0",
+        value: "Tanggal Pemberian Polio 0"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "tgl_polio0",
+        type: "date",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.tgl_diberikan[2],
+        "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+          return $data.form.tgl_diberikan[2] = $event;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+>>>>>>> Stashed changes
           return $data.form.done = $event;
         }),
         type: "checkbox",
@@ -22152,8 +22440,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "3"
       }, null, 512
       /* NEED_PATCH */
+<<<<<<< Updated upstream
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_22, _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+=======
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_24, _hoisted_25, $data.form.done.includes('3') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "tgl_bcg",
+        value: "Tanggal Pemberian BCG"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "tgl_bcg",
+        type: "date",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.tgl_diberikan[3],
+        "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+          return $data.form.tgl_diberikan[3] = $event;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+>>>>>>> Stashed changes
           return $data.form.done = $event;
         }),
         type: "checkbox",
@@ -22161,8 +22467,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "4"
       }, null, 512
       /* NEED_PATCH */
+<<<<<<< Updated upstream
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_24, _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+=======
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_27, _hoisted_28, $data.form.done.includes('4') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "tgl_polio1",
+        value: "Tanggal Pemberian Polio 1"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "tgl_polio1",
+        type: "date",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.tgl_diberikan[4],
+        "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+          return $data.form.tgl_diberikan[4] = $event;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
+>>>>>>> Stashed changes
           return $data.form.done = $event;
         }),
         type: "checkbox",
@@ -22170,8 +22494,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "5"
       }, null, 512
       /* NEED_PATCH */
+<<<<<<< Updated upstream
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_26, _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+=======
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_30, _hoisted_31, $data.form.done.includes('5') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "tgl_dpt1",
+        value: "Tanggal Pemberian DPT-HB-Hib 1"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "tgl_dpt1",
+        type: "date",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.tgl_diberikan[5],
+        "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
+          return $data.form.tgl_diberikan[5] = $event;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
+>>>>>>> Stashed changes
           return $data.form.done = $event;
         }),
         type: "checkbox",
@@ -22179,8 +22521,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "6"
       }, null, 512
       /* NEED_PATCH */
+<<<<<<< Updated upstream
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_28, _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+=======
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_33, _hoisted_34, $data.form.done.includes('6') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "tgl_polio2",
+        value: "Tanggal Pemberian Polio 2"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "tgl_polio2",
+        type: "date",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.tgl_diberikan[6],
+        "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
+          return $data.form.tgl_diberikan[6] = $event;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
+>>>>>>> Stashed changes
           return $data.form.done = $event;
         }),
         type: "checkbox",
@@ -22188,8 +22548,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "7"
       }, null, 512
       /* NEED_PATCH */
+<<<<<<< Updated upstream
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_30, _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+=======
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_36, _hoisted_37, $data.form.done.includes('7') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "tgl_dpt2",
+        value: "Tanggal Pemberian DPT-HB-Hib 2"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "tgl_dpt2",
+        type: "date",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.tgl_diberikan[7],
+        "onUpdate:modelValue": _cache[17] || (_cache[17] = function ($event) {
+          return $data.form.tgl_diberikan[7] = $event;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        "onUpdate:modelValue": _cache[18] || (_cache[18] = function ($event) {
+>>>>>>> Stashed changes
           return $data.form.done = $event;
         }),
         type: "checkbox",
@@ -22197,8 +22575,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "8"
       }, null, 512
       /* NEED_PATCH */
+<<<<<<< Updated upstream
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_32, _hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
+=======
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_39, _hoisted_40, $data.form.done.includes('8') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_41, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "tgl_polio3",
+        value: "Tanggal Pemberian Polio 3"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "tgl_polio3",
+        type: "date",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.tgl_diberikan[8],
+        "onUpdate:modelValue": _cache[19] || (_cache[19] = function ($event) {
+          return $data.form.tgl_diberikan[8] = $event;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        "onUpdate:modelValue": _cache[20] || (_cache[20] = function ($event) {
+>>>>>>> Stashed changes
           return $data.form.done = $event;
         }),
         type: "checkbox",
@@ -22206,8 +22602,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "9"
       }, null, 512
       /* NEED_PATCH */
+<<<<<<< Updated upstream
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_34, _hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
+=======
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_42, _hoisted_43, $data.form.done.includes('9') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "tgl_dpt3",
+        value: "Tanggal Pemberian DPT-HB-Hib 3"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "tgl_dpt3",
+        type: "date",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.tgl_diberikan[9],
+        "onUpdate:modelValue": _cache[21] || (_cache[21] = function ($event) {
+          return $data.form.tgl_diberikan[9] = $event;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        "onUpdate:modelValue": _cache[22] || (_cache[22] = function ($event) {
+>>>>>>> Stashed changes
           return $data.form.done = $event;
         }),
         type: "checkbox",
@@ -22215,8 +22629,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "10"
       }, null, 512
       /* NEED_PATCH */
+<<<<<<< Updated upstream
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_36, _hoisted_37, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
+=======
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_45, _hoisted_46, $data.form.done.includes('10') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "tgl_polio4",
+        value: "Tanggal Pemberian Polio 4"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "tgl_polio4",
+        type: "date",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.tgl_diberikan[10],
+        "onUpdate:modelValue": _cache[23] || (_cache[23] = function ($event) {
+          return $data.form.tgl_diberikan[10] = $event;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        "onUpdate:modelValue": _cache[24] || (_cache[24] = function ($event) {
+>>>>>>> Stashed changes
           return $data.form.done = $event;
         }),
         type: "checkbox",
@@ -22224,6 +22656,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "11"
       }, null, 512
       /* NEED_PATCH */
+<<<<<<< Updated upstream
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_38, _hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
           return $data.form.done = $event;
@@ -22277,6 +22710,70 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_46];
+=======
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_48, _hoisted_49, $data.form.done.includes('11') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "tgl_mr1",
+        value: "Tanggal Pemberian MR"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "tgl_mr1",
+        type: "date",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.tgl_diberikan[11],
+        "onUpdate:modelValue": _cache[25] || (_cache[25] = function ($event) {
+          return $data.form.tgl_diberikan[11] = $event;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        "onUpdate:modelValue": _cache[26] || (_cache[26] = function ($event) {
+          return $data.form.done = $event;
+        }),
+        type: "checkbox",
+        id: "done12",
+        value: "12"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_51, _hoisted_52, $data.form.done.includes('12') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "tgl_dpt4",
+        value: "Tanggal Pemberian DPT-HB-Hib 4"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "tgl_dpt4",
+        type: "date",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.tgl_diberikan[12],
+        "onUpdate:modelValue": _cache[27] || (_cache[27] = function ($event) {
+          return $data.form.tgl_diberikan[12] = $event;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        "onUpdate:modelValue": _cache[28] || (_cache[28] = function ($event) {
+          return $data.form.done = $event;
+        }),
+        type: "checkbox",
+        id: "done13",
+        value: "13"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.done]]), _hoisted_54, _hoisted_55, $data.form.done.includes('13') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "tgl_mr2",
+        value: "Tanggal Pemberian MR Lanjutan"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "tgl_mr2",
+        type: "date",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.tgl_diberikan[13],
+        "onUpdate:modelValue": _cache[29] || (_cache[29] = function ($event) {
+          return $data.form.tgl_diberikan[13] = $event;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
+        "class": "bg-indigo-500"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_58];
+>>>>>>> Stashed changes
         }),
         _: 1
         /* STABLE */
@@ -23315,7 +23812,11 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 );
 
 var _hoisted_7 = {
+<<<<<<< Updated upstream
   "class": "mt-4 overflow-x-auto"
+=======
+  "class": "max-w-4xl mx-auto"
+>>>>>>> Stashed changes
 };
 var _hoisted_8 = {
   "class": "min-w-full leading-normal"
@@ -23329,7 +23830,13 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
   "class": "px-2 py-3"
 }, "Tanggal Lahir"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
   "class": "px-2 py-3"
+<<<<<<< Updated upstream
 }, "Jenis Kelamin"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th")])], -1
+=======
+}, "Jenis Kelamin"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
+  "class": "px-2 py-3"
+})])], -1
+>>>>>>> Stashed changes
 /* HOISTED */
 );
 
@@ -23349,7 +23856,11 @@ var _hoisted_14 = {
   "class": "px-2 py-1 text-center"
 };
 var _hoisted_15 = {
+<<<<<<< Updated upstream
   "class": "text-right"
+=======
+  "class": "px-2 py-1 text-right"
+>>>>>>> Stashed changes
 };
 
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
@@ -23364,6 +23875,7 @@ var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
+<<<<<<< Updated upstream
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "items-center text-sm font-semibold text-indigo-700"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, "Riwayat Imunisasi Pilihan")], -1
@@ -23375,6 +23887,13 @@ var _hoisted_19 = {
 };
 
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Tambah Data Anak ");
+=======
+var _hoisted_18 = {
+  "class": "flex justify-center py-5"
+};
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Tambah Data Anak ");
+>>>>>>> Stashed changes
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
@@ -23426,6 +23945,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
         }, 1032
         /* PROPS, DYNAMIC_SLOTS */
+<<<<<<< Updated upstream
         , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
           "class": "text-indigo-500",
           href: _ctx.route('riwayat', {
@@ -23444,6 +23964,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), 128
       /* KEYED_FRAGMENT */
       ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+=======
+        , ["href"])])]);
+      }), 128
+      /* KEYED_FRAGMENT */
+      ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+>>>>>>> Stashed changes
         href: _ctx.route('databayi.create')
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -23451,7 +23977,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "class": "bg-indigo-500"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+<<<<<<< Updated upstream
               return [_hoisted_20];
+=======
+              return [_hoisted_19];
+>>>>>>> Stashed changes
             }),
             _: 1
             /* STABLE */
@@ -24222,7 +24752,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["src"])]), _hoisted_14, _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         href: _ctx.route('detail', {
+<<<<<<< Updated upstream
           id: 2
+=======
+          id: 3
+>>>>>>> Stashed changes
         }),
         method: "get"
       }, {
@@ -24241,7 +24775,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["src"])]), _hoisted_20, _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         href: _ctx.route('detail', {
+<<<<<<< Updated upstream
           id: 3
+=======
+          id: 4
+>>>>>>> Stashed changes
         }),
         method: "get"
       }, {
@@ -24260,7 +24798,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["src"])]), _hoisted_26, _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         href: _ctx.route('detail', {
+<<<<<<< Updated upstream
           id: 4
+=======
+          id: 5
+>>>>>>> Stashed changes
         }),
         method: "get"
       }, {
@@ -24279,7 +24821,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["src"])]), _hoisted_32, _hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         href: _ctx.route('detail', {
+<<<<<<< Updated upstream
           id: 10
+=======
+          id: 11
+>>>>>>> Stashed changes
         }),
         method: "get"
       }, {
@@ -27212,6 +27758,7 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
+<<<<<<< Updated upstream
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
   "class": "text-xs font-semibold text-red-500"
 }, "*wajib diisi", -1
@@ -27229,34 +27776,70 @@ var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
+=======
+var _hoisted_16 = {
+  "class": "p-6 mt-4"
+};
+
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "flex items-center"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+  "class": "fas fa-route"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", {
+  "class": "font-semibold text-xl text-indigo-500 leading-tight"
+}, " Kondisi Pasien ")], -1
+/* HOISTED */
+);
+
+var _hoisted_18 = {
+  "class": "mt-4"
+};
+>>>>>>> Stashed changes
 var _hoisted_19 = {
   "class": "mt-2 flex"
 };
 
+<<<<<<< Updated upstream
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Bepergian ke daerah endemis Meningitis");
+=======
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Hamil lebih dari 3 bulan");
+>>>>>>> Stashed changes
 
 var _hoisted_21 = {
   "class": "mt-2 flex"
 };
 
+<<<<<<< Updated upstream
 var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Bepergian ke daerah endemis Yellow Fever");
+=======
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Tinggal di lingkungan merokok, lingkungan padat, atau panti asuhan");
+>>>>>>> Stashed changes
 
 var _hoisted_23 = {
   "class": "mt-2 flex"
 };
 
+<<<<<<< Updated upstream
 var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Bepergian ke daerah endemis Hepatitis A");
+=======
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Memiliki hewan anjing, kucing, kera");
+>>>>>>> Stashed changes
 
 var _hoisted_25 = {
   "class": "mt-2 flex"
 };
 
+<<<<<<< Updated upstream
 var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Pergi atau tinggal di daerah endemis Japanese Ensephalitis");
+=======
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Bepergian ke daerah endemis Meningitis");
+>>>>>>> Stashed changes
 
 var _hoisted_27 = {
   "class": "mt-2 flex"
 };
 
+<<<<<<< Updated upstream
 var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "mt-3 flex items-center text-sm font-semibold text-indigo-700"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, "Lihat Daftar Daerah Endemis"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
@@ -27307,17 +27890,43 @@ var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 }, "Pilih kondisi yang sesuai dengan keadaan Anda, jika tidak ada kondisi yang memenuhi silahkan melanjutkan ke bagian berikutnya.", -1
 /* HOISTED */
 );
+=======
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Bepergian ke daerah endemis Yellow Fever");
+
+var _hoisted_29 = {
+  "class": "mt-2 flex"
+};
+
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Bepergian ke daerah endemis Hepatitis A");
+
+var _hoisted_31 = {
+  "class": "mt-2 flex"
+};
+
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Bepergian ke daerah endemis Japanese Ensephalitis");
+
+var _hoisted_33 = {
+  "class": "mt-2 flex"
+};
+
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Petugas fasilitas kesehatan, pengobatan HIV PMS, endemis Hepatitis B");
+>>>>>>> Stashed changes
 
 var _hoisted_35 = {
   "class": "mt-2 flex"
 };
 
+<<<<<<< Updated upstream
 var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Hamil lebih dari 3 bulan");
+=======
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Pernah terkena penyakit demam berdarah");
+>>>>>>> Stashed changes
 
 var _hoisted_37 = {
   "class": "mt-2 flex"
 };
 
+<<<<<<< Updated upstream
 var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Tinggal di lingkungan merokok, lingkungan padat, atau panti asuhan");
 
 var _hoisted_39 = {
@@ -27361,6 +27970,57 @@ var _hoisted_77 = {
 var _hoisted_78 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Simpan ");
 
 var _hoisted_79 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+=======
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "mt-3 flex items-center text-sm font-semibold text-indigo-700"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, "Lihat Daftar Daerah Endemis"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "ml-1 text-indigo-500"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
+  viewBox: "0 0 20 20",
+  fill: "currentColor",
+  "class": "w-4 h-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  "fill-rule": "evenodd",
+  d: "M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z",
+  "clip-rule": "evenodd"
+})])])], -1
+/* HOISTED */
+);
+
+var _hoisted_39 = {
+  "class": "mt-4"
+};
+
+var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "text-sm"
+}, "*diisi jika bepergian ke daerah endemis", -1
+/* HOISTED */
+);
+
+var _hoisted_41 = {
+  "class": "mt-4"
+};
+
+var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option disabled value=\"\">Pilih Imunisasi</option><option>Pneumokokus 1</option><option>Pneumokokus 2</option><option>Tifoid Polisakarida</option><option>Hepatitis A 1</option><option>HPV 1</option><option>HPV 1 Bivalen</option><option>HPV 2 Bivalen</option><option>HPV 1 Quadrivalen</option><option>HPV 2 Quadrivalen</option><option>Japanesse Ensephalitis 1</option><option>Hepatitis B 1</option><option>Hepatitis B 2</option><option>Demam Berdarah 1</option><option>Demam Berdarah 2</option><option>Influenza 1</option><option>Rotavirus 1</option><option>Rotavirus 2</option>", 18);
+
+var _hoisted_60 = {
+  "class": "mt-4"
+};
+
+var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "text-sm"
+}, "*diisi jika sudah mendapat imunisasi sebelumnya", -1
+/* HOISTED */
+);
+
+var _hoisted_62 = {
+  "class": "flex items-center mt-4"
+};
+
+var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Simpan ");
+
+var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+>>>>>>> Stashed changes
   "class": "mt-3 underline text-sm font-semibold text-indigo-700"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, "Lihat Riwayat Imunisasi")], -1
 /* HOISTED */
@@ -27445,6 +28105,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
       }, [_hoisted_13, _hoisted_14, _hoisted_15], 512
       /* NEED_PATCH */
+<<<<<<< Updated upstream
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.travelling]])]), _hoisted_16, $data.form.travelling == 'Ya' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "kondisi",
         value: "Travelling"
@@ -27455,11 +28116,27 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return $data.form.kondisi = $event;
         }),
         value: "Pergi ke daerah endemis meningitis"
+=======
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.travelling]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "kondisi",
+        value: "Kondisi"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "checkbox",
+        id: "hamil",
+        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+          return $data.form.kondisi = $event;
+        }),
+        value: "hamil"
+>>>>>>> Stashed changes
       }, null, 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.kondisi]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "class": "pl-2",
+<<<<<<< Updated upstream
         "for": "endemism"
+=======
+        "for": "hamil"
+>>>>>>> Stashed changes
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_20];
@@ -27469,17 +28146,29 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         type: "checkbox",
+<<<<<<< Updated upstream
         id: "endemisy",
         "class": "mt-1",
         "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
           return $data.form.kondisi = $event;
         }),
         value: "Pergi ke daerah endemis yellow fever"
+=======
+        id: "pneumo",
+        "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+          return $data.form.kondisi = $event;
+        }),
+        value: "Tinggal di lingkungan rokok, padat, panti"
+>>>>>>> Stashed changes
       }, null, 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.kondisi]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "class": "pl-2",
+<<<<<<< Updated upstream
         "for": "endemisy"
+=======
+        "for": "pneumo"
+>>>>>>> Stashed changes
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_22];
@@ -27489,17 +28178,29 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         type: "checkbox",
+<<<<<<< Updated upstream
         id: "endemisa",
         "class": "mt-1",
         "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
           return $data.form.kondisi = $event;
         }),
         value: "Pergi ke daerah endemis hepatitis A"
+=======
+        id: "hewan",
+        "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+          return $data.form.kondisi = $event;
+        }),
+        value: "Memiliki hewan peliharaan (anjing, kucing, kera)"
+>>>>>>> Stashed changes
       }, null, 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.kondisi]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "class": "pl-2",
+<<<<<<< Updated upstream
         "for": "endemisa"
+=======
+        "for": "hewan"
+>>>>>>> Stashed changes
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_24];
@@ -27509,17 +28210,29 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         type: "checkbox",
+<<<<<<< Updated upstream
         id: "endemisj",
         "class": "mt-1",
         "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
           return $data.form.kondisi = $event;
         }),
         value: "Pergi atau tinggal di daerah endemis Japanesse Ensephalitis"
+=======
+        id: "endemism",
+        "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+          return $data.form.kondisi = $event;
+        }),
+        value: "Pergi ke daerah endemis meningitis"
+>>>>>>> Stashed changes
       }, null, 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.kondisi]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "class": "pl-2",
+<<<<<<< Updated upstream
         "for": "endemisj"
+=======
+        "for": "endemism"
+>>>>>>> Stashed changes
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_26];
@@ -27527,6 +28240,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
+<<<<<<< Updated upstream
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         "class": "text-green-500",
         href: _ctx.route('endemis')
@@ -27563,18 +28277,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return $data.form.kondisi = $event;
         }),
         value: "hamil"
+=======
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "checkbox",
+        id: "endemisy",
+        "class": "mt-1",
+        "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+          return $data.form.kondisi = $event;
+        }),
+        value: "Pergi ke daerah endemis yellow fever"
+>>>>>>> Stashed changes
       }, null, 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.kondisi]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "class": "pl-2",
+<<<<<<< Updated upstream
         "for": "hamil"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_36];
+=======
+        "for": "endemisy"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_28];
+>>>>>>> Stashed changes
         }),
         _: 1
         /* STABLE */
 
+<<<<<<< Updated upstream
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         type: "checkbox",
         id: "pneumo",
@@ -27582,18 +28314,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return $data.form.kondisi = $event;
         }),
         value: "Tinggal di lingkungan rokok, padat, panti"
+=======
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "checkbox",
+        id: "endemisa",
+        "class": "mt-1",
+        "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+          return $data.form.kondisi = $event;
+        }),
+        value: "Pergi ke daerah endemis hepatitis A"
+>>>>>>> Stashed changes
       }, null, 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.kondisi]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "class": "pl-2",
+<<<<<<< Updated upstream
         "for": "pneumo"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_38];
+=======
+        "for": "endemisa"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_30];
+>>>>>>> Stashed changes
         }),
         _: 1
         /* STABLE */
 
+<<<<<<< Updated upstream
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         type: "checkbox",
         id: "hewan",
@@ -27601,23 +28351,48 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return $data.form.kondisi = $event;
         }),
         value: "Memiliki hewan peliharaan (anjing, kucing, kera)"
+=======
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "checkbox",
+        id: "endemisj",
+        "class": "mt-1",
+        "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+          return $data.form.kondisi = $event;
+        }),
+        value: "Pergi atau tinggal di daerah endemis Japanesse Ensephalitis"
+>>>>>>> Stashed changes
       }, null, 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.kondisi]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "class": "pl-2",
+<<<<<<< Updated upstream
         "for": "hewan"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_40];
+=======
+        "for": "endemisj"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_32];
+>>>>>>> Stashed changes
         }),
         _: 1
         /* STABLE */
 
+<<<<<<< Updated upstream
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_41, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         type: "checkbox",
         id: "hiv",
         "class": "mt-1",
         "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
+=======
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "checkbox",
+        id: "hiv",
+        "class": "mt-1",
+        "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
+>>>>>>> Stashed changes
           return $data.form.kondisi = $event;
         }),
         value: "Petugas fasilitas kesehatan"
@@ -27628,16 +28403,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "for": "hiv"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+<<<<<<< Updated upstream
           return [_hoisted_42];
+=======
+          return [_hoisted_34];
+>>>>>>> Stashed changes
         }),
         _: 1
         /* STABLE */
 
+<<<<<<< Updated upstream
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         type: "checkbox",
         id: "dbd",
         "class": "mt-1",
         "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
+=======
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "checkbox",
+        id: "dbd",
+        "class": "mt-1",
+        "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
+>>>>>>> Stashed changes
           return $data.form.kondisi = $event;
         }),
         value: "Pernah terkena penyakit demam berdarah"
@@ -27648,24 +28435,66 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "for": "dbd"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+<<<<<<< Updated upstream
           return [_hoisted_44];
+=======
+          return [_hoisted_36];
         }),
         _: 1
         /* STABLE */
 
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+        "class": "text-green-500",
+        href: _ctx.route('endemis')
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_38];
+>>>>>>> Stashed changes
+        }),
+        _: 1
+        /* STABLE */
+
+<<<<<<< Updated upstream
       })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_45, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "imunisasisblm",
         "class": "font-semibold",
         value: "Imunisasi Sebelumnya"
       }), _hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+=======
+      }, 8
+      /* PROPS */
+      , ["href"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "tgl_brkt",
+        value: "Tanggal Keberangkatan"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "tgl_brkt",
+        type: "date",
+        "class": "mt-1 block w-full",
+        modelValue: $data.form.tgl_brkt,
+        "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
+          return $data.form.tgl_brkt = $event;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"]), _hoisted_40]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_41, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "imunisasisblm",
+        value: "Imunisasi Sebelumnya"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+>>>>>>> Stashed changes
         "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
           return $data.form.imunisasisblm = $event;
         }),
         placeholder: "Pilih Imunisasi",
         "class": "mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+<<<<<<< Updated upstream
       }, [_hoisted_47], 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.imunisasisblm]])]), $data.form.imunisasisblm != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_76, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+=======
+      }, [_hoisted_42], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.imunisasisblm]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_60, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+>>>>>>> Stashed changes
         "for": "tgl",
         value: "Tanggal Pemberian"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
@@ -27678,14 +28507,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         })
       }, null, 8
       /* PROPS */
+<<<<<<< Updated upstream
       , ["modelValue"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_77, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
+=======
+      , ["modelValue"]), _hoisted_61]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_62, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
+>>>>>>> Stashed changes
         "class": ["bg-indigo-500", {
           'opacity-25': $data.form.processing
         }],
         disabled: $data.form.processing
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+<<<<<<< Updated upstream
           return [_hoisted_78];
+=======
+          return [_hoisted_63];
+>>>>>>> Stashed changes
         }),
         _: 1
         /* STABLE */
@@ -27699,7 +28536,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         })
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+<<<<<<< Updated upstream
           return [_hoisted_79];
+=======
+          return [_hoisted_64];
+>>>>>>> Stashed changes
         }),
         _: 1
         /* STABLE */
@@ -27748,6 +28589,7 @@ var _hoisted_4 = {
   "class": "bg-white overflow-hidden shadow-xl sm:rounded-lg px-8 py-4"
 };
 var _hoisted_5 = {
+<<<<<<< Updated upstream
   key: 0,
   "class": "text-center text-red-600"
 };
@@ -27765,11 +28607,27 @@ var _hoisted_9 = {
 };
 
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", {
+=======
+  "class": "grid grid-flow-row grid-cols-1 md:grid-cols-2"
+};
+var _hoisted_6 = {
+  "class": "mx-auto"
+};
+var _hoisted_7 = {
+  "class": "mt-4"
+};
+var _hoisted_8 = {
+  "class": "py-9 px-0 mt-4"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", {
+>>>>>>> Stashed changes
   "class": "font-semibold text-xl text-indigo-500 leading-tight"
 }, " Data Pasien ", -1
 /* HOISTED */
 );
 
+<<<<<<< Updated upstream
 var _hoisted_11 = {
   "class": "mt-4 overflow-x-auto"
 };
@@ -27783,11 +28641,27 @@ var _hoisted_13 = {
 };
 
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", {
+=======
+var _hoisted_10 = {
+  "class": "mt-4 overflow-x-auto"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Nama Pasien"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Tanggal Lahir"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Gender"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Travelling"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Kondisi")])], -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "mt-8"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", {
+>>>>>>> Stashed changes
   "class": "font-semibold text-xl text-indigo-500 leading-tight"
 }, " Rekomendasi Imunisasi ", -1
 /* HOISTED */
 );
 
+<<<<<<< Updated upstream
 var _hoisted_15 = {
   "class": "mt-4 overflow-x-auto"
 };
@@ -27803,6 +28677,23 @@ var _hoisted_18 = {
 };
 
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+=======
+var _hoisted_14 = {
+  "class": "mt-4 overflow-x-auto"
+};
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "No."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Jenis Imunisasi"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Tanggal Pemberian"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th")])], -1
+/* HOISTED */
+);
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Lihat Selengkapnya ");
+
+var _hoisted_17 = {
+  "class": "flex mt-4"
+};
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+>>>>>>> Stashed changes
   "class": "mt-3 flex items-center text-sm font-semibold text-indigo-700"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, "Lihat Riwayat Imunisasi"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "ml-1 text-indigo-500"
@@ -27830,18 +28721,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_1];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+<<<<<<< Updated upstream
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [_ctx.$page.props.flash.message ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.flash.message), 1
       /* TEXT */
       )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
+=======
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
+>>>>>>> Stashed changes
         src: _ctx.image,
         width: "350"
       }, null, 8
       /* PROPS */
+<<<<<<< Updated upstream
       , ["src"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_element, {
         "class": "prose"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", null, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tbody", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.baby.nama), 1
+=======
+      , ["src"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_element, {
+        "class": "prose"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", null, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tbody", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.baby.nama), 1
+>>>>>>> Stashed changes
           /* TEXT */
           ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatDate($props.baby.ttl)), 1
           /* TEXT */
@@ -27856,11 +28759,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
+<<<<<<< Updated upstream
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_element, {
         "class": "prose"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", null, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.scheduled, function (kondisi, index) {
+=======
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_element, {
+        "class": "prose"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", null, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.scheduled, function (kondisi, index) {
+>>>>>>> Stashed changes
             return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("tr", {
               key: kondisi.id
             }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(index + 1), 1
@@ -27877,7 +28788,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               method: "get"
             }, {
               "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+<<<<<<< Updated upstream
                 return [_hoisted_17];
+=======
+                return [_hoisted_16];
+>>>>>>> Stashed changes
               }),
               _: 2
               /* DYNAMIC */
@@ -27892,14 +28807,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
+<<<<<<< Updated upstream
       })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+=======
+      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+>>>>>>> Stashed changes
         "class": "text-green-500",
         href: _ctx.route('riwayat', {
           baby_id: $props.baby.id
         })
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+<<<<<<< Updated upstream
           return [_hoisted_19];
+=======
+          return [_hoisted_18];
+>>>>>>> Stashed changes
         }),
         _: 1
         /* STABLE */
@@ -27992,7 +28915,11 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 );
 
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", {
+<<<<<<< Updated upstream
   "class": "mt-6 font-semibold text-xl text-indigo-500 leading-tight"
+=======
+  "class": "font-semibold mt-6 text-xl text-indigo-500 leading-tight"
+>>>>>>> Stashed changes
 }, " Daftar Imunisasi ", -1
 /* HOISTED */
 );
@@ -28013,6 +28940,7 @@ var _hoisted_16 = {
   key: 1,
   "class": "text-red-500 font-semibold"
 };
+<<<<<<< Updated upstream
 
 var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Lihat Selengkapnya ");
 
@@ -28025,6 +28953,26 @@ var _hoisted_19 = {
 };
 
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+=======
+var _hoisted_17 = {
+  key: 0
+};
+var _hoisted_18 = {
+  key: 1
+};
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Lihat Selengkapnya ");
+
+var _hoisted_20 = {
+  key: 0,
+  "class": "fixed z-10 inset-0 overflow-y-auto ease-out duration-400"
+};
+var _hoisted_21 = {
+  "class": "flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
+};
+
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+>>>>>>> Stashed changes
   "class": "fixed inset-0 transition-opacity"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "absolute inset-0 bg-gray-500 opacity-75"
@@ -28032,20 +28980,31 @@ var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
+<<<<<<< Updated upstream
 var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+=======
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+>>>>>>> Stashed changes
   "class": "hidden sm:inline-block sm:align-middle sm:h-screen"
 }, null, -1
 /* HOISTED */
 );
 
+<<<<<<< Updated upstream
 var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("​ ");
 
 var _hoisted_23 = {
+=======
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("​ ");
+
+var _hoisted_25 = {
+>>>>>>> Stashed changes
   "class": "inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full",
   role: "dialog",
   "aria-modal": "true",
   "aria-labelledby": "modal-headline"
 };
+<<<<<<< Updated upstream
 var _hoisted_24 = {
   "class": "bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4"
 };
@@ -28057,19 +29016,37 @@ var _hoisted_26 = {
 };
 
 var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+=======
+var _hoisted_26 = {
+  "class": "bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4"
+};
+var _hoisted_27 = {
+  "class": ""
+};
+var _hoisted_28 = {
+  "class": "mb-4"
+};
+
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+>>>>>>> Stashed changes
   "for": "exampleFormControlInput1",
   "class": "block text-gray-700 text-sm font-bold mb-2"
 }, "Status:", -1
 /* HOISTED */
 );
 
+<<<<<<< Updated upstream
 var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+=======
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+>>>>>>> Stashed changes
   disabled: "",
   value: ""
 }, "Pilih Status", -1
 /* HOISTED */
 );
 
+<<<<<<< Updated upstream
 var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", null, "Belum Dilakukan", -1
 /* HOISTED */
 );
@@ -28083,12 +29060,28 @@ var _hoisted_31 = {
 };
 
 var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+=======
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", null, "Belum Dilakukan", -1
+/* HOISTED */
+);
+
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", null, "Sudah Dilakukan", -1
+/* HOISTED */
+);
+
+var _hoisted_33 = {
+  "class": "mb-4"
+};
+
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+>>>>>>> Stashed changes
   "for": "exampleFormControlInput2",
   "class": "block text-gray-700 text-sm font-bold mb-2"
 }, "Tanggal Pemberian:", -1
 /* HOISTED */
 );
 
+<<<<<<< Updated upstream
 var _hoisted_33 = {
   "class": "bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"
 };
@@ -28106,6 +29099,19 @@ var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 );
 
 var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+=======
+var _hoisted_35 = {
+  "class": "bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"
+};
+var _hoisted_36 = {
+  "class": "flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto"
+};
+var _hoisted_37 = {
+  "class": "mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto"
+};
+
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+>>>>>>> Stashed changes
   "class": "mt-3 flex items-center underline text-sm font-semibold text-indigo-700"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, "Tambah jadwal imunisasi baru")], -1
 /* HOISTED */
@@ -28144,16 +29150,29 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* TEXT */
             ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatDate(jadwal.tgl_rekom)), 1
             /* TEXT */
+<<<<<<< Updated upstream
             ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [jadwal.tgl_pelaksanaan != _ctx.NULL ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", _hoisted_15, "Sudah Dilakukan")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", _hoisted_16, "Belum Dilakukan"))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatDate(jadwal.tgl_pelaksanaan)), 1
             /* TEXT */
             ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+=======
+            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [jadwal.tgl_pelaksanaan != _ctx.NULL ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", _hoisted_15, "Sudah Dilakukan")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", _hoisted_16, "Belum Dilakukan"))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [jadwal.tgl_pelaksanaan == _ctx.NULL ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(jadwal.tgl_pelaksanaan), 1
+            /* TEXT */
+            )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatDate(jadwal.tgl_pelaksanaan)), 1
+            /* TEXT */
+            ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [jadwal.status != 'Sudah Dilakukan' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
+              key: 0,
+>>>>>>> Stashed changes
               onClick: function onClick($event) {
                 return $options.edit(jadwal);
               },
               "class": "bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
             }, "Update", 8
             /* PROPS */
+<<<<<<< Updated upstream
             , ["onClick"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+=======
+            , ["onClick"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+>>>>>>> Stashed changes
               "class": "text-sm text-indigo-500 underline",
               href: _ctx.route('imunisasi', {
                 data: jadwal.nama
@@ -28161,7 +29180,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               method: "get"
             }, {
               "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+<<<<<<< Updated upstream
                 return [_hoisted_17];
+=======
+                return [_hoisted_19];
+>>>>>>> Stashed changes
               }),
               _: 2
               /* DYNAMIC */
@@ -28176,16 +29199,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
+<<<<<<< Updated upstream
       }), $data.isOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" This element is to trick the browser into centering the modal contents. "), _hoisted_21, _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_26, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+=======
+      }), $data.isOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" This element is to trick the browser into centering the modal contents. "), _hoisted_23, _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+>>>>>>> Stashed changes
         "class": "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
         id: "exampleFormControlInput1",
         placeholder: "Pilih Status",
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return $data.form.status = $event;
         })
+<<<<<<< Updated upstream
       }, [_hoisted_28, _hoisted_29, _hoisted_30], 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.status]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_31, [_hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+=======
+      }, [_hoisted_30, _hoisted_31, _hoisted_32], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.status]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_33, [_hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+>>>>>>> Stashed changes
         type: "date",
         "class": "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
         id: "exampleFormControlInput2",
@@ -28195,7 +29228,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         })
       }, null, 8
       /* PROPS */
+<<<<<<< Updated upstream
       , ["modelValue"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+=======
+      , ["modelValue"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+>>>>>>> Stashed changes
         "wire:click.prevent": "store()",
         type: "button",
         "class": "inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-indigo-500 text-base leading-6 font-medium text-white shadow-sm hover:bg-indigo-400 focus:outline-none focus:border-indigo-600 focus:shadow-outline-indigo transition ease-in-out duration-150 sm:text-sm sm:leading-5",
@@ -28204,20 +29241,32 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         })
       }, " Update ", 512
       /* NEED_PATCH */
+<<<<<<< Updated upstream
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.editMode]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+=======
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.editMode]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+>>>>>>> Stashed changes
         onClick: _cache[4] || (_cache[4] = function ($event) {
           return $options.closeModal();
         }),
         type: "button",
         "class": "inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+<<<<<<< Updated upstream
       }, " Cancel ")])])])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+=======
+      }, " Cancel ")])])])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+>>>>>>> Stashed changes
         "class": "text-indigo-500",
         href: _ctx.route('kondisi', {
           baby_id: $props.baby.id
         })
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+<<<<<<< Updated upstream
           return [_hoisted_37];
+=======
+          return [_hoisted_38];
+>>>>>>> Stashed changes
         }),
         _: 1
         /* STABLE */
@@ -56240,9 +57289,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "compile": () => (/* binding */ compileToFunction)
 /* harmony export */ });
 /* harmony import */ var _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/runtime-dom */ "./node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js");
+<<<<<<< Updated upstream
 /* harmony import */ var _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @vue/runtime-dom */ "./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js");
 /* harmony import */ var _vue_compiler_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @vue/compiler-dom */ "./node_modules/@vue/compiler-dom/dist/compiler-dom.esm-bundler.js");
 /* harmony import */ var _vue_shared__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vue/shared */ "./node_modules/@vue/shared/dist/shared.esm-bundler.js");
+=======
+/* harmony import */ var _vue_compiler_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vue/compiler-dom */ "./node_modules/@vue/compiler-dom/dist/compiler-dom.esm-bundler.js");
+/* harmony import */ var _vue_shared__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @vue/shared */ "./node_modules/@vue/shared/dist/shared.esm-bundler.js");
+>>>>>>> Stashed changes
 
 
 
@@ -56251,7 +57305,11 @@ __webpack_require__.r(__webpack_exports__);
 
 function initDev() {
     {
+<<<<<<< Updated upstream
         (0,_vue_runtime_dom__WEBPACK_IMPORTED_MODULE_2__.initCustomFormatter)();
+=======
+        (0,_vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.initCustomFormatter)();
+>>>>>>> Stashed changes
     }
 }
 
@@ -56261,13 +57319,22 @@ if ((true)) {
 }
 const compileCache = Object.create(null);
 function compileToFunction(template, options) {
+<<<<<<< Updated upstream
     if (!(0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.isString)(template)) {
+=======
+    if (!(0,_vue_shared__WEBPACK_IMPORTED_MODULE_2__.isString)(template)) {
+>>>>>>> Stashed changes
         if (template.nodeType) {
             template = template.innerHTML;
         }
         else {
+<<<<<<< Updated upstream
             ( true) && (0,_vue_runtime_dom__WEBPACK_IMPORTED_MODULE_2__.warn)(`invalid template option: `, template);
             return _vue_shared__WEBPACK_IMPORTED_MODULE_1__.NOOP;
+=======
+            ( true) && (0,_vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.warn)(`invalid template option: `, template);
+            return _vue_shared__WEBPACK_IMPORTED_MODULE_2__.NOOP;
+>>>>>>> Stashed changes
         }
     }
     const key = template;
@@ -56278,7 +57345,11 @@ function compileToFunction(template, options) {
     if (template[0] === '#') {
         const el = document.querySelector(template);
         if (( true) && !el) {
+<<<<<<< Updated upstream
             (0,_vue_runtime_dom__WEBPACK_IMPORTED_MODULE_2__.warn)(`Template element not found or is empty: ${template}`);
+=======
+            (0,_vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.warn)(`Template element not found or is empty: ${template}`);
+>>>>>>> Stashed changes
         }
         // __UNSAFE__
         // Reason: potential execution of JS expressions in in-DOM template.
@@ -56286,14 +57357,23 @@ function compileToFunction(template, options) {
         // by the server, the template should not contain any user data.
         template = el ? el.innerHTML : ``;
     }
+<<<<<<< Updated upstream
     const { code } = (0,_vue_compiler_dom__WEBPACK_IMPORTED_MODULE_3__.compile)(template, (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.extend)({
+=======
+    const { code } = (0,_vue_compiler_dom__WEBPACK_IMPORTED_MODULE_1__.compile)(template, (0,_vue_shared__WEBPACK_IMPORTED_MODULE_2__.extend)({
+>>>>>>> Stashed changes
         hoistStatic: true,
         onError(err) {
             if ((true)) {
                 const message = `Template compilation error: ${err.message}`;
                 const codeFrame = err.loc &&
+<<<<<<< Updated upstream
                     (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.generateCodeFrame)(template, err.loc.start.offset, err.loc.end.offset);
                 (0,_vue_runtime_dom__WEBPACK_IMPORTED_MODULE_2__.warn)(codeFrame ? `${message}\n${codeFrame}` : message);
+=======
+                    (0,_vue_shared__WEBPACK_IMPORTED_MODULE_2__.generateCodeFrame)(template, err.loc.start.offset, err.loc.end.offset);
+                (0,_vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.warn)(codeFrame ? `${message}\n${codeFrame}` : message);
+>>>>>>> Stashed changes
             }
             else {}
         }
@@ -56306,7 +57386,11 @@ function compileToFunction(template, options) {
     render._rc = true;
     return (compileCache[key] = render);
 }
+<<<<<<< Updated upstream
 (0,_vue_runtime_dom__WEBPACK_IMPORTED_MODULE_2__.registerRuntimeCompiler)(compileToFunction);
+=======
+(0,_vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.registerRuntimeCompiler)(compileToFunction);
+>>>>>>> Stashed changes
 
 
 
