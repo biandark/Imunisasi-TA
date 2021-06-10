@@ -7,7 +7,7 @@
             </div>
             <div class="items-center ml-4">
                 <h1 class="text-5xl justify-left font-semibold text-grey-500">Pastikan <br />Jadwal Imunisasi Tidak Terlewat dengan <br /> I-Mun </h1>
-                <p class="my-6 text-base text-gray-600">Imunisasi memberi perlindungan terhadap  serangan penyakit <br /> serius bagi anak maupun dewasa, serta dapat mencegah <br /> persebarannya. Berikan imunisasi tepat pada waktunya <br /> untuk perlindungan yang maksimal dari penyakit. <br /> Melalui web ini Anda dapat mengetahui jadwal yang tepat untuk <br /> imunisasi wajib serta pilihan anak Anda.</p>
+                <p class="my-6 text-base text-gray-600">Imunisasi memberi perlindungan terhadap  serangan penyakit serius bagi anak maupun dewasa, serta dapat mencegah persebarannya. Berikan imunisasi tepat pada waktunya untuk perlindungan yang maksimal dari penyakit. Melalui web ini Anda dapat mengetahui jadwal yang tepat untuk imunisasi wajib serta pilihan anak Anda.</p>
                 <jet-button class="mt-2" @click="gotoAnak()">Tambah Data Anak</jet-button>
                 
             </div>
