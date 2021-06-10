@@ -1010,7 +1010,6 @@ class KondisiController extends Controller
                     ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
                     ->where('baby_id', $baby_id)
                     ->where('imunisasis.id', 13)
-                    ->where('imunisasis.id', 14)
                     ->get();
                 if ($usia >= 108) {
                     if ($kondisi['tgl_rekom']!= NULL) {
