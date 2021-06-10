@@ -293,34 +293,6 @@ class KondisiController extends Controller
                 ]);
             }
         }
-        //PCV dewasa
-        if ($usia >= 2) {
-            $ada = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 4)
-            ->get();
-            if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                if ($kondisi['tgl_rekom'] != NULL) {
-                    $kondisi50 = Kondisi::create($request->all());
-                    $kondisi50->baby_id = $baby_id; //baby id
-                    $sekarang = Carbon::now();
-                    $kondisi50['tgl_rekom'] = $sekarang->addMonths(5);
-                    $kondisi50['imunisasi'] = $im[3]->id; //pcv 1
-                    $kondisi50->save();
-                    Jadwal::create([
-                        'kondisi_id' => $kondisi50->id,
-                    ]);
-                }
-                else {
-                    $sekarang = Carbon::now();
-                    $kondisi['tgl_rekom']  = $sekarang->addDays(7);
-                    $kondisi['imunisasi'] = $im[3]->id; //pcv 1
-                    $kondisi->save();
-                }
-            }
-        }
         //PCV complete > 6 bulan
         if ($usia >= 7 AND $kondisi['imunisasisblm'] == "Pneumokokus 3") {
             $pcv1 = DB::table('kondisis')
