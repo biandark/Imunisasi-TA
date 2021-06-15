@@ -1,0 +1,73 @@
+<?php
+
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+use App\Models\WAreminder;
+use App\Models\Riwayat;
+use App\Models\Kondisi;
+use Illuminate\Support\Facades\DB;
+
+class SendWA extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'send:whatsappreminder';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Command description';
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return int
+     */
+    public function handle()
+    {
+        $reminder = new WAreminder();
+
+        $dayafter = date('Y-m-d', strtotime( "+2 days" ));
+        $tomorrow = date('Y-m-d', strtotime( "+1 days" ));
+        $now = date('Y-m-d', strtotime("now"));
+        
+        $riwayats = Riwayat::where('tgl_penjadwalan', $tomorrow)
+        ->orWhere('tgl_penjadwalan', $now)
+        ->with('imunisasiwajib')
+        ->get();
+
+        $riwayatpilihans = DB::table('kondisis')
+        ->join('babies', 'kondisis.baby_id', '=', 'babies.id')
+        ->join('users', 'babies.user_id', '=', 'users.id')
+        ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+        ->where('tgl_rekom', $tomorrow)
+        ->orWhere('tgl_rekom', $dayafter)
+        ->orWhere('tgl_rekom', $now)
+        ->get();
+
+        foreach($riwayats as $riwayat) {
+            $reminder->kirimReminder($riwayat->imunisasiwajib->jenis, $riwayat->tgl_penjadwalan);
+        }
+        foreach($riwayatpilihans as $riwayatpilihan) {
+            $reminder->kirimReminder($riwayatpilihan->nama, $riwayatpilihan->tgl_rekom, $riwayatpilihan->whatsappno);
+        }
+
+        $this->info('Success');
+    }
+}

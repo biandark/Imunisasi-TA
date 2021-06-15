@@ -24,7 +24,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('send:whatsappreminder')
+        ->daily()
+        ->timezone('Asia/Jakarta')
+        ->at('08:00');
     }
 
     /**
