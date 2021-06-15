@@ -14,6 +14,10 @@ use Illuminate\Support\Arr;
 class RiwayatController extends Controller
 {
     public function index($baby_id) {
+        if (Baby::where('id', $baby_id)->first()->user_id != Auth::user()->id) {
+            return redirect()->route('databayi');
+        }
+
         $is_not_filled = empty(Riwayat::where('baby_id', $baby_id)->first());
 
         if ($is_not_filled) {

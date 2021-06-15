@@ -157,7 +157,8 @@ class BabyController extends Controller
         //input dari user
         $ttl = new DateTime($ttl);
         $now = new DateTime();
-        $usia = $now->diff($ttl)->m;
+        $diff = $now->diff($ttl);
+        $usia = ($diff->y * 12) + $diff->m;
         $done = json_decode($done);
         $last_polio = new DateTime($last_polio);
         $last_dpt = new DateTime($last_dpt);
