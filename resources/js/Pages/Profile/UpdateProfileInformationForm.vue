@@ -57,7 +57,8 @@
             <!-- Whatsapp -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="whatsappno" value="Nomor Whatsapp" />
-                <jet-input id="whatsappno" type="text" class="mt-1 block w-full" v-model="form.whatsappno" />
+                <p class="text-sm">Format penulisan: 62xxxxxxxxxxx</p>
+                <jet-input id="whatsappno" pattern="^62\d{8,12}$" type="text" class="mt-1 block w-full" v-model="form.whatsappno" />
             </div>
         </template>
 
