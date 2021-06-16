@@ -20,6 +20,8 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+        
+
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -28,13 +30,22 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
+        
+        $whatsappno = $input['whatsappno'];
+
+        if($whatsappno[0] == "0"){
+            $whatsappno = substr_replace($whatsappno,'62',0,1);
+        }
 
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
-            'whatsappno' => $input['whatsappno'],
+            'whatsappno' => $whatsappno,
             'wali' => $input['wali'],
             'password' => Hash::make($input['password']),
         ]);
+
+        
+
     }
 }

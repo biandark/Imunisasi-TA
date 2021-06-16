@@ -21,6 +21,7 @@
                 <jet-label for="whatsappno" value="Nomor Whatsapp" />
                 <jet-input id="whatsappno" type="text" class="mt-1 block w-full" v-model="form.whatsappno" required />
             </div>
+
             <div class="mt-4">
                 <jet-label for="wali" value="Pilih Wali" />
                 <select v-model="form.wali" placeholder="Pilih Wali" class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" required>
