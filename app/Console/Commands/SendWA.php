@@ -47,9 +47,13 @@ class SendWA extends Command
         $tomorrow = date('Y-m-d', strtotime( "+1 days" ));
         $now = date('Y-m-d', strtotime("now"));
         
-        $riwayats = Riwayat::where('tgl_penjadwalan', $tomorrow)
+        $riwayats = DB::table('riwayats')
+        ->join('babies', 'riwayats.baby_id', '=', 'babies.id')
+        ->join('users', 'babies.user_id', '=', 'users.id')
+        ->join('imunisasiwajibs', 'riwayats.imunisasiwajib_id', '=', 'imunisasiwajibs.id')
+        ->where('tgl_penjadwalan', $tomorrow)
+        ->orWhere('tgl_penjadwalan', $dayafter)
         ->orWhere('tgl_penjadwalan', $now)
-        ->with('imunisasiwajib')
         ->get();
 
         $riwayatpilihans = DB::table('kondisis')
@@ -62,7 +66,7 @@ class SendWA extends Command
         ->get();
 
         foreach($riwayats as $riwayat) {
-            $reminder->kirimReminder($riwayat->imunisasiwajib->jenis, $riwayat->tgl_penjadwalan);
+            $reminder->kirimReminder($riwayat->jenis, $riwayat->tgl_penjadwalan, $riwayat->whatsappno);
         }
         foreach($riwayatpilihans as $riwayatpilihan) {
             $reminder->kirimReminder($riwayatpilihan->nama, $riwayatpilihan->tgl_rekom, $riwayatpilihan->whatsappno);

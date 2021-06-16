@@ -14,9 +14,7 @@ class WAreminder extends Model
     public function kirimReminder($jenis_imunisasi, $tanggal, $nohp){
         
         $message = 
-        "Jadwal imunisasi selanjutnya
-        Imunisasi: $jenis_imunisasi
-        Tanggal: $tanggal";     
+        "Jadwal imunisasi selanjutnya \nImunisasi : $jenis_imunisasi \nTanggal : $tanggal";     
     
         $response = Http::get('https://api.cybtr.com/imunisasi.php', [
             'key' => "Bhew879drncr9erhm",
