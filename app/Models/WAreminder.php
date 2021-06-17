@@ -11,15 +11,17 @@ class WAreminder extends Model
 {
     use HasFactory;
 
-    public function kirimReminder($jenis_imunisasi, $tanggal, $nohp){
+    public function kirimReminder($jenis_imunisasi, $tanggal, $nohp, $nama, $link){
         
         $message = 
-        "Jadwal imunisasi selanjutnya \nImunisasi : $jenis_imunisasi \nTanggal : $tanggal";     
+        "[IMUNISASI SELANJUTNYA] \n\nJadwal imunisasi selanjutnya \nNama : $nama \nImunisasi : $jenis_imunisasi \nTanggal : $tanggal \nPastikan anak anda dalam kondisi fit. Jika ingin mengetahui mengenai imunisasi dapat mengunjungi $link";     
     
         $response = Http::get('https://api.cybtr.com/imunisasi.php', [
             'key' => "Bhew879drncr9erhm",
             'no' => $nohp,
             'msg' => $message,
         ]);
+
+        
     }
 }

@@ -66,10 +66,10 @@ class SendWA extends Command
         ->get();
 
         foreach($riwayats as $riwayat) {
-            $reminder->kirimReminder($riwayat->jenis, $riwayat->tgl_penjadwalan, $riwayat->whatsappno);
+            $reminder->kirimReminder( $riwayat->jenis, $riwayat->tgl_penjadwalan, $riwayat->whatsappno, $riwayat->nama, $link = "http://imun.site/info");
         }
         foreach($riwayatpilihans as $riwayatpilihan) {
-            $reminder->kirimReminder($riwayatpilihan->nama, $riwayatpilihan->tgl_rekom, $riwayatpilihan->whatsappno);
+            $reminder->kirimReminder($riwayatpilihan->nama, $riwayatpilihan->tgl_rekom, $riwayatpilihan->whatsappno, $link = "http://imun.site/daftarimunisasi");
         }
 
         $this->info('Success');

@@ -13,6 +13,11 @@ use Illuminate\Support\Arr;
 
 class RiwayatController extends Controller
 {
+    public function __construct() 
+    {
+     $this->middleware('auth');
+    }
+    
     public function index($baby_id) {
         if (Baby::where('id', $baby_id)->first()->user_id != Auth::user()->id) {
             return redirect()->route('databayi');

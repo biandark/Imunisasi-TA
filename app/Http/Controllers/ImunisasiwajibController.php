@@ -8,6 +8,11 @@ use App\Models\Imunisasiwajib;
 
 class ImunisasiwajibController extends Controller
 {
+    public function __construct() 
+    {
+     $this->middleware('auth');
+    }
+    
     public function detail($id) {
         //ambil data id dari url > detail/1
         // data di tabel imunisasi

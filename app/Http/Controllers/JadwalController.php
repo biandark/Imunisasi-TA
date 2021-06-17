@@ -15,6 +15,11 @@ use Auth;
 
 class JadwalController extends Controller
 {
+    public function __construct() 
+    {
+     $this->middleware('auth');
+    }
+    
     public function index($baby_id) 
     {
         $jadwalbayi = Kondisi::where('baby_id', $baby_id)->first();
