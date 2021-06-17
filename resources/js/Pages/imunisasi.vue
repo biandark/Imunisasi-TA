@@ -12,7 +12,7 @@
                     </div>
                     <div class="mt-4">
                         <h3 class="font-semibold text-xl text-grey-500 leading-tight">
-                        {{ data[0].nama }}
+                        {{ data[0].jenis }}
                         </h3>
                     </div>
                     <div class="mt-4">

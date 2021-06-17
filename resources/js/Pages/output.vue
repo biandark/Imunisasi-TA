@@ -62,10 +62,10 @@
                         <tbody>
                         <tr v-for="(kondisi, index) in scheduled" :key="kondisi.id">
                             <td>{{ index+1 }}</td>
-                            <td>{{ kondisi.nama }}</td>
+                            <td>{{ kondisi.jenis }}</td>
                             <td>{{ formatDate(kondisi.tgl_rekom) }}</td>
                             <td>
-                                <inertia-link class="text-sm text-indigo-500 underline" :href="route('imunisasi' ,{ data:kondisi.nama})" method="get">
+                                <inertia-link class="text-sm text-indigo-500 underline" :href="route('imunisasi' ,{ data:kondisi.jenis})" method="get">
                                 Lihat Selengkapnya
                                 </inertia-link>
                             </td>

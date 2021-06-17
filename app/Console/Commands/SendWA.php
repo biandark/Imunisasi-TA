@@ -69,7 +69,8 @@ class SendWA extends Command
             $reminder->kirimReminder( $riwayat->jenis, $riwayat->tgl_penjadwalan, $riwayat->whatsappno, $riwayat->nama, $link = "http://imun.site/info");
         }
         foreach($riwayatpilihans as $riwayatpilihan) {
-            $reminder->kirimReminder($riwayatpilihan->nama, $riwayatpilihan->tgl_rekom, $riwayatpilihan->whatsappno, $link = "http://imun.site/daftarimunisasi");
+            $reminder->kirimReminder($riwayatpilihan->jenis, $riwayatpilihan->tgl_rekom, $riwayatpilihan->whatsappno, $riwayatpilihan->nama, $link = "http://imun.site/daftarimunisasi");
+           
         }
 
         $this->info('Success');
