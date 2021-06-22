@@ -106,7 +106,6 @@ class KondisiController extends Controller
                 $kondisi->save();
             }
         }
-        
         //yellow fever
         if ($usia >= 9 AND $kondisi['travelling'] == "Ya" AND (in_array("Pergi ke daerah endemis yellow fever", $kondisiku) OR in_array("hamil", $kondisiku))) {
             $ada = DB::table('kondisis')
@@ -122,6 +121,243 @@ class KondisiController extends Controller
                 $kondisi->save();
             }
         }
+        //JE 2
+        if ($kondisi['imunisasisblm'] == "Japanesse Ensephalitis 1") {
+            $ada = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 22)
+            ->get();
+            if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi52 = Kondisi::create($request->all());
+                    $kondisi52->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi52['tgl_rekom'] = $tglrekom->addMonths(12);
+                    $lampau = $now->diffInDays($kondisi52['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi52['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi52['imunisasi'] = $im[21]->id;
+                    $kondisi52->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi52->id,
+                    ]);
+                }
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(12);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[21]->id;
+                    $kondisi->save();
+                }
+                
+            }
+            $je1 = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 21)
+            ->get();
+            if (empty($je1->first())) {
+                $kondisi34 = Kondisi::create($request->all());
+                $kondisi34->baby_id = $baby_id; //baby id
+                $kondisi34['tgl_rekom'] = $kondisi['tgl'];
+                $kondisi34['imunisasi'] = $im[20]->id; //JE 1 sudah dilakukan
+                $kondisi34->save();
+                Jadwal::create([
+                    'kondisi_id' => $kondisi34->id,
+                    'status' => "Sudah Dilakukan",
+                    'tgl_pelaksanaan' => $kondisi->tgl,
+                ]);
+            }
+        } 
+        //JE
+        if ($kondisi['travelling'] == "Ya" AND $usia >= 9 AND in_array("Pergi atau tinggal di daerah endemis Japanesse Ensephalitis", $kondisiku)) {
+            $ada = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 21)
+            ->get();
+            if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
+                if ($kondisi['tgl_brkt']!= NULL) {
+                    $tglbrkt = Carbon::parse($kondisi['tgl_brkt']);
+                    $kondisi['tgl_rekom'] =  $tglbrkt->addDays(7);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[20]->id;
+                    $kondisi->save();
+                }
+                else {
+                    $kondisi['tgl_rekom']  = $now->addDays(7);
+                    $kondisi['imunisasi'] = $im[20]->id;
+                    $kondisi->save();
+                }  
+            }
+            
+        } 
+        //JE complete
+        if ($kondisi['imunisasisblm'] == "Japanesse Ensephalitis 2") {
+            $je2 = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 22)
+            ->get();
+            if (empty($je2->first())) {
+                $kondisi['tgl_rekom'] = $kondisi['tgl'];
+                $kondisi['imunisasi'] = $im[21]->id; //JE 2 sudah dilakukan
+                $kondisi->save();
+                Jadwal::create([
+                    'kondisi_id' => $kondisi->id,
+                    'status' => "Sudah Dilakukan",
+                    'tgl_pelaksanaan' => $kondisi->tgl,
+                ]);
+            }
+            $je1 = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 21)
+            ->get();
+            if (empty($je1->first())) {
+                $kondisi7 = Kondisi::create($request->all());
+                $kondisi7->baby_id = $baby_id; //baby id
+                $kondisi7['tgl_rekom'] = $kondisi['tgl'];
+                $kondisi7['imunisasi'] = $im[20]->id; //JE 1 sudah dilakukan
+                $kondisi7->save();
+                Jadwal::create([
+                    'kondisi_id' => $kondisi7->id,
+                    'status' => "Sudah Dilakukan",
+                    'tgl_pelaksanaan' => $kondisi->tgl,
+                ]);
+            }
+            return redirect()->back()->with('message', 'Imunisasi Japanese Ensephalitis anak sudah lengkap. Silahkan submit form kembali jika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
+        }
+        //hepatitis A 2
+        if ($usia >= 12 AND $kondisi['imunisasisblm'] == "Hepatitis A 1") {
+            $ada = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 12)
+            ->get();
+            if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi53 = Kondisi::create($request->all());
+                    $kondisi53->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi53['tgl_rekom'] = $tglrekom->addMonths(6);
+                    $lampau = $now->diffInDays($kondisi53['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi53['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi53['imunisasi'] = $im[11]->id;
+                    $kondisi53->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi53->id,
+                    ]);
+                }
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[11]->id;
+                    $kondisi->save();
+                }
+                
+            }
+            $hepa1 = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 11)
+            ->get();
+            if (empty($hepa1->first())) {
+                $kondisi33 = Kondisi::create($request->all());
+                $kondisi33->baby_id = $baby_id; //baby id
+                $kondisi33['tgl_rekom'] = $kondisi['tgl'];
+                $kondisi33['imunisasi'] = $im[10]->id; //hepa a 1 sudah dilakukan
+                $kondisi33->save();
+                Jadwal::create([
+                    'kondisi_id' => $kondisi33->id,
+                    'status' => "Sudah Dilakukan",
+                    'tgl_pelaksanaan' => $kondisi->tgl,
+                ]);
+            }
+        } 
+        //hepatitis A 
+        if ($kondisi['travelling'] == "Ya" AND in_array("Pergi ke daerah endemis hepatitis A", $kondisiku)) {
+            if ($usia >= 12) {
+                $ada = DB::table('kondisis')
+                ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+                ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+                ->where('baby_id', $baby_id)
+                ->where('imunisasis.id', 11)
+                ->get();
+                if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
+                    if ($kondisi['tgl_brkt']!= NULL) { //Hepa A 1 (mengisi tgl keberangkatan)
+                        $tglbrkt = Carbon::parse($kondisi['tgl_brkt']);
+                        $kondisi['tgl_rekom'] =  $tglbrkt->addDays(7);
+                        $kondisi['imunisasi'] = $im[10]->id;
+                        $kondisi->save();
+                    }
+                    else { //Hepa A 1 (tidak mengisi tgl keberangkatan)
+                        $kondisi['tgl_rekom']  = $now->addDays(7);
+                        $kondisi['imunisasi'] = $im[10]->id;
+                        $kondisi->save();
+                    }
+                }
+            }   
+        }
+        //hepatitis A complete
+        if ($kondisi['imunisasisblm'] == "Hepatitis A 2") {
+            $hepa2 = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 12)
+            ->get();
+            if (empty($hepa2->first())) {
+                $kondisi['tgl_rekom'] = $kondisi['tgl'];
+                $kondisi['imunisasi'] = $im[11]->id; //hepa a 2 sudah dilakukan
+                $kondisi->save();
+                Jadwal::create([
+                    'kondisi_id' => $kondisi->id,
+                    'status' => "Sudah Dilakukan",
+                    'tgl_pelaksanaan' => $kondisi->tgl,
+                ]);
+            }
+            $hepa1 = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 11)
+            ->get();
+            if (empty($hepa1->first())) {
+                $kondisi8 = Kondisi::create($request->all());
+                $kondisi8->baby_id = $baby_id; //baby id
+                $kondisi8['tgl_rekom'] = $kondisi['tgl'];
+                $kondisi8['imunisasi'] = $im[10]->id; //hepa a 1 sudah dilakukan
+                $kondisi8->save();
+                Jadwal::create([
+                    'kondisi_id' => $kondisi8->id,
+                    'status' => "Sudah Dilakukan",
+                    'tgl_pelaksanaan' => $kondisi->tgl,
+                ]);
+            }
+            return redirect()->back()->with('message', 'Imunisasi Hepatitis A sudah lengkap. Silahkan submit form kembali jika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
+        }
         //rabies
         if (in_array("Memiliki hewan peliharaan (anjing, kucing, kera)", $kondisiku)) {
             
@@ -132,116 +368,25 @@ class KondisiController extends Controller
                 ->where('imunisasis.id', 3)
                 ->get();
             if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $kondisi['tgl_rekom']  = $now->addDays(7);
-                $kondisi['imunisasi'] = $im[2]->id;
-                $kondisi->save();
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi50 = Kondisi::create($request->all());
+                    $kondisi50->baby_id = $baby_id;
+                    $sekarang = Carbon::now();
+                    $kondisi50['tgl_rekom'] = $sekarang->addDays(30);
+                    $kondisi50['imunisasi'] = $im[2]->id;
+                    $kondisi50->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi50->id,
+                    ]);
+                }
+                else {
+                    $sekarang = Carbon::now();
+                    $kondisi['tgl_rekom']  = $sekarang->addDays(7);
+                    $kondisi['imunisasi'] = $im[2]->id;
+                    $kondisi->save();
+                }
             }
             
-        }
-        //PCV
-        if (in_array("Tinggal di lingkungan rokok, padat, panti", $kondisiku)) {
-            //PCV 1 2 bulan-dewasa
-            if ($usia >= 2) {
-                $ada = DB::table('kondisis')
-                ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-                ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-                ->where('baby_id', $baby_id)
-                ->where('imunisasis.id', 4)
-                ->get();
-                if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                    if ($kondisi['tgl_rekom'] != NULL) {
-                        $kondisi49 = Kondisi::create($request->all());
-                        $kondisi49->baby_id = $baby_id; //baby id
-                        $tglrekom = Carbon::parse($kondisi['tgl_rekom']);
-                        $kondisi49['tgl_rekom'] = $tglrekom->addDays(30);
-                        $kondisi49['imunisasi'] = $im[3]->id; //pcv 1
-                        $kondisi49->save();
-                        Jadwal::create([
-                            'kondisi_id' => $kondisi49->id,
-                        ]);
-                    }
-                    else {
-                        $sekarang = Carbon::now();
-                        $kondisi['tgl_rekom']  = $sekarang->addDays(7);
-                        $kondisi['imunisasi'] = $im[3]->id; //pcv 1
-                        $kondisi->save();
-                    }
-                }
-            }
-        }
-        //PCV 2 2-5 bulan, 12-23 bulan
-        if ((($usia >= 2 AND $usia <= 5) OR ($usia >= 12 AND $usia <= 23)) AND $kondisi['imunisasisblm'] == "Pneumokokus 1") {
-            $ada = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 5)
-            ->get();
-            if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(2);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                if ( $lampau < 0) {
-                    $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
-                }
-                $kondisi['imunisasi'] = $im[4]->id; //pcv 2
-                $kondisi->save();
-            }
-            $pcv1 = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 4)
-            ->get();                    
-            if (empty($pcv1->first())) {
-                $kondisi10 = Kondisi::create($request->all());
-                $kondisi10->baby_id = $baby_id; //baby id
-                $kondisi10['tgl_rekom'] = $kondisi['tgl'];
-                $kondisi10['imunisasi'] = $im[3]->id; //pcv 1 sudah dilakukan
-                $kondisi10->save();
-                Jadwal::create([
-                    'kondisi_id' => $kondisi10->id,
-                    'status' => "Sudah Dilakukan",
-                    'tgl_pelaksanaan' => $kondisi->tgl,
-                ]);
-            }
-        }
-        //PCV 2 7-12 bulan
-        if (($usia >= 7 AND $usia <= 12) AND $kondisi['imunisasisblm'] == "Pneumokokus 1") {
-            $ada = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 5)
-            ->get();
-            if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(1);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                if ( $lampau < 0) {
-                    $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
-                }
-                $kondisi['imunisasi'] = $im[4]->id;
-                $kondisi->save();
-            }
-            $pcv1 = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 4)
-            ->get();                    
-            if (empty($pcv1->first())) {
-                $kondisi12 = Kondisi::create($request->all());
-                $kondisi12->baby_id = $baby_id; //baby id
-                $kondisi12['tgl_rekom'] = $kondisi['tgl'];
-                $kondisi12['imunisasi'] = $im[3]->id; //pcv 1 sudah dilakukan
-                $kondisi12->save();
-                Jadwal::create([
-                    'kondisi_id' => $kondisi12->id,
-                    'status' => "Sudah Dilakukan",
-                    'tgl_pelaksanaan' => $kondisi->tgl,
-                ]);
-            }
         }
         //PCV 3 5-6 bulan
         if (($usia >= 5 AND $usia <= 6) AND $kondisi['imunisasisblm'] == "Pneumokokus 2") {
@@ -252,14 +397,32 @@ class KondisiController extends Controller
             ->where('imunisasis.id', 6)
             ->get();
             if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(2);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                if ( $lampau < 0) {
-                    $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi56 = Kondisi::create($request->all());
+                    $kondisi56->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi56['tgl_rekom'] = $tglrekom->addMonths(2);
+                    $lampau = $now->diffInDays($kondisi56['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi56['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi56['imunisasi'] = $im[5]->id;
+                    $kondisi56->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi56->id,
+                    ]);
                 }
-                $kondisi['imunisasi'] = $im[5]->id; //pcv 3
-                $kondisi->save();
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(2);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[5]->id; //pcv 3
+                    $kondisi->save();
+                }
+                
             }
             $pcv1 = DB::table('kondisis')
             ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
@@ -296,6 +459,147 @@ class KondisiController extends Controller
                     'status' => "Sudah Dilakukan",
                     'tgl_pelaksanaan' => $kondisi->tgl,
                 ]);
+            }
+        }
+        //PCV 2 7-12 bulan
+        if (($usia >= 7 AND $usia <= 12) AND $kondisi['imunisasisblm'] == "Pneumokokus 1") {
+            $ada = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 5)
+            ->get();
+            if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi55 = Kondisi::create($request->all());
+                    $kondisi55->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi55['tgl_rekom'] = $tglrekom->addMonths(1);
+                    $lampau = $now->diffInDays($kondisi55['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi55['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi55['imunisasi'] = $im[4]->id;
+                    $kondisi55->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi55->id,
+                    ]);
+                }
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(1);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[4]->id;
+                    $kondisi->save();
+                }
+                
+            }
+            $pcv1 = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 4)
+            ->get();                    
+            if (empty($pcv1->first())) {
+                $kondisi12 = Kondisi::create($request->all());
+                $kondisi12->baby_id = $baby_id; //baby id
+                $kondisi12['tgl_rekom'] = $kondisi['tgl'];
+                $kondisi12['imunisasi'] = $im[3]->id; //pcv 1 sudah dilakukan
+                $kondisi12->save();
+                Jadwal::create([
+                    'kondisi_id' => $kondisi12->id,
+                    'status' => "Sudah Dilakukan",
+                    'tgl_pelaksanaan' => $kondisi->tgl,
+                ]);
+            }
+        }
+        //PCV 2 2-5 bulan, 12-23 bulan
+        if ((($usia >= 2 AND $usia <= 5) OR ($usia >= 12 AND $usia <= 23)) AND $kondisi['imunisasisblm'] == "Pneumokokus 1") {
+            $ada = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 5)
+            ->get();
+            if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi54 = Kondisi::create($request->all());
+                    $kondisi54->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi54['tgl_rekom'] = $tglrekom->addMonths(2);
+                    $lampau = $now->diffInDays($kondisi54['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi54['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi54['imunisasi'] = $im[4]->id;
+                    $kondisi54->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi54->id,
+                    ]);
+                }
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(2);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[4]->id; //pcv 2
+                    $kondisi->save();
+                }
+                
+            }
+            $pcv1 = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 4)
+            ->get();                    
+            if (empty($pcv1->first())) {
+                $kondisi10 = Kondisi::create($request->all());
+                $kondisi10->baby_id = $baby_id; //baby id
+                $kondisi10['tgl_rekom'] = $kondisi['tgl'];
+                $kondisi10['imunisasi'] = $im[3]->id; //pcv 1 sudah dilakukan
+                $kondisi10->save();
+                Jadwal::create([
+                    'kondisi_id' => $kondisi10->id,
+                    'status' => "Sudah Dilakukan",
+                    'tgl_pelaksanaan' => $kondisi->tgl,
+                ]);
+            }
+        }
+        //PCV
+        if (in_array("Tinggal di lingkungan rokok, padat, panti", $kondisiku)) {
+            //PCV 1 2 bulan-dewasa
+            if ($usia >= 2) {
+                $ada = DB::table('kondisis')
+                ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+                ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+                ->where('baby_id', $baby_id)
+                ->where('imunisasis.id', 4)
+                ->get();
+                if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
+                    if ($kondisi['tgl_rekom'] != NULL) {
+                        $kondisi49 = Kondisi::create($request->all());
+                        $kondisi49->baby_id = $baby_id; //baby id
+                        $sekarang = Carbon::now();
+                        $kondisi49['tgl_rekom'] = $sekarang->addDays(30);
+                        $kondisi49['imunisasi'] = $im[3]->id; //pcv 1
+                        $kondisi49->save();
+                        Jadwal::create([
+                            'kondisi_id' => $kondisi49->id,
+                        ]);
+                    }
+                    else {
+                        $sekarang = Carbon::now();
+                        $kondisi['tgl_rekom']  = $sekarang->addDays(7);
+                        $kondisi['imunisasi'] = $im[3]->id; //pcv 1
+                        $kondisi->save();
+                    }
+                }
             }
         }
         //PCV complete > 6 bulan
@@ -415,258 +719,6 @@ class KondisiController extends Controller
 
             return redirect()->back()->with('message', 'Imunisasi PCV anak sudah lengkap. Silahkan submit form kembali jika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
         }
-        //hepatitis A 
-        if ($kondisi['travelling'] == "Ya" AND in_array("Pergi ke daerah endemis hepatitis A", $kondisiku)) {
-            if ($usia >= 12) {
-                $ada = DB::table('kondisis')
-                ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-                ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-                ->where('baby_id', $baby_id)
-                ->where('imunisasis.id', 11)
-                ->get();
-                if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                    if ($kondisi['tgl_brkt']!= NULL) { //Hepa A 1 (mengisi tgl keberangkatan)
-                        $tglbrkt = Carbon::parse($kondisi['tgl_brkt']);
-                        $kondisi['tgl_rekom'] =  $tglbrkt->addDays(7);
-                        $kondisi['imunisasi'] = $im[10]->id;
-                        $kondisi->save();
-                    }
-                    else { //Hepa A 1 (tidak mengisi tgl keberangkatan)
-                        $kondisi['tgl_rekom']  = $now->addDays(7);
-                        $kondisi['imunisasi'] = $im[10]->id;
-                        $kondisi->save();
-                    }
-                }
-            }   
-        }
-        //hepatitis A 2
-        if ($usia >= 12 AND $kondisi['imunisasisblm'] == "Hepatitis A 1") {
-            $ada = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 12)
-            ->get();
-            if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                if ( $lampau < 0) {
-                    $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
-                }
-                $kondisi['imunisasi'] = $im[11]->id;
-                $kondisi->save();
-            }
-            $hepa1 = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 11)
-            ->get();
-            if (empty($hepa1->first())) {
-                $kondisi33 = Kondisi::create($request->all());
-                $kondisi33->baby_id = $baby_id; //baby id
-                $kondisi33['tgl_rekom'] = $kondisi['tgl'];
-                $kondisi33['imunisasi'] = $im[10]->id; //hepa a 1 sudah dilakukan
-                $kondisi33->save();
-                Jadwal::create([
-                    'kondisi_id' => $kondisi33->id,
-                    'status' => "Sudah Dilakukan",
-                    'tgl_pelaksanaan' => $kondisi->tgl,
-                ]);
-            }
-        } 
-        //hepatitis A complete
-        if ($kondisi['imunisasisblm'] == "Hepatitis A 2") {
-            $hepa2 = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 12)
-            ->get();
-            if (empty($hepa2->first())) {
-                $kondisi['tgl_rekom'] = $kondisi['tgl'];
-                $kondisi['imunisasi'] = $im[11]->id; //hepa a 2 sudah dilakukan
-                $kondisi->save();
-                Jadwal::create([
-                    'kondisi_id' => $kondisi->id,
-                    'status' => "Sudah Dilakukan",
-                    'tgl_pelaksanaan' => $kondisi->tgl,
-                ]);
-            }
-            $hepa1 = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 11)
-            ->get();
-            if (empty($hepa1->first())) {
-                $kondisi8 = Kondisi::create($request->all());
-                $kondisi8->baby_id = $baby_id; //baby id
-                $kondisi8['tgl_rekom'] = $kondisi['tgl'];
-                $kondisi8['imunisasi'] = $im[10]->id; //hepa a 1 sudah dilakukan
-                $kondisi8->save();
-                Jadwal::create([
-                    'kondisi_id' => $kondisi8->id,
-                    'status' => "Sudah Dilakukan",
-                    'tgl_pelaksanaan' => $kondisi->tgl,
-                ]);
-            }
-            return redirect()->back()->with('message', 'Imunisasi Hepatitis A sudah lengkap. Silahkan submit form kembali jika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
-        }
-        //JE
-        if ($kondisi['travelling'] == "Ya" AND $usia >= 9 AND in_array("Pergi atau tinggal di daerah endemis Japanesse Ensephalitis", $kondisiku)) {
-            $ada = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 21)
-            ->get();
-            if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                if ($kondisi['tgl_brkt']!= NULL) {
-                    $tglbrkt = Carbon::parse($kondisi['tgl_brkt']);
-                    $kondisi['tgl_rekom'] =  $tglbrkt->addDays(7);
-                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                    if ( $lampau < 0) {
-                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
-                    }
-                    $kondisi['imunisasi'] = $im[20]->id;
-                    $kondisi->save();
-                }
-                else {
-                    $kondisi['tgl_rekom']  = $now->addDays(7);
-                    $kondisi['imunisasi'] = $im[20]->id;
-                    $kondisi->save();
-                }  
-            }
-            
-        }
-        //JE 2
-        if ($kondisi['imunisasisblm'] == "Japanesse Ensephalitis 1") {
-            $ada = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 22)
-            ->get();
-            if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(12);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                if ( $lampau < 0) {
-                    $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
-                }
-                $kondisi['imunisasi'] = $im[21]->id;
-                $kondisi->save();
-            }
-            $je1 = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 21)
-            ->get();
-            if (empty($je1->first())) {
-                $kondisi34 = Kondisi::create($request->all());
-                $kondisi34->baby_id = $baby_id; //baby id
-                $kondisi34['tgl_rekom'] = $kondisi['tgl'];
-                $kondisi34['imunisasi'] = $im[20]->id; //JE 1 sudah dilakukan
-                $kondisi34->save();
-                Jadwal::create([
-                    'kondisi_id' => $kondisi34->id,
-                    'status' => "Sudah Dilakukan",
-                    'tgl_pelaksanaan' => $kondisi->tgl,
-                ]);
-            }
-        }    
-        //JE complete
-        if ($kondisi['imunisasisblm'] == "Japanesse Ensephalitis 2") {
-            $je2 = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 22)
-            ->get();
-            if (empty($je2->first())) {
-                $kondisi['tgl_rekom'] = $kondisi['tgl'];
-                $kondisi['imunisasi'] = $im[21]->id; //JE 2 sudah dilakukan
-                $kondisi->save();
-                Jadwal::create([
-                    'kondisi_id' => $kondisi->id,
-                    'status' => "Sudah Dilakukan",
-                    'tgl_pelaksanaan' => $kondisi->tgl,
-                ]);
-            }
-            $je1 = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 21)
-            ->get();
-            if (empty($je1->first())) {
-                $kondisi7 = Kondisi::create($request->all());
-                $kondisi7->baby_id = $baby_id; //baby id
-                $kondisi7['tgl_rekom'] = $kondisi['tgl'];
-                $kondisi7['imunisasi'] = $im[20]->id; //JE 1 sudah dilakukan
-                $kondisi7->save();
-                Jadwal::create([
-                    'kondisi_id' => $kondisi7->id,
-                    'status' => "Sudah Dilakukan",
-                    'tgl_pelaksanaan' => $kondisi->tgl,
-                ]);
-            }
-            return redirect()->back()->with('message', 'Imunisasi Japanese Ensephalitis anak sudah lengkap. Silahkan submit form kembali jika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
-        }
-        //hepatitis b
-        if (in_array("Petugas fasilitas kesehatan", $kondisiku)) {
-            $ada = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 23)
-            ->get();
-            if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $kondisi['tgl_rekom']  = $now->addDays(7);
-                $kondisi['imunisasi'] = $im[22]->id;
-                $kondisi->save();
-            }   
-        }
-        //Hepatitis b 2
-        if ($kondisi['imunisasisblm'] == "Hepatitis B 1") {
-            $ada = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 24)
-            ->get();
-            if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(1);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                if ( $lampau < 0) {
-                    $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
-                }
-                $kondisi['imunisasi'] = $im[23]->id;
-                $kondisi->save();
-            }
-            $hepb1 = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 23)
-            ->get();
-            if (empty($hepb1->first())) {
-                $kondisi35 = Kondisi::create($request->all());
-                $kondisi35->baby_id = $baby_id; //baby id
-                $kondisi35['tgl_rekom'] = $kondisi['tgl'];
-                $kondisi35['imunisasi'] = $im[22]->id; //hep b 1 sudah dilakukan
-                $kondisi35->save();
-                Jadwal::create([
-                    'kondisi_id' => $kondisi35->id,
-                    'status' => "Sudah Dilakukan",
-                    'tgl_pelaksanaan' => $kondisi->tgl,
-                ]);
-            }
-        } 
         //Hepatitis b 3
         if ($kondisi['imunisasisblm'] == "Hepatitis B 2") {
             $ada = DB::table('kondisis')
@@ -676,14 +728,32 @@ class KondisiController extends Controller
             ->where('imunisasis.id', 25)
             ->get();
             if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                if ( $lampau < 0) {
-                    $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi57 = Kondisi::create($request->all());
+                    $kondisi57->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi57['tgl_rekom'] = $tglrekom->addMonths(6);
+                    $lampau = $now->diffInDays($kondisi57['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi57['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi57['imunisasi'] = $im[24]->id;
+                    $kondisi57->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi57->id,
+                    ]);
                 }
-                $kondisi['imunisasi'] = $im[24]->id;
-                $kondisi->save();
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[24]->id;
+                    $kondisi->save();
+                }
+                
             }
             $hepb1 = DB::table('kondisis')
             ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
@@ -721,7 +791,90 @@ class KondisiController extends Controller
                     'tgl_pelaksanaan' => $kondisi->tgl,
                 ]);
             }
+        }
+        //Hepatitis b 2
+        if ($kondisi['imunisasisblm'] == "Hepatitis B 1") {
+            $ada = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 24)
+            ->get();
+            if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi58 = Kondisi::create($request->all());
+                    $kondisi58->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi58['tgl_rekom'] = $tglrekom->addMonths(1);
+                    $lampau = $now->diffInDays($kondisi58['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi58['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi58['imunisasi'] = $im[23]->id;
+                    $kondisi58->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi58->id,
+                    ]);
+                }
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(1);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[23]->id;
+                    $kondisi->save();
+                }
+                
+            }
+            $hepb1 = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 23)
+            ->get();
+            if (empty($hepb1->first())) {
+                $kondisi35 = Kondisi::create($request->all());
+                $kondisi35->baby_id = $baby_id; //baby id
+                $kondisi35['tgl_rekom'] = $kondisi['tgl'];
+                $kondisi35['imunisasi'] = $im[22]->id; //hep b 1 sudah dilakukan
+                $kondisi35->save();
+                Jadwal::create([
+                    'kondisi_id' => $kondisi35->id,
+                    'status' => "Sudah Dilakukan",
+                    'tgl_pelaksanaan' => $kondisi->tgl,
+                ]);
+            }
         } 
+        //hepatitis b
+        if (in_array("Petugas fasilitas kesehatan", $kondisiku)) {
+            $ada = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 23)
+            ->get();
+            if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi51 = Kondisi::create($request->all());
+                    $kondisi51->baby_id = $baby_id;
+                    $sekarang = Carbon::now();
+                    $kondisi51['tgl_rekom'] = $sekarang->addDays(30);
+                    $kondisi51['imunisasi'] = $im[22]->id;
+                    $kondisi51->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi51->id,
+                    ]);
+                }
+                else {
+                    $sekarang = Carbon::now();
+                    $kondisi['tgl_rekom']  = $sekarang->addDays(7);
+                    $kondisi['imunisasi'] = $im[22]->id;
+                    $kondisi->save();
+                }
+            }   
+        }
         //hepatitis b complete
         if ($kondisi['imunisasisblm'] == "Hepatitis B 3") {
             $hepb3 = DB::table('kondisis')
@@ -778,87 +931,6 @@ class KondisiController extends Controller
             }
             return redirect()->back()->with('message', 'Imunisasi Hepatitis B sudah lengkap. Silahkan submit form kembali jika ingin mengetahui jenis imunisasi lain yang direkomendasikan.');
         }
-        //dengue 1
-        if ($usia <= 192 AND in_array("Pernah terkena penyakit demam berdarah", $kondisiku)) {
-            if ($usia >= 108) {
-                $ada = DB::table('kondisis')
-                ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-                ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-                ->where('baby_id', $baby_id)
-                ->where('imunisasis.id', 26)
-                ->get();
-                if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                    if ($kondisi['tgl_rekom'] != NULL) {
-                        $kondisi24 = Kondisi::create($request->all());
-                        $kondisi24->baby_id = $baby_id; //baby id
-                        $rekom = Carbon::parse($kondisi['tgl_rekom']);
-                        $kondisi24['tgl_rekom'] = $rekom->addMonth(1);
-                        $kondisi24['imunisasi'] = $im[25]->id; 
-                        $kondisi24->save();
-                        Jadwal::create([
-                            'kondisi_id' => $kondisi24->id,
-                        ]);
-                    }
-                    else {
-                        $kondisi['tgl_rekom']  = $now->addDays(7);
-                        $kondisi['imunisasi'] = $im[25]->id;
-                        $kondisi->save();
-                    }
-                }
-            }
-            if ($usia < 108) {
-                $ada = DB::table('kondisis')
-                ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-                ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-                ->where('baby_id', $baby_id)
-                ->where('imunisasis.id', 26)
-                ->get();
-                if (empty($ada->first())) { //dijadwalkan saat anak berusia 108 bulan
-                    $jadwaldbd = 108 - $usia;
-                    $sekarang = Carbon::now();
-                    $kondisi['tgl_rekom']  = $sekarang->addMonths($jadwaldbd);
-                    $kondisi['imunisasi'] = $im[25]->id;
-                    $kondisi->save();
-                }  
-            }     
-        }
-        //dengue 2
-        if ($kondisi['imunisasisblm'] == "Demam Berdarah 1") {
-            $ada = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 27)
-            ->get();
-            if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                if ( $lampau < 0) {
-                    $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
-                }
-                $kondisi['imunisasi'] = $im[26]->id;
-                $kondisi->save();
-            }
-            $dbd1 = DB::table('kondisis')
-            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
-            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
-            ->where('baby_id', $baby_id)
-            ->where('imunisasis.id', 26)
-            ->get();
-            if (empty($dbd1->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $kondisi47 = Kondisi::create($request->all());
-                $kondisi47->baby_id = $baby_id; //baby id
-                $kondisi47['tgl_rekom'] = $kondisi['tgl'];
-                $kondisi47['imunisasi'] = $im[25]->id; //DBD 1 sudah dilakukan
-                $kondisi47->save();
-                Jadwal::create([
-                    'kondisi_id' => $kondisi47->id,
-                    'status' => "Sudah Dilakukan",
-                    'tgl_pelaksanaan' => $kondisi->tgl,
-                ]);
-            }
-        } 
         //dengue 3
         if ($kondisi['imunisasisblm'] == "Demam Berdarah 2") {
             $ada = DB::table('kondisis')
@@ -868,14 +940,31 @@ class KondisiController extends Controller
             ->where('imunisasis.id', 28)
             ->get();
             if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                if ( $lampau < 0) {
-                    $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi59 = Kondisi::create($request->all());
+                    $kondisi59->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi59['tgl_rekom'] = $tglrekom->addMonths(6);
+                    $lampau = $now->diffInDays($kondisi59['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi59['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi59['imunisasi'] = $im[27]->id;
+                    $kondisi59->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi59->id,
+                    ]);
                 }
-                $kondisi['imunisasi'] = $im[27]->id;
-                $kondisi->save();
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[27]->id;
+                    $kondisi->save();
+                }
             }
             $dbd1 = DB::table('kondisis')
             ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
@@ -914,6 +1003,105 @@ class KondisiController extends Controller
                 ]);
             }
         }
+        //dengue 2
+        if ($kondisi['imunisasisblm'] == "Demam Berdarah 1") {
+            $ada = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 27)
+            ->get();
+            if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi60 = Kondisi::create($request->all());
+                    $kondisi60->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi60['tgl_rekom'] = $tglrekom->addMonths(6);
+                    $lampau = $now->diffInDays($kondisi60['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi60['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi60['imunisasi'] = $im[26]->id;
+                    $kondisi60->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi60->id,
+                    ]);
+                }
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[26]->id;
+                    $kondisi->save();
+                }
+                
+            }
+            $dbd1 = DB::table('kondisis')
+            ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+            ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+            ->where('baby_id', $baby_id)
+            ->where('imunisasis.id', 26)
+            ->get();
+            if (empty($dbd1->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
+                $kondisi47 = Kondisi::create($request->all());
+                $kondisi47->baby_id = $baby_id; //baby id
+                $kondisi47['tgl_rekom'] = $kondisi['tgl'];
+                $kondisi47['imunisasi'] = $im[25]->id; //DBD 1 sudah dilakukan
+                $kondisi47->save();
+                Jadwal::create([
+                    'kondisi_id' => $kondisi47->id,
+                    'status' => "Sudah Dilakukan",
+                    'tgl_pelaksanaan' => $kondisi->tgl,
+                ]);
+            }
+        } 
+        //dengue 1
+        if ($usia <= 192 AND in_array("Pernah terkena penyakit demam berdarah", $kondisiku)) {
+            if ($usia >= 108) {
+                $ada = DB::table('kondisis')
+                ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+                ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+                ->where('baby_id', $baby_id)
+                ->where('imunisasis.id', 26)
+                ->get();
+                if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
+                    if ($kondisi['tgl_rekom'] != NULL) {
+                        $kondisi24 = Kondisi::create($request->all());
+                        $kondisi24->baby_id = $baby_id; //baby id
+                        $sekarang = Carbon::now();
+                        $kondisi24['tgl_rekom'] = $sekarang->addMonth(1);
+                        $kondisi24['imunisasi'] = $im[25]->id; 
+                        $kondisi24->save();
+                        Jadwal::create([
+                            'kondisi_id' => $kondisi24->id,
+                        ]);
+                    }
+                    else {
+                        $kondisi['tgl_rekom']  = $now->addDays(7);
+                        $kondisi['imunisasi'] = $im[25]->id;
+                        $kondisi->save();
+                    }
+                }
+            }
+            if ($usia < 108) {
+                $ada = DB::table('kondisis')
+                ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
+                ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
+                ->where('baby_id', $baby_id)
+                ->where('imunisasis.id', 26)
+                ->get();
+                if (empty($ada->first())) { //dijadwalkan saat anak berusia 108 bulan
+                    $jadwaldbd = 108 - $usia;
+                    $sekarang = Carbon::now();
+                    $kondisi['tgl_rekom']  = $sekarang->addMonths($jadwaldbd);
+                    $kondisi['imunisasi'] = $im[25]->id;
+                    $kondisi->save();
+                }  
+            }     
+        }        
         //dengue complete
         if ($kondisi['imunisasisblm'] == "Demam Berdarah 3") {
             $dbd3 = DB::table('kondisis')
@@ -979,14 +1167,32 @@ class KondisiController extends Controller
             ->where('imunisasis.id', 30)
             ->get();
             if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(1);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                if ( $lampau < 0) {
-                    $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi61 = Kondisi::create($request->all());
+                    $kondisi61->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi61['tgl_rekom'] = $tglrekom->addMonths(1);
+                    $lampau = $now->diffInDays($kondisi61['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi61['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi61['imunisasi'] = $im[29]->id;
+                    $kondisi61->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi61->id,
+                    ]);
                 }
-                $kondisi['imunisasi'] = $im[29]->id;
-                $kondisi->save();
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(1);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[29]->id;
+                    $kondisi->save();
+                }   
+                
             }
             $flu1 = DB::table('kondisis')
             ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
@@ -1053,14 +1259,32 @@ class KondisiController extends Controller
             ->where('imunisasis.id', 30)
             ->get();
             if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addYears(1);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                if ( $lampau < 0) {
-                    $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi62 = Kondisi::create($request->all());
+                    $kondisi62->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi62['tgl_rekom'] = $tglrekom->addYears(1);
+                    $lampau = $now->diffInDays($kondisi62['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi62['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi62['imunisasi'] = $im[29]->id;
+                    $kondisi62->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi62->id,
+                    ]);
                 }
-                $kondisi['imunisasi'] = $im[29]->id;
-                $kondisi->save();
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addYears(1);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[29]->id;
+                    $kondisi->save();
+                }
+                
             }
             $flu1 = DB::table('kondisis')
             ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
@@ -1126,14 +1350,32 @@ class KondisiController extends Controller
                 ->where('imunisasis.id', 8)
                 ->get();
             if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(2);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                if ( $lampau < 0) {
-                    $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi63 = Kondisi::create($request->all());
+                    $kondisi63->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi63['tgl_rekom'] = $tglrekom->addMonths(2);
+                    $lampau = $now->diffInDays($kondisi63['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi63['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi63['imunisasi'] = $im[7]->id;
+                    $kondisi63->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi63->id,
+                    ]);
                 }
-                $kondisi['imunisasi'] = $im[7]->id;
-                $kondisi->save();
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(2);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[7]->id;
+                    $kondisi->save();
+                }
+                
             }
             $var1 = DB::table('kondisis')
             ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
@@ -1163,14 +1405,32 @@ class KondisiController extends Controller
                 ->where('imunisasis.id', 8)
                 ->get();
             if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(2);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                if ( $lampau < 0) {
-                    $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi64 = Kondisi::create($request->all());
+                    $kondisi64->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi64['tgl_rekom'] = $tglrekom->addMonths(2);
+                    $lampau = $now->diffInDays($kondisi64['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi64['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi64['imunisasi'] = $im[7]->id;
+                    $kondisi64->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi64->id,
+                    ]);
                 }
-                $kondisi['imunisasi'] = $im[7]->id;
-                $kondisi->save();
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(2);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[7]->id;
+                    $kondisi->save();
+                }
+               
             }
             $var1 = DB::table('kondisis')
             ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
@@ -1277,14 +1537,32 @@ class KondisiController extends Controller
                 ->where('imunisasis.id', 10)
                 ->get();
             if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(36);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                if ( $lampau < 0) {
-                    $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi65 = Kondisi::create($request->all());
+                    $kondisi65->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi65['tgl_rekom'] = $tglrekom->addMonths(36);
+                    $lampau = $now->diffInDays($kondisi65['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi65['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi65['imunisasi'] = $im[9]->id;
+                    $kondisi65->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi65->id,
+                    ]);
                 }
-                $kondisi['imunisasi'] = $im[9]->id;
-                $kondisi->save();
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(36);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[9]->id;
+                    $kondisi->save();
+                }
+                
             }
             $tif1 = DB::table('kondisis')
             ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
@@ -1389,14 +1667,32 @@ class KondisiController extends Controller
                 ->where('imunisasis.id', 14)
                 ->get();
             if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                if ( $lampau < 0) {
-                    $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi66 = Kondisi::create($request->all());
+                    $kondisi66->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi66['tgl_rekom'] = $tglrekom->addMonths(6);
+                    $lampau = $now->diffInDays($kondisi66['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi66['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi66['imunisasi'] = $im[13]->id;
+                    $kondisi66->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi66->id,
+                    ]);
                 }
-                $kondisi['imunisasi'] = $im[13]->id;
-                $kondisi->save();
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[13]->id;
+                    $kondisi->save();
+                }
+               
             }
             $hpv1done = DB::table('kondisis')
             ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
@@ -1433,9 +1729,8 @@ class KondisiController extends Controller
                                 $kondisi6 = Kondisi::create($request->all());
                                 $kondisi6->baby_id = $baby_id; //baby id
                                 $kondisiku6 = json_decode($kondisi6->kondisi); //ubah ke array lagi
-
-                                $rekom = Carbon::parse($kondisi['tgl_rekom']);
-                                $kondisi6['tgl_rekom']  = $rekom->addMonths(4);
+                                $sekarang = Carbon::now();
+                                $kondisi6['tgl_rekom']  = $sekarang->addMonths(4);
                                 $kondisi6['imunisasi'] = $im[12]->id;
                                 $kondisi6->save();
                                 Jadwal::create([
@@ -1482,14 +1777,32 @@ class KondisiController extends Controller
                 ->where('imunisasis.id', 17)
                 ->get();
             if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                if ( $lampau < 0) {
-                    $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi67 = Kondisi::create($request->all());
+                    $kondisi67->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi67['tgl_rekom'] = $tglrekom->addMonths(6);
+                    $lampau = $now->diffInDays($kondisi67['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi67['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi67['imunisasi'] = $im[16]->id;
+                    $kondisi67->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi67->id,
+                    ]);
                 }
-                $kondisi['imunisasi'] = $im[16]->id;
-                $kondisi->save();
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[16]->id;
+                    $kondisi->save();
+                }
+               
             }
             $hpv2bidone = DB::table('kondisis')
             ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
@@ -1537,14 +1850,32 @@ class KondisiController extends Controller
                 ->where('imunisasis.id', 16)
                 ->get();
             if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(1);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                if ( $lampau < 0) {
-                    $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi68 = Kondisi::create($request->all());
+                    $kondisi68->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi68['tgl_rekom'] = $tglrekom->addMonths(1);
+                    $lampau = $now->diffInDays($kondisi68['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi68['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi68['imunisasi'] = $im[15]->id;
+                    $kondisi68->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi68->id,
+                    ]);
                 }
-                $kondisi['imunisasi'] = $im[15]->id;
-                $kondisi->save();
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(1);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                    if ( $lampau < 0) {
+                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    }
+                    $kondisi['imunisasi'] = $im[15]->id;
+                    $kondisi->save();
+                }
+               
             }
             $hpv1bidone = DB::table('kondisis')
             ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
@@ -1574,14 +1905,32 @@ class KondisiController extends Controller
                 ->where('imunisasis.id', 20)
                 ->get();
             if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi69 = Kondisi::create($request->all());
+                    $kondisi69->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi69['tgl_rekom'] = $tglrekom->addMonths(6);
+                    $lampau = $now->diffInDays($kondisi69['tgl_rekom'], false);
                     if ( $lampau < 0) {
-                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                        $kondisi69['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
                     }
-                $kondisi['imunisasi'] = $im[19]->id;
-                $kondisi->save();
+                    $kondisi69['imunisasi'] = $im[19]->id;
+                    $kondisi69->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi69->id,
+                    ]);
+                }
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(6);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                        if ( $lampau < 0) {
+                            $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                        }
+                    $kondisi['imunisasi'] = $im[19]->id;
+                    $kondisi->save();
+                }
+               
             }
             $hpv1qdone = DB::table('kondisis')
             ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
@@ -1629,14 +1978,32 @@ class KondisiController extends Controller
                 ->where('imunisasis.id', 19)
                 ->get();
             if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                $tglimun = Carbon::parse($kondisi['tgl']);
-                $kondisi['tgl_rekom'] = $tglimun->addMonths(2);
-                $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                if ($kondisi["tgl_rekom"] != NULL) {
+                    $kondisi70 = Kondisi::create($request->all());
+                    $kondisi70->baby_id = $baby_id; //baby id
+                    $tglrekom = Carbon::parse($kondisi['tgl']);
+                    $kondisi70['tgl_rekom'] = $tglrekom->addMonths(2);
+                    $lampau = $now->diffInDays($kondisi70['tgl_rekom'], false);
                     if ( $lampau < 0) {
-                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                        $kondisi70['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
                     }
-                $kondisi['imunisasi'] = $im[18]->id;
-                $kondisi->save();
+                    $kondisi70['imunisasi'] = $im[18]->id;
+                    $kondisi70->save();
+                    Jadwal::create([
+                        'kondisi_id' => $kondisi70->id,
+                    ]);
+                }
+                else {
+                    $tglimun = Carbon::parse($kondisi['tgl']);
+                    $kondisi['tgl_rekom'] = $tglimun->addMonths(2);
+                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                        if ( $lampau < 0) {
+                            $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                        }
+                    $kondisi['imunisasi'] = $im[18]->id;
+                    $kondisi->save();
+                }
+               
             }
             $hpv1qdone = DB::table('kondisis')
             ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
@@ -1673,10 +2040,8 @@ class KondisiController extends Controller
                             $kondisi6 = Kondisi::create($request->all());
                             $kondisi6->baby_id = $baby_id; //baby id
                             $kondisiku6 = json_decode($kondisi6->kondisi); //ubah ke array lagi
-                            //$kondisi6->usia = $now->diffInMonths($kondisi6->tgl_lahir); //hitung usia
-
-                            $rekom = Carbon::parse($kondisi['tgl_rekom']);
-                            $kondisi6['tgl_rekom']  = $rekom->addMonths(4);
+                            $sekarang = Carbon::now();
+                            $kondisi6['tgl_rekom']  = $sekarang->addMonths(4);
                             $kondisi6['imunisasi'] = $im[14]->id;
                             $kondisi6->save();
                             Jadwal::create([
@@ -1830,14 +2195,32 @@ class KondisiController extends Controller
                 ->where('imunisasis.id', 32)
                 ->get();
                 if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
-                    $tglimun = Carbon::parse($kondisi['tgl']);
-                    $kondisi['tgl_rekom'] = $tglimun->addMonths(1);
-                    $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
-                    if ( $lampau < 0) {
-                        $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                    if ($kondisi["tgl_rekom"] != NULL) {
+                        $kondisi71 = Kondisi::create($request->all());
+                        $kondisi71->baby_id = $baby_id; //baby id
+                        $tglrekom = Carbon::parse($kondisi['tgl']);
+                        $kondisi71['tgl_rekom'] = $tglrekom->addMonths(1);
+                        $lampau = $now->diffInDays($kondisi71['tgl_rekom'], false);
+                        if ( $lampau < 0) {
+                            $kondisi71['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                        }
+                        $kondisi71['imunisasi'] = $im[31]->id;
+                        $kondisi71->save();
+                        Jadwal::create([
+                            'kondisi_id' => $kondisi71->id,
+                        ]);
                     }
-                    $kondisi['imunisasi'] = $im[31]->id;
-                    $kondisi->save();
+                    else {
+                        $tglimun = Carbon::parse($kondisi['tgl']);
+                        $kondisi['tgl_rekom'] = $tglimun->addMonths(1);
+                        $lampau = $now->diffInDays($kondisi['tgl_rekom'], false);
+                        if ( $lampau < 0) {
+                            $kondisi['tgl_rekom'] = $now->addDays(7); //default untuk imunisasi yang terlewat jadwal
+                        }
+                        $kondisi['imunisasi'] = $im[31]->id;
+                        $kondisi->save();
+                    }
+                   
                 }
                 $rot1 = DB::table('kondisis')
                 ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
