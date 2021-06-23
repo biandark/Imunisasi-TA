@@ -69,7 +69,7 @@ class JadwalController extends Controller
     public function show($data)
     {
         $user = Imunisasi::query()
-        ->where('nama', $data)
+        ->where('jenis', $data)
         ->get();
 
         return Inertia::render('imunisasi', ['data'=>$user]);

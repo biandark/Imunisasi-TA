@@ -47,7 +47,7 @@
                         <jet-checkbox name="terms" id="terms" v-model:checked="form.terms" />
 
                         <div class="ml-2">
-                            Saya setuju dengan <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Persyaratan Penggunaan</a> dan <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Kebijakan Privasi</a>, dan setuju mendapat notifikasi WhatsApp jadwal pengingat. Anda dapat memilih untuk tidak mengikuti dengan mengirim pesan "STOP". Tarif pesan dan data mungkin berlaku.
+                            Saya setuju dengan <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Persyaratan Penggunaan</a> dan <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Kebijakan Privasi</a>, dan setuju mendapat notifikasi WhatsApp jadwal pengingat. Tarif pesan dan data mungkin berlaku.
                             
                         </div>
                     </div>

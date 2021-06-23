@@ -21,7 +21,7 @@
                         <tbody>
                         <tr v-for="(data, index) in data" :key="data.id">
                             <td >{{ index+1 }}</td>
-                            <td >{{ data.nama }}</td>
+                            <td >{{ data.jenis }}</td>
                             <td >{{ data.daerah }}</td>
                         </tr>
                         </tbody>

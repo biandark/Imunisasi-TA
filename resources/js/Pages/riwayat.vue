@@ -53,7 +53,7 @@
                         <tbody>
                         <tr v-for="(jadwal, index) in scheduled" :key="jadwal.id">
                             <td >{{ index+1 }}</td>
-                            <td >{{ jadwal.nama }}</td>
+                            <td >{{ jadwal.jenis }}</td>
                             <td >{{ formatDate(jadwal.tgl_rekom) }}</td>
                             <td >
                                 <span v-if="jadwal.tgl_pelaksanaan != NULL" class="text-green-500 font-semibold">Sudah Dilakukan</span>
@@ -64,7 +64,7 @@
                                 <button @click="edit(jadwal)" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Update</button>
                             </td>
                             <td>
-                                <inertia-link class="text-sm text-indigo-500 underline" :href="route('imunisasi' ,{ data:jadwal.nama})" method="get">
+                                <inertia-link class="text-sm text-indigo-500 underline" :href="route('imunisasi' ,{ data:jadwal.jenis})" method="get">
                                 Lihat Selengkapnya
                                 </inertia-link>
                             </td>
