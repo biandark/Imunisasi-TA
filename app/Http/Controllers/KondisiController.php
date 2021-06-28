@@ -1096,9 +1096,21 @@ class KondisiController extends Controller
                 if (empty($ada->first())) { //dijadwalkan saat anak berusia 108 bulan
                     $jadwaldbd = 108 - $usia;
                     $sekarang = Carbon::now();
-                    $kondisi['tgl_rekom']  = $sekarang->addMonths($jadwaldbd);
-                    $kondisi['imunisasi'] = $im[25]->id;
-                    $kondisi->save();
+                    if ($kondisi['tgl_rekom'] != NULL) {
+                        $kondisi72 = Kondisi::create($request->all());
+                        $kondisi72->baby_id = $baby_id; //baby id
+                        $kondisi72['tgl_rekom'] = $sekarang->addMonths($jadwaldbd);
+                        $kondisi72['imunisasi'] = $im[25]->id; 
+                        $kondisi72->save();
+                        Jadwal::create([
+                            'kondisi_id' => $kondisi72->id,
+                        ]);
+                    }
+                    else {
+                        $kondisi['tgl_rekom']  = $sekarang->addMonths($jadwaldbd);
+                        $kondisi['imunisasi'] = $im[25]->id;
+                        $kondisi->save();
+                    }
                 }  
             }     
         }        
@@ -2187,7 +2199,7 @@ class KondisiController extends Controller
                 }
             }
             //rotavirus 2
-            if ($usia >= 5 AND $kondisi['imunisasisblm'] == "rotavirus 1") {
+            if ($usia >= 5 AND $kondisi['imunisasisblm'] == "Rotavirus 1") {
                 $ada = DB::table('kondisis')
                 ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
                 ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
