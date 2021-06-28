@@ -1070,7 +1070,7 @@ class KondisiController extends Controller
                 if (empty($ada->first())) { //hanya dijalankan jika imunisasi belum pernah dijadwalkan
                     if ($kondisi['tgl_rekom'] != NULL) {
                         $kondisi24 = Kondisi::create($request->all());
-                        $kondisi24->baby_id = $baby_id; //baby id
+                        $kondisi24->baby_id = $baby_id;
                         $sekarang = Carbon::now();
                         $kondisi24['tgl_rekom'] = $sekarang->addMonth(1);
                         $kondisi24['imunisasi'] = $im[25]->id; 
