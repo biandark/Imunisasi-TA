@@ -187,10 +187,24 @@ class BabyController extends Controller
                 $riwayat = Riwayat::where('baby_id', $baby_id)->where('imunisasiwajib_id', 1)->first();
                 $riwayat->tgl_penjadwalan = $tgl_imunisasi;
                 $riwayat->save();
+            } elseif ($usia > 0 && $usia <= 24 && !in_array($im[4], $done) && !in_array($im[0], $done)) {
+                $tgl_imunisasi = clone $now;
+                $tgl_imunisasi->add($days);
+                $tgl_imunisasi = $tgl_imunisasi->format('Y-m-d');
+                $riwayat = Riwayat::where('baby_id', $baby_id)->where('imunisasiwajib_id', 1)->first();
+                $riwayat->tgl_penjadwalan = $tgl_imunisasi;
+                $riwayat->save();
             }
             //Polio 0
             if ($usia == 0 && !in_array($im[1], $done)) {
                 $tgl_imunisasi = clone $ttl;
+                $tgl_imunisasi = $tgl_imunisasi->format('Y-m-d');
+                $riwayat = Riwayat::where('baby_id', $baby_id)->where('imunisasiwajib_id', 2)->first();
+                $riwayat->tgl_penjadwalan = $tgl_imunisasi;
+                $riwayat->save();
+            } elseif ($usia > 0 && $usia <= 24 && !in_array($im[3], $done) && !in_array($im[1], $done)) {
+                $tgl_imunisasi = clone $now;
+                $tgl_imunisasi->add($days);
                 $tgl_imunisasi = $tgl_imunisasi->format('Y-m-d');
                 $riwayat = Riwayat::where('baby_id', $baby_id)->where('imunisasiwajib_id', 2)->first();
                 $riwayat->tgl_penjadwalan = $tgl_imunisasi;
@@ -205,7 +219,7 @@ class BabyController extends Controller
                 $riwayat->tgl_penjadwalan = $tgl_imunisasi;
                 $riwayat->save();
             
-            } elseif ($usia >= 1 && $usia <= 3 && !in_array($im[2], $done)) {
+            } elseif ($usia >= 1 && $usia <= 12 && !in_array($im[2], $done)) {
                 $tgl_imunisasi = clone $now;
                 $tgl_imunisasi->add($days);
                 $tgl_imunisasi = $tgl_imunisasi->format('Y-m-d');
@@ -214,13 +228,13 @@ class BabyController extends Controller
                 $riwayat->save();
             }
             //Polio 1
-            if ($usia < 2 && !in_array($im[3], $done)) {
+            if ($usia < 2 && in_array($im[1], $done) && !in_array($im[3], $done)) {
                 $tgl_imunisasi = clone $ttl;
                 $tgl_imunisasi = $tgl_imunisasi->add($interval2)->format('Y-m-d');
                 $riwayat = Riwayat::where('baby_id', $baby_id)->where('imunisasiwajib_id', 4)->first();
                 $riwayat->tgl_penjadwalan = $tgl_imunisasi;
                 $riwayat->save();
-            } elseif ($usia >= 2 && $usia <= 24 && !in_array($im[3], $done)) {
+            } elseif ($usia >= 2 && $usia <= 24 && in_array($im[1], $done) && !in_array($im[3], $done)) {
                 $tgl_imunisasi = clone $now;
                 $tgl_imunisasi = $tgl_imunisasi->add($days)->format('Y-m-d');
                 $riwayat = Riwayat::where('baby_id', $baby_id)->where('imunisasiwajib_id', 4)->first();
