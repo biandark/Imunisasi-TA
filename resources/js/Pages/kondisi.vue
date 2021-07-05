@@ -33,9 +33,9 @@
                             <jet-input id="gender" type="text" class="mt-1 block w-full" v-model="form.gender" required disabled/>
                         </div>
                         <div class="mt-4">
-                            <jet-label for="travelling" value="Ada Keperluan Travelling?*" />
+                            <jet-label for="travelling" value="Apakah Ada Keperluan Bepergian?*" />
                             <select required v-model="form.travelling" placeholder="Travel" class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                                <option disabled value="">Travelling</option>
+                                <option disabled value="">Bepergian</option>
                                 <option>Ya</option>
                                 <option>Tidak</option>
                             </select>
@@ -43,7 +43,7 @@
                         <p class="text-xs font-semibold text-red-500">*wajib diisi</p>
                         
                         <div v-if="form.travelling == 'Ya'" class="mt-4">
-                            <jet-label for="kondisi" value="Travelling" />
+                            <jet-label for="kondisi" value="Bepergian" />
                             <p class="text-xs my-3">Pilih salah satu destinasi atau tempat tinggal Anda.</p>
                             <div class="mt-2 flex">
                                 <input type="checkbox" id="endemism" v-model="form.kondisi" value="Pergi ke daerah endemis meningitis" />

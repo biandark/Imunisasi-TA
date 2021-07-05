@@ -44,6 +44,9 @@
                                     <option value="0">Tidak</option>
                                 </select>
                             </div>
+                            <div class="mt-4">
+                                <jet-label value="PERINGATAN: Aplikasi tidak dapat digunakan untuk bayi dengan kondisi prematur (lahir lebih awal dari hari perkiraan lahir)" />
+                            </div>
                             <div class="flex justify-right pt-3">
                                 <jet-button class="bg-indigo-500">
                                     Simpan

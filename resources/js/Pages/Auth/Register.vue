@@ -28,7 +28,7 @@
                     <option disabled value="">Pilih Wali</option>
                     <option>Ayah</option>
                     <option>Ibu</option>
-                    <option>Caregiver</option>
+                    <option>Pengasuh</option>
                 </select>
             </div>
             <div class="mt-4">
