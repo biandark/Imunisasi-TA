@@ -462,7 +462,7 @@ class KondisiController extends Controller
             }
         }
         //PCV 2 7-12 bulan
-        if (($usia >= 7 AND $usia <= 12) AND $kondisi['imunisasisblm'] == "Pneumokokus 1") {
+        if (($usia >= 7 AND $usia < 12) AND $kondisi['imunisasisblm'] == "Pneumokokus 1") {
             $ada = DB::table('kondisis')
             ->join('imunisasis', 'kondisis.imunisasi', '=', 'imunisasis.id')
             ->join('jadwals', 'kondisis.id', '=', 'jadwals.kondisi_id')
