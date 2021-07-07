@@ -317,7 +317,7 @@ class BabyController extends Controller
                 }
                 else {
                     $tgl_imunisasi2 = $tgl_imunisasi2->format('Y-m-d');
-                    $riwayat = Riwayat::where('baby_id', $baby_id)->where('imunisasiwajib_id', 7)->first();
+                    $riwayat = Riwayat::where('baby_id', $baby_id)->where('imunisasiwajib_id', 8)->first();
                     if(empty($riwayat->tgl_penjadwalan)){
                         $riwayat->tgl_penjadwalan = $tgl_imunisasi2;
                         $riwayat->save();
