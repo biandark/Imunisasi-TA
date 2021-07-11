@@ -298,6 +298,7 @@
                         </div>
                         <div>
                             <p class="font-bold">Supervisor :</p>
+                            Ahmad Mukhlason, S.Kom., M.Sc., Ph.D.<br />
                             Retno Aulia Vinarti, S.Kom., M.Kom., Ph.D.<br />
                             Edwin Riksakomara, S.Kom., M.T.<br />
                             Prof. Dr. Ir. Arif Djunaidy, M.Sc., Ph.D.<br />
