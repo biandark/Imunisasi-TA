@@ -12,7 +12,6 @@ class WAreminder extends Model
     use HasFactory;
 
     public function kirimReminder($jenis_imunisasi, $tanggal, $nohp, $nama, $link){
-        
         $message = 
         "[IMUNISASI SELANJUTNYA] \n\nJadwal imunisasi selanjutnya \nNama : $nama \nImunisasi : $jenis_imunisasi \nTanggal : $tanggal \nPastikan anak anda dalam kondisi fit. Jika ingin mengetahui mengenai imunisasi dapat mengunjungi $link";     
     
@@ -21,7 +20,6 @@ class WAreminder extends Model
             'no' => $nohp,
             'msg' => $message,
         ]);
-
         
     }
 }

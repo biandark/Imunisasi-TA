@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class SendWA extends Command
 {
+    
     /**
      * The name and signature of the console command.
      *
@@ -31,7 +32,9 @@ class SendWA extends Command
      */
     public function __construct()
     {
+        
         parent::__construct();
+        
     }
 
     /**
@@ -41,6 +44,8 @@ class SendWA extends Command
      */
     public function handle()
     {
+        $awal = microtime(true);
+
         $reminder = new WAreminder();
 
         $dayafter = date('Y-m-d', strtotime( "+2 days" ));
@@ -66,13 +71,18 @@ class SendWA extends Command
         ->get();
 
         foreach($riwayats as $riwayat) {
-            $reminder->kirimReminder( $riwayat->jenis, $riwayat->tgl_penjadwalan, $riwayat->whatsappno, $riwayat->nama, $link = "http://imun.site/info");
+            $reminder->kirimReminder($riwayat->jenis, $riwayat->tgl_penjadwalan, $riwayat->whatsappno, $riwayat->nama, $link = "http://imun.site/info");
         }
         foreach($riwayatpilihans as $riwayatpilihan) {
             $reminder->kirimReminder($riwayatpilihan->jenis, $riwayatpilihan->tgl_rekom, $riwayatpilihan->whatsappno, $riwayatpilihan->nama, $link = "http://imun.site/daftarimunisasi");
            
         }
 
-        $this->info('Success');
+        $akhir = microtime(true);
+        $lama = $akhir - $awal;
+        echo "Lama eksekusi script adalah: ".$lama." microsecond";
+
+        // $this->info('Success');
     }
+    
 }

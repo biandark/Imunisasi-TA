@@ -1,151 +1,20 @@
 <?php
-
 namespace App\Http\Controllers;
-
+  
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use App\Models\Post;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Kondisi;
+use App\Models\Imunisasi;
+use App\Models\Jadwal;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Baby;
-use App\Models\Imunisasiwajib;
-use App\Models\Riwayat;
-use DateTime;
-use DateInterval;
-
-class BabyController extends Controller
-{
-    public function __construct() 
-    {
-     $this->middleware('auth');
-    }
-
-    public function index() {
-        $id = Auth::user()->id;
-        $babies = Baby::where('user_id', $id)->get();
-    
-        if (empty($babies->first())) {
-            return redirect()->route('databayi.create');
-        }
-
-        return Inertia::render('DataBayi', [
-            'babies' => $babies,
-        ]);
-    }
-
-    public function createbaby() {
-        return Inertia::render('FormBayi');
-    }
-    
-    public function storebaby(Request $request){
-        Validator::make($request->all(), [
-            'nama' => ['required', 'max:50'],
-            'ttl' => ['required', 'max:50'],
-            'bb' => ['required', 'max:50'],
-            'gender' => ['required', 'max:50'],
-        ])->validate();
-
-        $baby= Baby::create($request->only(['nama','ttl','bb','gender','user_id']));
-        return redirect()->route('databayi');
-    }
-
-    public function create($baby_id) {
-        $id = Auth::user()->id;
-        $is_filled = !empty(Riwayat::where('baby_id', $baby_id)->first());
-        $baby = Baby::where('id', $baby_id)->first();
-        
-        if($is_filled){
-            return redirect()->route('riwayatwajib', ['baby_id' => $baby_id]);
-        }
-        return Inertia::render('AturJadwalWajib', [
-            'baby' => $baby,
-        ]);
-    }
-
-    public function store($baby_id, Request $request) {
-        // ambil semua data tabel imunisasis
-        $imunisasiwajibs = Imunisasiwajib::get();
-        
-        //iterasi data tabel imunisasis
-        $done = json_decode($request->done);
-        foreach ($imunisasiwajibs as $imunisasi) {
-            // if kalo dalam array request->done itu ada imunisasi->id kalo ada
-            if(in_array($imunisasi->id, $done)){
-                Riwayat::create([
-                    'baby_id' => $baby_id,
-                    'imunisasiwajib_id' => $imunisasi->id,
-                    'tgl_diberikan' => $request->tgl_diberikan[$imunisasi->id],
-                ]);
-            }
-            else {
-                Riwayat::create([
-                    'baby_id' => $baby_id,
-                    'imunisasiwajib_id' => $imunisasi->id,
-                ]);
-            }
-            
-        }
-
-        //cek request ambil yg paling akhir
-        $last_polio = "";
-        $last_dpt = "";
-        $last_mr = "";
-
-        // if request-> tglpoleo1n a;akasj kosong
-        if(!empty($request->tgl_diberikan[2])){
-            $last_polio = $request->tgl_diberikan[2];
-        }
-        if(!empty($request->tgl_diberikan[4])){
-            $last_polio = $request->tgl_diberikan[4];
-        }
-        if(!empty($request->tgl_diberikan[6])){
-            $last_polio = $request->tgl_diberikan[6];
-        }
-        if(!empty($request->tgl_diberikan[8])){
-            $last_polio = $request->tgl_diberikan[8];
-        }
-        if(!empty($request->tgl_diberikan[10])){
-            $last_polio = $request->tgl_diberikan[10];
-        }
-        
-        if(!empty($request->tgl_diberikan[5])){
-            $last_dpt = $request->tgl_diberikan[5];
-        }
-        if(!empty($request->tgl_diberikan[7])){
-            $last_dpt = $request->tgl_diberikan[7];
-        }
-        if(!empty($request->tgl_diberikan[9])){
-            $last_dpt = $request->tgl_diberikan[9];
-        }
-        if(!empty($request->tgl_diberikan[12])){
-            $last_dpt = $request->tgl_diberikan[12];
-        }
-
-        if(!empty($request->tgl_diberikan[11])){
-            $last_mr = $request->tgl_diberikan[11];
-        }
-        if(!empty($request->tgl_diberikan[13])){
-            $last_mr = $request->tgl_diberikan[13];
-        }
-
-        BabyController::rules($baby_id, $request->ttl, $request->bb, $request->done, $last_polio, $last_dpt, $last_mr);
-  
-        return redirect()->route('form.show', ['baby_id' => $baby_id]);
-    }
-
-    public function show($baby_id) {
-        $baby = Baby::where('id', $baby_id)->first();
-
-        $riwayats = Riwayat::where('baby_id', $baby->id)->with('imunisasiwajib')->get();
-
-        return Inertia::render('FormOutput', [
-            'baby' => $baby,
-            'riwayats' => $riwayats,
-        ]);
-    }
-
-
-    public function rules($baby_id, $ttl, $bb, $done, $last_polio, $last_dpt, $last_mr)
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+ 
+$awal = microtime(true);
+ 
+function rules($baby_id, $ttl, $bb, $done, $last_polio, $last_dpt, $last_mr)
     {
         $im = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"];
 
@@ -685,4 +554,8 @@ class BabyController extends Controller
         }
 
     }
-}
+ 
+$akhir = microtime(true);
+$lama = $akhir - $awal;
+echo "Lama eksekusi script adalah: ".$lama." microsecond";
+?>
