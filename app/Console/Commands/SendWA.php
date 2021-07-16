@@ -41,6 +41,7 @@ class SendWA extends Command
      */
     public function handle()
     {
+        $awal = microtime(true);
         $reminder = new WAreminder();
 
         $dayafter = date('Y-m-d', strtotime( "+2 days" ));
@@ -73,6 +74,9 @@ class SendWA extends Command
            
         }
 
+        $akhir = microtime(true);
+        $lama = $akhir - $awal;
+        echo "<p>Lama eksekusi script adalah: ".$lama." microsecond</p>";
         $this->info('Success');
     }
 }
