@@ -29,6 +29,7 @@
                     <option>Ayah</option>
                     <option>Ibu</option>
                     <option>Pengasuh</option>
+                    <option>Diri Sendiri</option>
                 </select>
             </div>
             <div class="mt-4">

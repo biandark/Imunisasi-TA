@@ -66,4 +66,4 @@ Route::get('/info', 'App\Http\Controllers\ImunisasiwajibController@info')->name(
 Route::get('/databayi', 'App\Http\Controllers\BabyController@index')->name('databayi');
 Route::get('/databayi/create', 'App\Http\Controllers\BabyController@createbaby')->name('databayi.create');
 Route::post('/databayi/create', 'App\Http\Controllers\BabyController@storebaby')->name('databayi.store');
-
+Route::get('/datakeluarga/create', 'App\Http\Controllers\BabyController@createdata')->name('datakeluarga.create');

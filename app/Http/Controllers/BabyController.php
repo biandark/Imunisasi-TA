@@ -37,6 +37,10 @@ class BabyController extends Controller
     public function createbaby() {
         return Inertia::render('FormBayi');
     }
+
+    public function createdata() {
+        return Inertia::render('FormKeluarga');
+    }
     
     public function storebaby(Request $request){
         Validator::make($request->all(), [

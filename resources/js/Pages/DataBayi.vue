@@ -2,7 +2,7 @@
     <app-layout>
         <template #header>
             <h2 class="font-bold text-xl text-center text-gray-800 leading-tight">
-                Data Anak
+                Data Anggota Keluarga
             </h2>
         </template>
 
@@ -11,7 +11,7 @@
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <div class="p-6 max-w-4xl mx-auto">
                         <h3 class="font-semibold mt-6 text-xl text-indigo-500 leading-tight">
-                                Daftar Anak
+                                Daftar Anggota Keluarga
                         </h3>
                         <div class="mt-4 overflow-x-auto">
                             <table class="min-w-full leading-normal">
@@ -57,6 +57,11 @@
                                 <inertia-link :href="route('databayi.create')">
                                     <jet-button class="bg-indigo-500">
                                         Tambah Data Anak
+                                    </jet-button>
+                                </inertia-link>
+                                <inertia-link :href="route('datakeluarga.create')">
+                                    <jet-button class="bg-indigo-500 ml-5">
+                                        Tambah Data Keluarga Lainnya
                                     </jet-button>
                                 </inertia-link>
                             </div>
