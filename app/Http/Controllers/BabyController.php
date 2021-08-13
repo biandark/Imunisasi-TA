@@ -22,12 +22,8 @@ class BabyController extends Controller
     }
 
     public function index() {
-        $awal = microtime(true);
         $id = Auth::user()->id;
         $babies = Baby::where('user_id', $id)->get();
-        $akhir = microtime(true);
-        $lama = $akhir - $awal;
-        echo "Lama pengambilan data: ".$lama." ms";
 
         if (empty($babies->first())) {
             return redirect()->route('databayi.create');

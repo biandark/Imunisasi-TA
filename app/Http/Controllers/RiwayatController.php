@@ -28,14 +28,6 @@ class RiwayatController extends Controller
         if ($is_not_filled) {
             return redirect()->route('form', ['baby_id' => $baby_id]);
         }
-        
-        $awal = microtime(true);
-        $baby = Baby::where('id', $baby_id)->first();
-        $riwayats = Riwayat::where('baby_id', $baby->id)->with('imunisasiwajib')
-                        ->orderBy('imunisasiwajib_id','ASC')->get();
-        $akhir = microtime(true);
-        $lama = $akhir - $awal;
-        echo "Lama pengambilan data: ".$lama." ms";
 
         return Inertia::render('RiwayatImunisasiWajib', [
             'baby' => $baby,
