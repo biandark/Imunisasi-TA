@@ -28,6 +28,9 @@ class RiwayatController extends Controller
         if ($is_not_filled) {
             return redirect()->route('form', ['baby_id' => $baby_id]);
         }
+        $baby = Baby::where('id', $baby_id)->first();
+        $riwayats = Riwayat::where('baby_id', $baby->id)->with('imunisasiwajib')
+                        ->orderBy('imunisasiwajib_id','ASC')->get();
 
         return Inertia::render('RiwayatImunisasiWajib', [
             'baby' => $baby,
